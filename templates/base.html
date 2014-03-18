@@ -1,0 +1,81 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lan="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="images/chalk-icon6.ico">
+    <link href="css/default.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="css/pick.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'css/defaultceleb.css' %}" />
+    {% block extra_head %}{% endblock %}
+
+</head>
+
+<body>
+
+    <!-- Begin UI for Selected Pick -->
+    <div class="bg-elements">
+    
+        <div class="wrapper">    
+            <div id="header">
+                <div id="menubar">
+                    <div class="left">
+                        <div class="left logo">
+                            <a href="#"><img src="image/logo5.png" atl="Celeberty Dbag logo"></a>
+                        </div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">Actors</a></div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">Musicians</a></div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">TV</a></div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">Radio</a></div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">Athletes</a></div>
+                        <div class="left menuitem "><a href="#" class="color-primary height-full">Politicians</a></div>
+                    </div>
+                    <div id="searchBar">
+                        <form style="position:relative;">
+                        <fieldset>
+                        <div class="searchBox">
+                        <input sub="input" type="text"  placeholder="Search Celebrity">
+                        <button sub="submitbutton" type="submit">
+                        <span class="icon magnify"> </span>
+                        </button>
+                        </div>
+                        </fieldset>
+                        </form>
+                    </div>
+                    <div class="right">
+                        <div class="left signitem"><a href="index.php?r=user/signin" class="font-12 color-primary">Sign In</a></div><div class="left signitem"><a href="index.php?r=user/signup" class="font-12 color-primary">Sign Up</a></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div id="content">  
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div id="footer">
+                <a href="#">About Us</a>&nbsp;&nbsp;&nbsp;
+                <a href="#">Terms and Contentions</a>&nbsp;&nbsp;&nbsp;
+                <a href="#">Contact Us</a>            
+                <div class="copyright">
+                    <div class="font-12 color-primary">© Copyright 2014 CelebrityDouche.com, </div>
+                    <div class="font-12 color-primary">All rights reserved Various trademarks held by their respective owners.</div>
+                </div>
+            </div>
+            <!-- End UI for Footer -->
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+
+</body>
+</html>
+
