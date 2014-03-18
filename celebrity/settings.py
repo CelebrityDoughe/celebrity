@@ -36,6 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'userena',
+    'guardian',
+    'easy_thumbnails',
+    'south',
+
+    'accounts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -89,6 +96,20 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
 
 try:
     from local_settings import *
