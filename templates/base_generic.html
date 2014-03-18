@@ -48,7 +48,8 @@
                         </form>
                     </div>
                     <div class="right">
-                        <div class="left signitem"><a href="index.php?r=user/signin" class="font-12 color-primary">Sign In</a></div><div class="left signitem"><a href="index.php?r=user/signup" class="font-12 color-primary">Sign Up</a></div>
+                        <div class="left signitem"><a href="{% url 'userena_signin' %}" class="font-12 color-primary">Sign In&nbsp;|</a></div>
+                        <div class="left signitem"><a href="{% url 'userena_signup' %}" class="font-12 color-primary">&nbsp;Sign Up</a></div>
                     </div>
                     <div class="clear"></div>
                 </div>

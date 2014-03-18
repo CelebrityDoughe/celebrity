@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'userena',
     'guardian',
@@ -104,6 +105,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ANONYMOUS_USER_ID = -1
+SITE_ID = 1
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
