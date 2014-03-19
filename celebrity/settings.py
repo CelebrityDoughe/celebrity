@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'userena',
     'guardian',
     'easy_thumbnails',
+    'social_auth',
     'south',
 
     'accounts',
@@ -99,8 +100,14 @@ STATICFILES_DIRS = (
 
 
 AUTHENTICATION_BACKENDS = (
+    # normal email signin/signup
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
+
+    # facebook/twitter signin/signup
+    'social_auth.backends.facebook.FacebookBackend',
+    'social_auth.backends.twitter.TwitterBackend',
+
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -112,6 +119,17 @@ AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login/success/'
+
+# settings to be used for social login
+TWITTER_CONSUMER_KEY         = ''
+TWITTER_CONSUMER_SECRET      = ''
+FACEBOOK_APP_ID              = ''
+FACEBOOK_API_SECRET          = ''
+
+# this setting is changed because of social login with facebook
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
 
 try:
     from local_settings import *
