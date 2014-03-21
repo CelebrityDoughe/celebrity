@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'south',
 
     'accounts',
+    'rating',
 )
 
 MIDDLEWARE_CLASSES = (

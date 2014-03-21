@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Category | {{ category }}{% endblock %}
+
+{% block content %}
+<h1>Category - "{{ category }}"</h1>
+{% for celebrity in celebrity_list %}
+    <h3><a href="{% url 'celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a><h3>
+{% endfor %}
+{% endblock %}

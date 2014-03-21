@@ -28,12 +28,12 @@
                         <div class="left logo">
                             <a href="#"><img src="image/logo5.png" atl="Celeberty Dbag logo"></a>
                         </div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">Actors</a></div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">Musicians</a></div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">TV</a></div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">Radio</a></div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">Athletes</a></div>
-                        <div class="left menuitem "><a href="#" class="color-primary height-full">Politicians</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='actors' %}" class="color-primary height-full">Actors</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='musicians' %}" class="color-primary height-full">Musicians</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='tv' %}" class="color-primary height-full">TV</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='radio' %}" class="color-primary height-full">Radio</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='athletes' %}" class="color-primary height-full">Athletes</a></div>
+                        <div class="left menuitem "><a href="{% url 'category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a></div>
                     </div>
                     <div id="searchBar">
                         <form style="position:relative;">

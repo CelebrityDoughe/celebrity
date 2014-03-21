@@ -1,0 +1,69 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Celebrity{% endblock %}
+
+{% block content %}
+<div class="content-top clearfix">
+    <div class="celebrity-image celebrity-area">
+        <img src={{celebrity.image1.url}}""
+            width="214px"
+            height="317px"
+            alt="{{celebrity.name}}"
+            title="The Lego Movie"
+            itemprop="image"
+            class="pinterestImage">
+    </div>
+    <div class="celebrity-block-right celebrity-block-border">
+        <h1 class="celebrity-name"><span itemprop="name">{{celebrity.name}}</span></h1>
+        <div class="celebrity-box" data-score="95">
+            <div class="celebrity-inside-box rating-side">
+                <p class="rating-result-words" sub="hover"><span>Nice Person</span></p>
+                <div id="rating-numbers" class="rating-container" >
+                    <a class="rating-box" style="display:block;" href="#contentReviews"><span class="rate number">1.5</span></a>
+                    <div class="dbags-rating">
+                        <div class="dbags-align">
+                            <span style="width:100%;">
+                                <div class="rating">
+                                    <span class="rater-starsOff" style="width: 181px; cursor: pointer;">
+                                        <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span>
+                                    </span>
+                                </div>
+                            </span>
+                        </div>
+                        <p class="rating-stats">Ratings Counted: <span>118</span><br></p>
+                    </div>
+                    <p class="celebrity-known-for">{{celebrity.get_specificity_display}}{{celebrity.description}}</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <h4 class="header-message"><span class="fl">Rate if this celebrity is a dbag</span></h4>
+        </div>
+        <div class="rating-widget large-rating-widget media_block">
+            <a href="" class="celebrity-image">
+                <img src="http://images.rottentomatoescdn.com/images/redesign/user.none.tmb.jpg" width="50" sub="img" class="fl" alt="">
+            </a>
+            <div class="celebrity-block-right">
+                <div class="rating_buttons">
+                    <input type="button" value="+" class="wts clear" style="position:relative; bottom:7px;">
+                    <input type="button" value="-" class="ni clear" style="position:relative; bottom:7px;">
+                    <input type="button" class="stars clear down7">
+                </div>
+                <textarea id="review_text" class="review clearfix" placeholder="Add a Review (Optional)" style="height: 38px;"></textarea>
+                <div class="clearfix" style="height:20px;">
+                    <div class="fl">
+                        <a href="javascript:void(0);" class="edit_button subtle smaller fr" style="display: none;">Edit</a>
+                        <a href="javascript:void(0);" class="post_button"></a>
+                        <span class="status"></span>
+                    </div>
+                    <div class="fr">
+                        <a href="javascript:void(0);" class="share_button fb fb_button"></a> 
+                    </div>
+                    <span class="socialMsg fr like_status small subtle" style="display:none;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
