@@ -9,6 +9,9 @@ urlpatterns = patterns('',
 
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^login/success/$', login_required(TemplateView.as_view(template_name="login_success.html"))),
+
+    url(r'^terms-of-service/$', TemplateView.as_view(template_name="terms.html"), name="terms"),
+
     url(r'^accounts/', include('userena.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
