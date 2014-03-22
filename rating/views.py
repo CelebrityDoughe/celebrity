@@ -1,5 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from rating.models import Celebrity
 
@@ -9,9 +11,12 @@ class CategoryView(ListView):
     View to render page for each category
     """
 
-    #template_name = "category.html"
     model = Celebrity
     categories = ['actors', 'musicians', 'tv', 'radio', 'sports', 'politicians']
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(CategoryView, self).dispatch(*args, **kwargs)
 
     def get_category_shortcut(self, category):
         """
@@ -39,5 +44,9 @@ class CelebrityDetailView(DetailView):
     """
 
     model = Celebrity
-    #template_name = "celebrity.html"
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(CelebrityDetailView, self).dispatch(*args, **kwargs)
+
 
