@@ -1,0 +1,64 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div id="email-box">
+    <div class="email-form">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><label for="name">Name:</label></th>
+                            <td class="col-field">
+                                {{ form.name }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td class="col-help">
+                                {% if form.name.errors %}
+                                <div class="error-help">
+                                    Please put your name
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr class="email">
+                            <th><label for="user-email">Email:</label></th>
+                            <td class="col-field">
+                                {{ form.email }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td class="col-help">
+                                {% if form.email.errors %}
+                                <div class="error-help">
+                                    Enter your email address
+                                </div>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <textarea cols="60" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 160px; margin-left: 0px; margin-right: 0px; width: 360px; "></textarea>
+                                {% if form.detail.errors %}
+                                <div class="error-help">
+                                    Please input details here
+                                </div>
+                                {% endif %}
+                                <button class="email-btn" id="signin-submit" type="submit">Send</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+        <p class="contact-content-bottom">Ullamco laboris nisi ut enim ad minim veniam, velit esse cillum dolore. Eu fugiat nulla pariatur. Excepteur sint occaecat duis aute irure dolor sed do eiusmod tempor incididunt</p>
+    </div>
+</div>
+{% endblock %}

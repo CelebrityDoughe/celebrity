@@ -1,9 +1,11 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 from rating.models import Celebrity
+from rating.forms import ContactForm
 
 
 class CategoryView(ListView):
@@ -48,5 +50,19 @@ class CelebrityDetailView(DetailView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(CelebrityDetailView, self).dispatch(*args, **kwargs)
+
+
+class ContactUsView(FormView):
+    """
+    Contact Us page
+    """
+
+    template_name = 'contact-us.html'
+    form_class = ContactForm
+    success_url = '/thanks/'
+
+    def form_valid(self, form):
+        form.save()
+        return super(ContactUsView, self).form_valid(form)
 
 
