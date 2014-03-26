@@ -786,3 +786,33 @@ width: 120px;
 vertical-align: middle;
 }
 /*end contact us*/
+
+.item-rate {
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    z-index: 6;
+}
+
+.item-rate ul {
+    margin: 0;
+    padding: 4px 15px;
+    list-style: none;
+}
+
+.item-rate ul li {
+    display: inline-block;
+}
+
+.item-rate ul li a {
+    display: block;
+    width: 13px;
+    height: 13px;
+    margin: 0 1px;
+    background-image: url(/static/images/rate.png);
+}
+
+.item-rate li:hover a, .item-rate li a.active {
+    background-image: url(/static/images/rate-hover.png);
+}

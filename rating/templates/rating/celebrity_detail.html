@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% load static from staticfiles %}
 
 {% block title %}Celebrity{% endblock %}
 
@@ -24,8 +25,22 @@
                         <div class="dbags-align">
                             <span style="width:100%;">
                                 <div class="rating">
-                                    <span class="rater-starsOff" style="width: 181px; cursor: pointer;">
-                                        <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span>
+                                    <span class="rater-starsOff" style="width: 220px; cursor: pointer;">
+                                        {# <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span> #}
+                                        <div class="item-rate">
+									      <ul>
+									        <li><a href="#" class="rates rate1" data-rate="1">&nbsp;</a></li>
+									        <li><a href="#" class="rates rate2" data-rate="2">&nbsp;</a></li>
+									        <li><a href="#" class="rates rate3" data-rate="3">&nbsp;</a></li>
+									        <li><a href="#" class="rates rate4" data-rate="4">&nbsp;</a></li>
+									        <li><a href="#" class="rates rate5" data-rate="5">&nbsp;</a></li>
+									        <li><a href="#" class="rates rate6" data-rate="6">&nbsp;</a></li>
+                                            <li><a href="#" class="rates rate7" data-rate="7">&nbsp;</a></li>
+                                            <li><a href="#" class="rates rate8" data-rate="8">&nbsp;</a></li>
+                                            <li><a href="#" class="rates rate9" data-rate="9">&nbsp;</a></li>
+                                            <li><a href="#" class="rates rate10" data-rate="10">&nbsp;</a></li>
+									      </ul>
+									    </div>
                                     </span>
                                 </div>
                             </span>
@@ -50,20 +65,17 @@
                     <input type="button" value="-" class="ni clear" style="position:relative; bottom:7px;">
                     <input type="button" class="stars clear down7">
                 </div>
-                <textarea id="review_text" class="review clearfix" placeholder="Add a Review (Optional)" style="height: 38px;"></textarea>
+                <textarea id="review_text" class="review clearfix" placeholder="Add a Review (Optional)" style="height: 38px;" nanme="review"></textarea>
                 <div class="clearfix" style="height:20px;">
-                    <div class="fl">
-                        <a href="javascript:void(0);" class="edit_button subtle smaller fr" style="display: none;">Edit</a>
-                        <a href="javascript:void(0);" class="post_button"></a>
-                        <span class="status"></span>
-                    </div>
-                    <div class="fr">
-                        <a href="javascript:void(0);" class="share_button fb fb_button"></a> 
-                    </div>
-                    <span class="socialMsg fr like_status small subtle" style="display:none;"></span>
+                    <input type="submit" value="Edit" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
