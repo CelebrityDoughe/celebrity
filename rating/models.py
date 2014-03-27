@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Celebrity(models.Model):
@@ -33,4 +34,19 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return "%s(%s) - %s" % (self.name, self.email, self.dt_created)
+
+
+class Rating(models.Model):
+    """
+    Rating model
+    """
+    user = models.ForeignKey(User)
+    celebrity = models.ForeignKey(Celebrity, related_name="rates")
+    rate = models.SmallIntegerField(default=0)
+    review = models.TextField()
+    dt_updated = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return "%s - %d" % (self.user.username, self.rate)
+
 

@@ -27,4 +27,5 @@ function itemRateClick() {
     for (var i = 1; i <= RATE; i++) {
         $(".item-rate .rate" + i).addClass("active");
     }
+    $("#form-celebrity-vote #celebrity_rating").val(RATE);
 }

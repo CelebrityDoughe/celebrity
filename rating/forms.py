@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from rating.models import Contact
+from rating.models import Contact, Rating
 
 
 class ContactForm(ModelForm):
@@ -9,4 +9,14 @@ class ContactForm(ModelForm):
     class Meta:
         model = Contact
         fields = ['name', 'email', 'detail']
+
+
+class RatingForm(ModelForm):
+    """
+    Rating Form
+    """
+    class Meta:
+        model = Rating
+        field = ['user', 'celebrity', 'rate', 'review']
+
 

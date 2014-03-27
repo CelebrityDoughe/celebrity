@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %}
 {% load static from staticfiles %}
+{% load range_tag %}
 
 {% block title %}Celebrity{% endblock %}
 
@@ -18,34 +19,20 @@
         <h1 class="celebrity-name"><span itemprop="name">{{celebrity.name}}</span></h1>
         <div class="celebrity-box" data-score="95">
             <div class="celebrity-inside-box rating-side">
-                <p class="rating-result-words" sub="hover"><span>Nice Person</span></p>
+                <p class="rating-result-words" sub="hover"><span></span></p>
                 <div id="rating-numbers" class="rating-container" >
-                    <a class="rating-box" style="display:block;" href="#contentReviews"><span class="rate number">1.5</span></a>
+                    <a class="rating-box" style="display:block;" href="#contentReviews"><span class="rate number">{% if rating_avg %}{{ rating_avg }}{% else %}0.0{% endif %}</span></a>
                     <div class="dbags-rating">
                         <div class="dbags-align">
                             <span style="width:100%;">
                                 <div class="rating">
                                     <span class="rater-starsOff" style="width: 220px; cursor: pointer;">
-                                        {# <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span> #}
-                                        <div class="item-rate">
-									      <ul>
-									        <li><a href="#" class="rates rate1" data-rate="1">&nbsp;</a></li>
-									        <li><a href="#" class="rates rate2" data-rate="2">&nbsp;</a></li>
-									        <li><a href="#" class="rates rate3" data-rate="3">&nbsp;</a></li>
-									        <li><a href="#" class="rates rate4" data-rate="4">&nbsp;</a></li>
-									        <li><a href="#" class="rates rate5" data-rate="5">&nbsp;</a></li>
-									        <li><a href="#" class="rates rate6" data-rate="6">&nbsp;</a></li>
-                                            <li><a href="#" class="rates rate7" data-rate="7">&nbsp;</a></li>
-                                            <li><a href="#" class="rates rate8" data-rate="8">&nbsp;</a></li>
-                                            <li><a href="#" class="rates rate9" data-rate="9">&nbsp;</a></li>
-                                            <li><a href="#" class="rates rate10" data-rate="10">&nbsp;</a></li>
-									      </ul>
-									    </div>
+                                        <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span>
                                     </span>
                                 </div>
                             </span>
                         </div>
-                        <p class="rating-stats">Ratings Counted: <span>118</span><br></p>
+                        <p class="rating-stats">Ratings Counted: <span>{{ rating_count }}</span><br></p>
                     </div>
                     <p class="celebrity-known-for">{{celebrity.get_specificity_display}} | {{celebrity.description}}</p>
                 </div>
@@ -59,17 +46,49 @@
             <a href="" class="celebrity-image">
                 <img src="http://images.rottentomatoescdn.com/images/redesign/user.none.tmb.jpg" width="50" sub="img" class="fl" alt="">
             </a>
-            <div class="celebrity-block-right">
-                <div class="rating_buttons">
-                    <input type="button" value="+" class="wts clear" style="position:relative; bottom:7px;">
-                    <input type="button" value="-" class="ni clear" style="position:relative; bottom:7px;">
-                    <input type="button" class="stars clear down7">
-                </div>
-                <textarea id="review_text" class="review clearfix" placeholder="Add a Review (Optional)" style="height: 38px;" nanme="review"></textarea>
-                <div class="clearfix" style="height:20px;">
-                    <input type="submit" value="Edit" />
-                </div>
-            </div>
+            <form action="." method="post" id="form-celebrity-vote">
+            {% csrf_token %}
+                <input type="hidden" name="user" value="{{ user.pk }}" />
+                <input type="hidden" name="celebrity" value="{{ celebrity.pk }}" />
+                <input type="hidden" name="rate" id="celebrity_rating" {% ifnotequal form.rate.value 0 %}value="{{ form.rate.value }}"{% endifnotequal %}/>
+	            <div class="celebrity-block-right">
+	                <div class="rating_buttons">
+	                    {% comment %}
+	                    <input type="button" value="+" class="wts clear" style="position:relative; bottom:7px;">
+	                    <input type="button" value="-" class="ni clear" style="position:relative; bottom:7px;">
+	                    <input type="button" class="stars clear down7">
+	                    {% endcomment %}
+	                    <div style="width: 220px; cursor: pointer;">
+		                    <div class="item-rate">
+		                      <ul>
+		                          {% with rate=form.rate.value|get_range %}
+		                          {% for i in 10|get_range %}
+		                          <li><a href="#" class="rates rate{{ i|add:"1" }}{% if i in rate %} active{% endif %}" data-rate="{{ i|add:"1" }}">&nbsp;</a></li>
+		                          {% endfor %}
+		                          {% endwith %}
+		                      </ul>
+		                    </div>
+	                    </div>
+	                </div>
+	                {% if form.rate.errors %}
+	                <p>Please mark your rating here</p>
+	                {% endif %}
+	                <br/>
+	                <textarea id="review_text" class="review clearfix" placeholder="Add a Review" style="height: 38px;" name="review"></textarea>
+	                {% if form.review.errors %}
+	                <p>You need to input review here</p>
+	                {% endif %}
+	                <br/>
+	                {% if rate_exist %}
+	                <p><b>You already rated this celebrity</b></p>
+	                {% else %}
+	                <div class="clearfix" style="height:24px;">
+	                    <input type="submit" value="Rate" />
+	                </div>
+	                {% endif %}
+	                <br/>
+	            </div>
+	        </form>
         </div>
     </div>
 </div>

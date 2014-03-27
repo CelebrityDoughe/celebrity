@@ -3,9 +3,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.db.models import Avg
 
-from rating.models import Celebrity
-from rating.forms import ContactForm
+from rating.models import Celebrity, Rating
+from rating.forms import ContactForm, RatingForm
 
 
 class CategoryView(ListView):
@@ -40,16 +41,36 @@ class CategoryView(ListView):
         return context
 
 
-class CelebrityDetailView(DetailView):
+class CelebrityDetailView(FormView):
     """
     Detail page of Celebrity
     """
 
-    model = Celebrity
+    template_name = 'rating/celebrity_detail.html'
+    form_class = RatingForm
+    success_url = '/'
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(CelebrityDetailView, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(CelebrityDetailView, self).get_context_data(**kwargs)
+        celebrity = Celebrity.objects.get(slug = self.kwargs['slug'])
+        context['celebrity'] = celebrity
+        context['user'] = self.request.user
+        try:
+            rating = Rating.objects.get(user=self.request.user, celebrity=celebrity)
+            context['rate_exist'] = True
+        except Rating.DoesNotExist:
+            context['rate_exist'] = False
+        context['rating_count'] = Rating.objects.filter(celebrity=celebrity).count()
+        context['rating_avg'] = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]
+        return context
+
+    def form_valid(self, form):
+        form.save()
+        return super(CelebrityDetailView, self).form_valid(form)
 
 
 class ContactUsView(FormView):
