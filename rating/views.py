@@ -1,6 +1,9 @@
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import FormView
+from django.views.generic import View
+from django.shortcuts import render_to_response, redirect
+from django.http import HttpResponse
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db.models import Avg
@@ -71,6 +74,31 @@ class CelebrityDetailView(FormView):
     def form_valid(self, form):
         form.save()
         return super(CelebrityDetailView, self).form_valid(form)
+
+
+class SearchView(View):
+    """
+    Search View
+    """
+
+    template_name = 'search-result.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SearchView, self).dispatch(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        keyword = self.request.POST.get('keyword', None)
+        if keyword:
+            objects = Celebrity.objects.filter(name__icontains=keyword)
+            return render_to_response(self.template_name,
+                                      {'celebrities': objects,
+                                       'keyword': keyword},
+                                      context_instance=RequestContext(self.request))
+        return redirect("/")
+
+    def get(self, *args, **kwargs):
+        return redirect("/")
 
 
 class ContactUsView(FormView):

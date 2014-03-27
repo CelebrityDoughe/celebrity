@@ -36,10 +36,11 @@
                         <div class="left menuitem "><a href="{% url 'category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a></div>
                     </div>
                     <div id="searchBar">
-                        <form style="position:relative;">
+                        <form method="post" action="{% url 'search' %}" style="position:relative;">
+                            {% csrf_token %}
                             <fieldset>
                                 <div class="searchBox">
-                                    <input sub="input" type="text"  placeholder="Search Celebrity">
+                                    <input sub="input" name="keyword" type="text" placeholder="Search Celebrity">
                                     <button sub="submitbutton" type="submit">
                                         <span class="icon magnify"> </span>
                                     </button>
