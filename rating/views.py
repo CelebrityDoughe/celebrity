@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from django.utils.decorators import method_decorator
 from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
@@ -20,11 +18,13 @@ class CategoryView(LoginRequiredMixin, ListView):
     """
 
     model = Celebrity
-    categories = ['actors', 'musicians', 'tv', 'radio', 'sports', 'politicians']
+    categories = ['actors', 'musicians', 'tv', 'radio', 'sports',
+                  'politicians']
 
     def get_category_shortcut(self, category):
         """
-        Get first capital character of category as it would be used in Category model
+        Get first capital character of category as it would be used in
+        Category model
         """
         keyword = category[0].upper()
         return keyword
@@ -53,16 +53,18 @@ class CelebrityDetailView(LoginRequiredMixin, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(CelebrityDetailView, self).get_context_data(**kwargs)
-        celebrity = Celebrity.objects.get(slug = self.kwargs['slug'])
+        celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
         context['celebrity'] = celebrity
         context['user'] = self.request.user
         try:
-            rating = Rating.objects.get(user=self.request.user, celebrity=celebrity)
+            # rating = Rating.objects.get(user=self.request.user, celebrity=celebrity)  # noqa
             context['rate_exist'] = True
         except Rating.DoesNotExist:
             context['rate_exist'] = False
-        context['rating_count'] = Rating.objects.filter(celebrity=celebrity).count()
-        context['rating_avg'] = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]
+        rating_count = Rating.objects.filter(celebrity=celebrity).count()
+        rating_avg = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]  # noqa
+        context.update({'rating_count': rating_count,
+                        'rating_avg': rating_avg})
         return context
 
     def form_valid(self, form):
@@ -81,10 +83,11 @@ class SearchView(LoginRequiredMixin, View):
         keyword = self.request.POST.get('keyword', None)
         if keyword:
             objects = Celebrity.objects.filter(name__icontains=keyword)
-            return render_to_response(self.template_name,
-                                      {'celebrities': objects,
-                                       'keyword': keyword},
-                                      context_instance=RequestContext(self.request))
+            return render_to_response(
+                self.template_name,
+                {'celebrities': objects, 'keyword': keyword},
+                context_instance=RequestContext(self.request))
+
         return redirect("/")
 
     def get(self, *args, **kwargs):

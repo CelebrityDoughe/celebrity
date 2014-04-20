@@ -13,7 +13,7 @@ urlpatterns = patterns(
         CelebrityDetailView.as_view(), name='celebrity_detail'),
     url(r'^search/$', SearchView.as_view(), name='search'),
 
-    #flat pages
+    # flat pages
     url(r'^terms-of-service/$',
         TemplateView.as_view(template_name="terms.html"), name="terms"),
     url(r'^contact-us/$', ContactUsView.as_view(), name="contact"),
