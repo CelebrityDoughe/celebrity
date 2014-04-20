@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.template import Library
 
 register = Library()
+
 
 @register.filter(name='get_range')
 def get_range(value):
@@ -29,4 +31,3 @@ def get_range(value):
     else:
         count = int(value)
     return range(count)
-

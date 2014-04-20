@@ -1,28 +1,26 @@
-from django.views.generic.list import ListView
-from django.views.generic.edit import FormView
-from django.views.generic import View
-from django.shortcuts import render_to_response, redirect
-from django.http import HttpResponse
-from django.template import RequestContext
+# -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 from django.db.models import Avg
+from django.shortcuts import render_to_response, redirect
+from django.template import RequestContext
+from django.utils.decorators import method_decorator
+from django.views.generic import View
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 
-from rating.models import Celebrity, Rating
-from rating.forms import ContactForm, RatingForm
+from braces.views import LoginRequiredMixin
+
+from .forms import ContactForm, RatingForm
+from .models import Celebrity, Rating
 
 
-class CategoryView(ListView):
+class CategoryView(LoginRequiredMixin, ListView):
     """
     View to render page for each category
     """
 
     model = Celebrity
     categories = ['actors', 'musicians', 'tv', 'radio', 'sports', 'politicians']
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(CategoryView, self).dispatch(*args, **kwargs)
 
     def get_category_shortcut(self, category):
         """
@@ -44,7 +42,7 @@ class CategoryView(ListView):
         return context
 
 
-class CelebrityDetailView(FormView):
+class CelebrityDetailView(LoginRequiredMixin, FormView):
     """
     Detail page of Celebrity
     """
@@ -52,10 +50,6 @@ class CelebrityDetailView(FormView):
     template_name = 'rating/celebrity_detail.html'
     form_class = RatingForm
     success_url = '/'
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(CelebrityDetailView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(CelebrityDetailView, self).get_context_data(**kwargs)
@@ -76,16 +70,12 @@ class CelebrityDetailView(FormView):
         return super(CelebrityDetailView, self).form_valid(form)
 
 
-class SearchView(View):
+class SearchView(LoginRequiredMixin, View):
     """
     Search View
     """
 
     template_name = 'search-result.html'
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(SearchView, self).dispatch(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         keyword = self.request.POST.get('keyword', None)
@@ -113,5 +103,3 @@ class ContactUsView(FormView):
     def form_valid(self, form):
         form.save()
         return super(ContactUsView, self).form_valid(form)
-
-

@@ -1,5 +1,6 @@
-from django.db import models
+# -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Celebrity(models.Model):
@@ -48,5 +49,3 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return "%s - %d" % (self.user.username, self.rate)
-
-
