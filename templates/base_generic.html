@@ -28,15 +28,15 @@
                         <div class="left logo">
                             <a href="#"><img src="image/logo5.png" atl="Celeberty Dbag logo"></a>
                         </div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='actors' %}" class="color-primary height-full">Actors</a></div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='musicians' %}" class="color-primary height-full">Musicians</a></div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='tv' %}" class="color-primary height-full">TV</a></div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='radio' %}" class="color-primary height-full">Radio</a></div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='athletes' %}" class="color-primary height-full">Athletes</a></div>
-                        <div class="left menuitem "><a href="{% url 'category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='actors' %}" class="color-primary height-full">Actors</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='musicians' %}" class="color-primary height-full">Musicians</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='tv' %}" class="color-primary height-full">TV</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='radio' %}" class="color-primary height-full">Radio</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='athletes' %}" class="color-primary height-full">Athletes</a></div>
+                        <div class="left menuitem "><a href="{% url 'rating:category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a></div>
                     </div>
                     <div id="searchBar">
-                        <form method="post" action="{% url 'search' %}" style="position:relative;">
+                        <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
                             {% csrf_token %}
                             <fieldset>
                                 <div class="searchBox">
@@ -63,8 +63,8 @@
 
             <div id="footer">
                 <a href="#">About Us</a>&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'terms' %}">Terms and Contentions</a>&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'contact' %}">Contact Us</a>            
+                <a href="{% url 'rating:terms' %}">Terms and Contentions</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'rating:contact' %}">Contact Us</a>            
                 <div class="copyright">
                     <div class="font-12 color-primary">© Copyright 2014 CelebrityDouche.com, </div>
                     <div class="font-12 color-primary">All rights reserved Various trademarks held by their respective owners.</div>

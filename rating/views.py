@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse_lazy
 from django.db.models import Avg
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -101,7 +102,7 @@ class ContactUsView(FormView):
 
     template_name = 'contact-us.html'
     form_class = ContactForm
-    success_url = '/thanks/'
+    success_url = reverse_lazy('rating:thanks')
 
     def form_valid(self, form):
         form.save()

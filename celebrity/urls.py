@@ -17,6 +17,6 @@ urlpatterns = patterns(
     url(r'^accounts/', include('userena.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'', include('rating.urls')),
+    url(r'', include('rating.urls', 'rating', 'rating')),
     url(r'', include('social_auth.urls')),
 )
