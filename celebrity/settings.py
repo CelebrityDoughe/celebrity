@@ -123,17 +123,16 @@ LOGOUT_URL = '/accounts/signout/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login/success/'
 
 # settings to be used for social login
-TWITTER_CONSUMER_KEY         = ''
-TWITTER_CONSUMER_SECRET      = ''
-FACEBOOK_APP_ID              = ''
-FACEBOOK_API_SECRET          = ''
+TWITTER_CONSUMER_KEY = ''
+TWITTER_CONSUMER_SECRET = ''
+FACEBOOK_APP_ID = ''
+FACEBOOK_API_SECRET = ''
 
 # this setting is changed because of social login with facebook
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 
 try:
-    from local_settings import *
+    from local_settings import *  # noqa
 except:
     pass
-

@@ -12,10 +12,10 @@ function itemRateHover() {
     itemRateLeave();
 
     var rate = parseInt( $(this).children("a").attr("data-rate") );
-    
+
     var targets = $(this).parent().children("li").children("a");
     $(targets).removeClass("active");
-    
+
     for (var i = 1; i < rate; i++) {
         var target = $(this).parent().children("li").children(".rate" + i);
         target.addClass("active");

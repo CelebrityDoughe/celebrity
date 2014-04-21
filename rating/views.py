@@ -1,32 +1,31 @@
-from django.views.generic.list import ListView
-from django.views.generic.edit import FormView
-from django.views.generic import View
-from django.shortcuts import render_to_response, redirect
-from django.http import HttpResponse
-from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+# -*- coding: utf-8 -*-
+from django.core.urlresolvers import reverse_lazy
 from django.db.models import Avg
+from django.shortcuts import render_to_response, redirect
+from django.template import RequestContext
+from django.views.generic import View
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 
-from rating.models import Celebrity, Rating
-from rating.forms import ContactForm, RatingForm
+from braces.views import LoginRequiredMixin
+
+from .forms import ContactForm, RatingForm
+from .models import Celebrity, Rating
 
 
-class CategoryView(ListView):
+class CategoryView(LoginRequiredMixin, ListView):
     """
     View to render page for each category
     """
 
     model = Celebrity
-    categories = ['actors', 'musicians', 'tv', 'radio', 'sports', 'politicians']
-
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(CategoryView, self).dispatch(*args, **kwargs)
+    categories = ['actors', 'musicians', 'tv', 'radio', 'sports',
+                  'politicians']
 
     def get_category_shortcut(self, category):
         """
-        Get first capital character of category as it would be used in Category model
+        Get first capital character of category as it would be used in
+        Category model
         """
         keyword = category[0].upper()
         return keyword
@@ -44,7 +43,7 @@ class CategoryView(ListView):
         return context
 
 
-class CelebrityDetailView(FormView):
+class CelebrityDetailView(LoginRequiredMixin, FormView):
     """
     Detail page of Celebrity
     """
@@ -53,22 +52,20 @@ class CelebrityDetailView(FormView):
     form_class = RatingForm
     success_url = '/'
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(CelebrityDetailView, self).dispatch(*args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = super(CelebrityDetailView, self).get_context_data(**kwargs)
-        celebrity = Celebrity.objects.get(slug = self.kwargs['slug'])
+        celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
         context['celebrity'] = celebrity
         context['user'] = self.request.user
         try:
-            rating = Rating.objects.get(user=self.request.user, celebrity=celebrity)
+            # rating = Rating.objects.get(user=self.request.user, celebrity=celebrity)  # noqa
             context['rate_exist'] = True
         except Rating.DoesNotExist:
             context['rate_exist'] = False
-        context['rating_count'] = Rating.objects.filter(celebrity=celebrity).count()
-        context['rating_avg'] = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]
+        rating_count = Rating.objects.filter(celebrity=celebrity).count()
+        rating_avg = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]  # noqa
+        context.update({'rating_count': rating_count,
+                        'rating_avg': rating_avg})
         return context
 
     def form_valid(self, form):
@@ -76,25 +73,22 @@ class CelebrityDetailView(FormView):
         return super(CelebrityDetailView, self).form_valid(form)
 
 
-class SearchView(View):
+class SearchView(LoginRequiredMixin, View):
     """
     Search View
     """
 
     template_name = 'search-result.html'
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(SearchView, self).dispatch(*args, **kwargs)
-
     def post(self, *args, **kwargs):
         keyword = self.request.POST.get('keyword', None)
         if keyword:
             objects = Celebrity.objects.filter(name__icontains=keyword)
-            return render_to_response(self.template_name,
-                                      {'celebrities': objects,
-                                       'keyword': keyword},
-                                      context_instance=RequestContext(self.request))
+            return render_to_response(
+                self.template_name,
+                {'celebrities': objects, 'keyword': keyword},
+                context_instance=RequestContext(self.request))
+
         return redirect("/")
 
     def get(self, *args, **kwargs):
@@ -108,10 +102,8 @@ class ContactUsView(FormView):
 
     template_name = 'contact-us.html'
     form_class = ContactForm
-    success_url = '/thanks/'
+    success_url = reverse_lazy('rating:thanks')
 
     def form_valid(self, form):
         form.save()
         return super(ContactUsView, self).form_valid(form)
-
-

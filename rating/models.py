@@ -1,17 +1,20 @@
-from django.db import models
+# -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
+from django.db import models
 
 
 class Celebrity(models.Model):
     """
     Celebrity Model
     """
-    CELEBRITY_CHOICES = (('A','Actors'),
-                         ('M','Musicians'),
-                         ('T','TV'),
-                         ('R','Radio'),
-                         ('S','Sports'),
-                         ('P','Politicians'))
+    CELEBRITY_CHOICES = (
+        ('A', 'Actors'),
+        ('M', 'Musicians'),
+        ('T', 'TV'),
+        ('R', 'Radio'),
+        ('S', 'Sports'),
+        ('P', 'Politicians')
+    )
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -48,5 +51,3 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return "%s - %d" % (self.user.username, self.rate)
-
-
