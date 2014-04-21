@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'dynamic_scraper'
+    'dynamic_scraper',
     'easy_thumbnails',
     'guardian',
     'social_auth',
@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 
     'accounts',
     'rating',
+    'samples',
 )
 
 MIDDLEWARE_CLASSES = (
