@@ -38,14 +38,16 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'userena',
-    'guardian',
+    'dynamic_scraper',
     'easy_thumbnails',
+    'guardian',
     'social_auth',
     'south',
+    'userena',
 
     'accounts',
     'rating',
+    'samples',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,8 +69,10 @@ WSGI_APPLICATION = 'celebrity.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'celebrity_db',
+        'USER': 'username',
+        'PASSWORD': 'password'
     }
 }
 
