@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 
     'djcelery',
+    'djsupervisor',
     'dynamic_scraper',
     'easy_thumbnails',
     'guardian',
