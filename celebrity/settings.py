@@ -38,9 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'djcelery',
     'dynamic_scraper',
     'easy_thumbnails',
     'guardian',
+    'kombu.transport.django',
     'social_auth',
     'south',
     'userena',
@@ -134,6 +136,17 @@ FACEBOOK_API_SECRET = ''
 
 # this setting is changed because of social login with facebook
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+# django-celery settings
+import djcelery
+djcelery.setup_loader()
+BROKER_HOST = 'localhost'
+BROKER_PORT = 5672
+BROKER_BACKEND = 'django'
+BROKER_USER = 'guest'
+BROKER_PASSWORD = 'guest'
+BROKER_VHOST = '/'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 
 try:
