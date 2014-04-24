@@ -18,6 +18,9 @@ class NewsWebsite(models.Model):
     def __unicode__(self):
         return self.name
 
+    def natural_key(self):
+        return (self.name, self.url)
+
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
