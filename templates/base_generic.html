@@ -9,9 +9,7 @@
 
         <title>{% block title %}{% endblock %}</title>
 
-        <link rel="shortcut icon" href="images/chalk-icon6.ico">
-        <link href="css/default.css" rel="stylesheet" type="text/css" media="screen">
-        <link href="css/pick.css" rel="stylesheet" type="text/css" media="screen">
+        <link rel="shortcut icon" href="{% static 'images/douchebagicon.ico' %}">
         <link rel="stylesheet" href="{% static 'css/defaultceleb.css' %}" />
         {% block extra_head %}{% endblock %}
 
@@ -22,22 +20,31 @@
         <div id="body">
             {% block body %}
             <div class="bg-elements">
-                <div class="wrapper">
-                    {% include "header.html" %}
-                    <div class="content_title">
-                        {% block content_title %}{% endblock %}
-                    </div>
-                    <div id="content" class="content">
-                        {% block content %}{% endblock %}
-                    </div>
-                    {% include "footer.html" %}
+                {% include "header.html" %}
+                <div class="content_title">
+                    {% block content_title %}{% endblock %}
                 </div>
+                <div id="content" class="content">
+                    {% block content %}{% endblock %}
+                </div>
+                {% include "footer.html" %}
             </div>
             {% endblock %}
         </div>
 
         <script type="text/javascript" src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
         {% block extra_scripts %}{% endblock %}
+
+        <!-- Google Analytics -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-50832357-1', 'celebritydbag.com');
+          ga('send', 'pageview');
+        </script>
+        <!-- End Google Analytics -->
 
     </body>
 </html>
