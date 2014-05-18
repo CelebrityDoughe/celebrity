@@ -1,10 +1,10 @@
-{% load account_tags %}
+{% load staticfiles account_tags %}
 
 <div id="header">
     <div id="menubar">
         <div class="left">
             <div class="left logo">
-                <a href="#"><img src="image/logo5.png" atl="Celeberty Dbag logo"></a>
+                <a href="/"><img src="{% static 'images/logo1.png' %}" atl="Celeberty Dbag logo"></a>
             </div>
             <div class="left menuitem ">
                 <a href="{% url 'rating:category_list' slug='actors' %}" class="color-primary height-full">Actors</a>
