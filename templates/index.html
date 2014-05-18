@@ -1,5 +1,5 @@
 {% extends "base_generic.html" %}
-
+{% load staticfiles %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -15,8 +15,8 @@
             Todays Celebrity News
             <div id="search-right">
                 <div id="searchBar">
-                    <form method="post" action="" style="position:relative;">
-                        <!--  {% csrf_token %}-->
+                    <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
+                        {% csrf_token %}
                         <fieldset>
                             <div class="searchBox">
                                 <input sub="input" name="keyword" type="text" placeholder="Search Celebrity">
@@ -145,7 +145,8 @@
         </div>
         <div class="clear"></div>
     </div>
-    <div class="advertising-right"><img src="file:///C|/Users/David/Desktop/celebrity-master/static/images/CaptureGIF.GIF" />
+    <div class="advertising-right">
+        <img src="{% static 'images/CaptureGIF.GIF' %}" />
     </div>
 </div>
 {% endblock %}

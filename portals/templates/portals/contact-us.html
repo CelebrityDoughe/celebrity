@@ -1,9 +1,13 @@
 {% extends "base_generic.html" %}
-
 {% block title %}Contact Us{% endblock %}
-
 {% block content %}
-<div id="email-box">
+
+
+    <div id="header-bar">
+    <div id="header-bar-container"><h2>Contact Us</h2></div>
+
+        </div>
+<div id="email-content">
     <div class="email-form">
         <form action="." method="POST">
             {% csrf_token %}
@@ -51,7 +55,7 @@
                                     Please input details here
                                 </div>
                                 {% endif %}
-                                <button class="email-btn" id="signin-submit" type="submit">Send</button>
+                                <button class="button-short"  type="submit">Send</button>
                             </td>
                         </tr>
                     </tbody>

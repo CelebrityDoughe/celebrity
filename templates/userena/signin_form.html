@@ -1,34 +1,57 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
-{% load url from future %}
-
 {% block title %}{% trans "Signin" %}{% endblock %}
-
 {% block content %}
-<form action="" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Signin" %}</legend>
-    {{ form.non_field_errors }}
-    {% for field in form %}
-    {{ field.errors }}
-    {% comment %} Displaying checkboxes differently {% endcomment %}
-    {% if field.name == 'remember_me' %}
-    <p class="checkbox">
-    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
-    </p>
-    {% else %}
-    <p>
-    {{ field.label_tag }}
-    {{ field }}
-    </p>
-    {% endif %}
-    {% endfor %}
-  </fieldset>
-  <input type="submit" value="{% trans "Signin" %}" />
-  <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a></p>
-  <p class="social-facebook-login"><a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}">{% trans "Login with Facebook" %}</a></p>
-  <p class="social-twitter-login"><a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a></p>
-  {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
-</form>
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h2>Sign In</h2>
+    </div>
+
+</div>
+<div class="sign_in_content">
+    <div class="box">
+        <div class="form">
+            <form action="" method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                <p>Please correct the following fields:</p>
+                {% endif %}
+                {% for field in form %}
+                    <div class="row">
+                        {% if field.errors %}
+                            <p class="errors">
+                                {{ field.errors}}
+                            </p>
+                        {% endif %}
+                        <label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>
+                        <p>
+                            <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
+                            {{ field }}
+                        </p>
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <label>&nbsp;</label>
+                    <p class="forgot-password">
+                        <a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a>
+                    </p>
+                </div>
+                <div class="align-right">
+                    <input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="{% trans "Signin" %}">
+                </div>
+            </form>
+
+            <p class="social-facebook-login">
+                <a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}">{% trans "Login with Facebook" %}</a>
+            </p>
+            <p class="social-twitter-login">
+                <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a>
+            </p>
+            {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
+        </div>
+    </div>
+
+</div>
 {% endblock %}

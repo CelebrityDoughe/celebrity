@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.core.urlresolvers import reverse_lazy
 from django.db.models import Avg
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -9,7 +8,7 @@ from django.views.generic.list import ListView
 
 from braces.views import LoginRequiredMixin
 
-from .forms import ContactForm, RatingForm
+from .forms import RatingForm
 from .models import Celebrity, Rating
 
 
@@ -20,7 +19,7 @@ class CategoryView(LoginRequiredMixin, ListView):
 
     model = Celebrity
     categories = ['actors', 'musicians', 'tv', 'radio', 'sports',
-                  'politicians']
+                  'politicians', 'athletes']
 
     def get_category_shortcut(self, category):
         """
@@ -93,17 +92,3 @@ class SearchView(LoginRequiredMixin, View):
 
     def get(self, *args, **kwargs):
         return redirect("/")
-
-
-class ContactUsView(FormView):
-    """
-    Contact Us page
-    """
-
-    template_name = 'contact-us.html'
-    form_class = ContactForm
-    success_url = reverse_lazy('rating:thanks')
-
-    def form_valid(self, form):
-        form.save()
-        return super(ContactUsView, self).form_valid(form)

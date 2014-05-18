@@ -1090,7 +1090,7 @@ width: 1100px;
 
 #menubar .signitem a {
     display: block;
-    padding: 12px 10px 20px 0px;
+    padding: 12px 8px 20px 0px;
     color:white;
     font-size:14px;
     }
@@ -1131,7 +1131,7 @@ transition: border linear .2s, box-shadow linear .2s;
 -webkit-transition: border linear .2s, -webkit-box-shadow linear .2s;
 }
 #searchBar input {
-width:200px;
+width:150px;
 border-radius:2px;
 color: #666;
 margin: 0;
