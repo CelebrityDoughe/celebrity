@@ -3,5 +3,149 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1>Index Page</h1>
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h3>Tell us if the celebrity you met is a nice person or a douchebag</h3>
+    </div>
+
+</div>
+<div class="articles-content">
+    <div class="articles-left">
+        <div id="articles-top">
+            Todays Celebrity News
+            <div id="search-right">
+                <div id="searchBar">
+                    <form method="post" action="" style="position:relative;">
+                        <!--  {% csrf_token %}-->
+                        <fieldset>
+                            <div class="searchBox">
+                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity">
+                                <button sub="submitbutton" type="submit">
+                                    <span class="icon magnify"> </span>
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="articles">
+            <ul>
+                <li>
+                    <div class="newsPost">
+                        <div class="newsThumb">
+                            <a href="#"> <img src="{article.thumbnail}"
+                            width="140" height="100" border="0" alt="#"> </a>
+                        </div>
+                        <div class="newsDetails">
+                            <div class="newsHeadline">
+                                <h3><a class="title" href="#"
+                                target="_blank"> {Article.title}</a></h3>
+                            </div>
+                            <div class="newsDate">
+                                (Article.new_website)
+                            </div>
+                            <div class="newssummary">
+                                <p>
+                                    {Article.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="newsPost">
+                        <div class="newsThumb">
+                            <a href="#"> <img src="{article.thumbnail}"
+                            width="140" height="100" border="0" alt="#"> </a>
+                        </div>
+                        <div class="newsDetails">
+                            <div class="newsHeadline">
+                                <h3><a class="title" href="{Article.url}"
+                                target="_blank"> {Article.title}</a></h3>
+                            </div>
+                            <div class="newsDate">
+                                (Article.new_website)
+                            </div>
+                            <div class="newssummary">
+                                <p>
+                                    {Article.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="newsPost">
+                        <div class="newsThumb">
+                            <a href="#"> <img src="{article.thumbnail}"
+                            width="140" height="100" border="0" alt="#"> </a>
+                        </div>
+                        <div class="newsDetails">
+                            <div class="newsHeadline">
+                                <h3><a class="title" href="{Article.url}"
+                                target="_blank"> {Article.title}</a></h3>
+                            </div>
+                            <div class="newsDate">
+                                (Article.new_website)
+                            </div>
+                            <div class="newssummary">
+                                <p>
+                                    {Article.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="newsPost">
+                        <div class="newsThumb">
+                            <a href="#"> <img src="{article.thumbnail}"
+                            width="140" height="100" border="0" alt="#"> </a>
+                        </div>
+                        <div class="newsDetails">
+                            <div class="newsHeadline">
+                                <h3><a class="title" href="{Article.url}"
+                                target="_blank"> {Article.title}</a></h3>
+                            </div>
+                            <div class="newsDate">
+                                (Article.new_website)
+                            </div>
+                            <div class="newssummary">
+                                <p>
+                                    {Article.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="newsPost">
+                        <div class="newsThumb">
+                            <a href="#"> <img src="{article.thumbnail}"
+                            width="140" height="100" border="0" alt="#"> </a>
+                        </div>
+                        <div class="newsDetails">
+                            <div class="newsHeadline">
+                                <h3><a class="title" href="{Article.url}"
+                                target="_blank"> {Article.title}</a></h3>
+                            </div>
+                            <div class="newsDate">
+                                (Article.new_website)
+                            </div>
+                            <div class="newssummary">
+                                <p>
+                                    {Article.description}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="advertising-right"><img src="file:///C|/Users/David/Desktop/celebrity-master/static/images/CaptureGIF.GIF" />
+    </div>
+</div>
 {% endblock %}
