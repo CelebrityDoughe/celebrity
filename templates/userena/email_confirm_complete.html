@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Email changed!" %}{% endblock %}
+
+{% block content %}
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h3>{% blocktrans with site.name as site %}Your new email address is saved. You can continue using {{ site }} with this email.{% endblocktrans %}</h3>
+    </div>
+</div>
+{% endblock %}
