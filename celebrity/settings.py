@@ -136,6 +136,12 @@ FACEBOOK_API_SECRET = ''
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 
+USERENA_SIGNIN_AFTER_SIGNUP = True
+USERENA_SIGNIN_REDIRECT_URL = '/'
+USERENA_ACTIVATION_REQUIRED = False
+USERENA_WITHOUT_USERNAMES = True
+
+
 try:
     from local_settings import *  # noqa
 except:
