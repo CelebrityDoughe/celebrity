@@ -1,0 +1,49 @@
+<div id="header">
+    <div id="menubar">
+        <div class="left">
+            <div class="left logo">
+                <a href="#"><img src="image/logo5.png" atl="Celeberty Dbag logo"></a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='actors' %}" class="color-primary height-full">Actors</a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='musicians' %}" class="color-primary height-full">Musicians</a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='tv' %}" class="color-primary height-full">TV</a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='radio' %}" class="color-primary height-full">Radio</a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='athletes' %}" class="color-primary height-full">Athletes</a>
+            </div>
+            <div class="left menuitem ">
+                <a href="{% url 'rating:category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a>
+            </div>
+        </div>
+        <div id="searchBar">
+            <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="searchBox">
+                        <input sub="input" name="keyword" type="text" placeholder="Search Celebrity">
+                        <button sub="submitbutton" type="submit">
+                            <span class="icon magnify"> </span>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="right">
+            <div class="left signitem">
+                <a href="{% url 'userena_signin' %}" class="font-12 color-primary">Sign In&nbsp;|</a>
+            </div>
+            <div class="left signitem">
+                <a href="{% url 'userena_signup' %}" class="font-12 color-primary">&nbsp;Sign Up</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
