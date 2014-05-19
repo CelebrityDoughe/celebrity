@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'userena',
 
     'accounts',
+    'portals',
     'rating',
     'samples',
 )

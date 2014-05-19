@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Email verification failed." %}{% endblock %}
+
+{% block content %}
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h3>{% trans "Your email could not be verified..." %}</h3>
+        <h3>{% trans "You could try changing it again in your account settings." %}</h3>
+    </div>
+</div>
+{% endblock %}

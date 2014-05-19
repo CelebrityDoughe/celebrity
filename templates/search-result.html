@@ -1,14 +1,48 @@
 {% extends "base_generic.html" %}
-
-{% block title %}Search Result{% endblock %}
+{% load staticfiles %}
+{% block title %}Category | {{ category }}{% endblock %}
 
 {% block content %}
-<h1>Search Result ({{ keyword }})</h1>
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h2>"{{ category }}"</h2>
+    </div>
+</div>
 
-{% for celebrity in celebrities %}
-    <h3><a href="{% url 'celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a><h3>
-{% empty %}
-    <h3>No matches</h3>
-{% endfor %}
+<div class="celebrity-list-content">
+    <div class="celebrity-list-left">
+        <div id="celebrity-list-top">
+            <div id="search-right">
+                <div id="searchBar">
+                    <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="searchBox">
+                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" />
+                                <button sub="submitbutton" type="submit">
+                                    <span class="icon magnify"> </span>
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
 
+        </div>
+        <div class="celebrity-list-box">
+            <h1>Search Result ({{ keyword }})</h1>
+
+            {% for celebrity in celebrities %}
+                <h3><a href="{% url 'celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a></h3>
+            {% empty %}
+                <h3>No matches</h3>
+            {% endfor %}
+            <div class="clear"></div>
+        </div>
+
+        <div class="advertising-right">
+            <img src="{% static 'images/CaptureGIF.GIF' %}" />
+        </div>
+    </div>
+</div>
 {% endblock %}

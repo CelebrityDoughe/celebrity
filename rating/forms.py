@@ -1,14 +1,5 @@
 from django.forms import ModelForm
-from rating.models import Contact, Rating
-
-
-class ContactForm(ModelForm):
-    """
-    Contact Us Form
-    """
-    class Meta:
-        model = Contact
-        fields = ['name', 'email', 'detail']
+from rating.models import Rating
 
 
 class RatingForm(ModelForm):

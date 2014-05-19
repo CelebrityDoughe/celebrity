@@ -1,0 +1,90 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block title %}{% trans "Signin" %}{% endblock %}
+
+{% block content %}
+<div id="header-bar">
+    <div id="header-bar-container">
+        <h2>Advertise</h2>
+    </div>
+
+</div>
+<div class="advertise-content">
+    <div class="advertise-box">
+        <div class="how-content">
+
+            <div class="advertise-box-left">
+                <div class="stats">
+                    <div class="stats-image">
+                        <!---<img src="images/howwework1.png"></div>
+                        <img src="images/howweworknumbers.png" alt="1" width="43" height="28"><div class="stats-words">--><h2>Audience Age Groups</h2>
+                        <p>
+                            59% age 21-34
+                        </p>
+                    </div>
+                </div><!--end number-->
+
+                <div class="stats">
+                    <div class="stats-image">
+                        <!---<img src="images/howwework1.png"></div>
+                        <img src="images/howweworknumbers.png" alt="1" width="43" height="28"><div class="stats-words">--><h2>Audience Gender Groups</h2>
+                        <p>
+                            88& Female.
+                        </p>
+                    </div>
+
+                </div><!--end number-->
+                <div class="stats">
+                    <div class="stats-image">
+                        <!---<img src="images/howwework1.png"></div>
+                        <img src="images/howweworknumbers.png" alt="1" width="43" height="28"><div class="stats-words">--><h2>Audience Education Groups</h2>
+                        <p>
+                            86% attended collage
+                        </p>
+                    </div>
+                </div><!--end number-->
+
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <table>
+                            <tbody>
+                                <tr class="email">
+                                    <th><label for="user-email">Email:</label></th>
+                                    <td class="col-field"> {{ form.email }} </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td class="col-help"> {% if form.email.errors %}
+                                    <div class="error-help">
+                                        Enter your email address
+                                    </div> {% endif %} </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>                                    <textarea cols="30" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 60px; margin-left: 0px; margin-right: 0px; width: 360px; "></textarea> {% if form.detail.errors %}
+                                    <div class="error-help">
+                                        Please input details here
+                                    </div> {% endif %}
+                                    <button class="button-short"  type="submit">
+                                        Send
+                                    </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </form>
+
+            </div><!--Advertise-left-->
+            <div class="advertise-box-right">
+                <h2>About Celebrity DBag</h2>
+                <ul class="bor-list">
+                    Celebrity DBag is unlike anyonther site. Celebrity DBag doesn't just write about the stars. It provides what people really think about the stars.
+
+                </ul>
+            </div><!--end Advertise right-->
+            <div class="how-we-paragraph"></div>
+        </div><!-- End how Content -->
+    </div><!-- End box body -->
+</div>
+{% endblock %}
