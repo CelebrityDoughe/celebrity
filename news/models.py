@@ -23,7 +23,8 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     news_website = models.ForeignKey(NewsWebsite)
     description = models.TextField(blank=True)
-    url = models.URLField()
+    image = models.URLField(blank=True)
+    source_url = models.URLField()
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True,
                                         null=True, on_delete=models.SET_NULL)
 

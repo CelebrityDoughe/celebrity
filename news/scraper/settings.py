@@ -5,13 +5,13 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'celebrity.settings')
 
-BOT_NAME = 'samples'
+BOT_NAME = 'news'
 
-SPIDER_MODULES = ['dynamic_scraper.spiders', 'samples.scraper',]
+SPIDER_MODULES = ['dynamic_scraper.spiders', 'news.scraper',]
 
 USER_AGENT = '%s/%s' % (BOT_NAME, '1.0')
 
 ITEM_PIPELINES = [
     'dynamic_scraper.pipelines.ValidationPipeline',
-    'samples.scraper.pipelines.DjangoWriterPipeline',
+    'news.scraper.pipelines.DjangoWriterPipeline',
 ]

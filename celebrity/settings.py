@@ -46,9 +46,9 @@ INSTALLED_APPS = (
     'userena',
 
     'accounts',
+    'news',
     'portals',
     'rating',
-    'samples',
 )
 
 MIDDLEWARE_CLASSES = (

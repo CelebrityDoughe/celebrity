@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from dynamic_scraper.spiders.django_spider import DjangoSpider
 
-from samples.models import NewsWebsite, Article, ArticleItem
+from news.models import NewsWebsite, Article, ArticleItem
 
 
 class ArticleSpider(DjangoSpider):
