@@ -24,7 +24,7 @@ class Article(models.Model):
     news_website = models.ForeignKey(NewsWebsite)
     description = models.TextField(blank=True)
     image = models.URLField(blank=True)
-    source_url = models.URLField()
+    url = models.URLField(blank=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True,
                                         null=True, on_delete=models.SET_NULL)
 
