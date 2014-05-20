@@ -9,13 +9,11 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-
-    url(r'^$', TemplateView.as_view(template_name="index.html")),
     url(r'^login/success/$',
-        login_required(TemplateView.as_view(template_name="login_success.html"))),  # noqa
+        login_required(TemplateView.as_view(template_name='login_success.html'))),  # noqa
 
+    url(r'', include('portals.urls', 'portals', 'portals')),
     url(r'^accounts/', include('userena.urls')),
-    url(r'^portals/', include('portals.urls', 'portals', 'portals')),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'', include('rating.urls', 'rating', 'rating')),
