@@ -9,33 +9,34 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'NewsWebsite'
-        db.create_table(u'samples_newswebsite', (
+        db.create_table(u'news_newswebsite', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('scraper', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dynamic_scraper.Scraper'], null=True, on_delete=models.SET_NULL, blank=True)),
             ('scraper_runtime', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dynamic_scraper.SchedulerRuntime'], null=True, on_delete=models.SET_NULL, blank=True)),
         ))
-        db.send_create_signal(u'samples', ['NewsWebsite'])
+        db.send_create_signal(u'news', ['NewsWebsite'])
 
         # Adding model 'Article'
-        db.create_table(u'samples_article', (
+        db.create_table(u'news_article', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('news_website', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['samples.NewsWebsite'])),
+            ('news_website', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['news.NewsWebsite'])),
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
+            ('image', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
+            ('source_url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('checker_runtime', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['dynamic_scraper.SchedulerRuntime'], null=True, on_delete=models.SET_NULL, blank=True)),
         ))
-        db.send_create_signal(u'samples', ['Article'])
+        db.send_create_signal(u'news', ['Article'])
 
 
     def backwards(self, orm):
         # Deleting model 'NewsWebsite'
-        db.delete_table(u'samples_newswebsite')
+        db.delete_table(u'news_newswebsite')
 
         # Deleting model 'Article'
-        db.delete_table(u'samples_article')
+        db.delete_table(u'news_article')
 
 
     models = {
@@ -74,16 +75,17 @@ class Migration(SchemaMigration):
             'scraped_obj_class': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['dynamic_scraper.ScrapedObjClass']"}),
             'status': ('django.db.models.fields.CharField', [], {'default': "'P'", 'max_length': '1'})
         },
-        u'samples.article': {
+        u'news.article': {
             'Meta': {'object_name': 'Article'},
             'checker_runtime': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['dynamic_scraper.SchedulerRuntime']", 'null': 'True', 'on_delete': 'models.SET_NULL', 'blank': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'news_website': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['samples.NewsWebsite']"}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'url': ('django.db.models.fields.URLField', [], {'max_length': '200'})
+            'image': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'}),
+            'news_website': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['news.NewsWebsite']"}),
+            'source_url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
-        u'samples.newswebsite': {
+        u'news.newswebsite': {
             'Meta': {'object_name': 'NewsWebsite'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
@@ -93,4 +95,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['samples']
+    complete_apps = ['news']

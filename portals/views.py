@@ -4,6 +4,22 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 
 from .forms import ContactForm
+from news.models import Article
+
+
+class IndexView(TemplateView):
+    """
+    Home page
+    """
+    template_name = 'portals/index.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add news to the context
+        """
+        data = super(IndexView, self).get_context_data(**kwargs)
+        data.update({'articles': Article.objects.all().order_by('-id')[:5]})
+        return data
 
 
 class FlatPageView(TemplateView):
