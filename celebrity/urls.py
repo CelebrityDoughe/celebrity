@@ -12,10 +12,10 @@ urlpatterns = patterns(
     url(r'^login/success/$',
         login_required(TemplateView.as_view(template_name='login_success.html'))),  # noqa
 
-    url(r'', include('portals.urls', 'portals', 'portals')),
     url(r'^accounts/', include('userena.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'', include('portals.urls', 'portals', 'portals')),
     url(r'', include('rating.urls', 'rating', 'rating')),
     url(r'', include('social_auth.urls')),
 )
