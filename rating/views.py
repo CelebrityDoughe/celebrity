@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.db.models import Avg
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -8,7 +9,7 @@ from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 
-from braces.views import LoginRequiredMixin
+from braces.views import AjaxResponseMixin, JSONResponseMixin
 
 from .forms import RatingForm
 from .models import Celebrity, Rating
@@ -88,23 +89,31 @@ class CelebrityDetailView(FormView):
         return super(CelebrityDetailView, self).form_valid(form)
 
 
-class SearchView(LoginRequiredMixin, View):
+class SearchView(AjaxResponseMixin, JSONResponseMixin, View):
     """
     Search View
     """
-
-    template_name = 'search-result.html'
+    def get_ajax(self, request, *args, **kwargs):
+        """
+        Search for ajax
+        """
+        keyword = self.request.REQUEST['keyword']
+        celebrities = Celebrity.objects.filter(name__icontains=keyword)[:6]
+        celebrities_json = []
+        for cele in celebrities:
+            celebrities_json.append({
+                'label': cele.name,
+                'url': reverse('rating:celebrity_detail', kwargs={'slug': cele.slug}),  # noqa
+                'category': cele.get_specificity_display()})
+        return self.render_json_response(celebrities_json)
 
     def post(self, *args, **kwargs):
         keyword = self.request.POST.get('keyword', None)
         if keyword:
             objects = Celebrity.objects.filter(name__icontains=keyword)
             return render_to_response(
-                self.template_name,
+                'search-result.html',
                 {'celebrities': objects, 'keyword': keyword},
                 context_instance=RequestContext(self.request))
 
-        return redirect("/")
-
-    def get(self, *args, **kwargs):
         return redirect("/")

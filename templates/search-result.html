@@ -33,7 +33,7 @@
             <h1>Search Result ({{ keyword }})</h1>
 
             {% for celebrity in celebrities %}
-                <h3><a href="{% url 'celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a></h3>
+                <h3><a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a></h3>
             {% empty %}
                 <h3>No matches</h3>
             {% endfor %}
