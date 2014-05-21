@@ -18,28 +18,20 @@ class CategoryView(LoginRequiredMixin, ListView):
     """
 
     model = Celebrity
-    categories = ['actors', 'musicians', 'tv', 'radio', 'sports',
-                  'politicians', 'athletes']
-
-    def get_category_shortcut(self, category):
-        """
-        Get first capital character of category as it would be used in
-        Category model
-        """
-        keyword = category[0].upper()
-        return keyword
 
     def get_queryset(self):
-        category = self.kwargs['slug']
-        if category and category in self.categories:
-            keyword = self.get_category_shortcut(category)
-            return Celebrity.objects.filter(specificity=keyword)
-        return None
+        """
+        Display celebrity by category
+        """
+        return Celebrity.objects.filter(specificity=self.kwargs['slug'])
 
     def get_context_data(self, **kwargs):
-        context = super(CategoryView, self).get_context_data(**kwargs)
-        context['category'] = self.kwargs['slug']
-        return context
+        """
+        Add extra data to context
+        """
+        data = super(CategoryView, self).get_context_data(**kwargs)
+        data.update({'category': self.kwargs['slug']})
+        return data
 
 
 class CelebrityDetailView(LoginRequiredMixin, FormView):

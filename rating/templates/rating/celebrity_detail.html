@@ -56,7 +56,7 @@
                 <h4 class="header-message"><span class="fl">Rate if this celebrity is a dbag</span></h4>
             </div>
             <div class="rating-widget large-rating-widget media_block">
-                <a href="" class="celebrity-image"> <img src="static/images//user_default_image.jpg" width="50" sub="img" class="fl" alt=""> </a>
+                <a href="" class="celebrity-image"> <img src="{{ user.get_profile.get_mugshot_url }}" width="50" sub="img" class="fl" alt=""> </a>
                 <form action="." method="post" id="form-celebrity-vote">
                     {% csrf_token %}
                     <input type="hidden" name="user" value="{{ user.pk }}" />
@@ -119,7 +119,7 @@
             <div class="review_quote_top"></div>
             <div class="review_quote">
                 <div class="review_source media_block">
-                    <img class="critic_thumb media_block_image" src="{user.thumbnail}">
+                    <img class="critic_thumb media_block_image" src="{{ user.thumbnail }}">
                     <div class="media_block_content">
                         <div class="bold">
                             <p>
