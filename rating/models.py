@@ -17,7 +17,7 @@ class Celebrity(models.Model):
         ('athlete', 'Athletes'),
     )
 
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(unique=True)
     specificity = models.CharField(max_length=16, db_index=True,
                                    choices=CELEBRITY_CHOICES)
