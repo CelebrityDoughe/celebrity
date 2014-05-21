@@ -8,4 +8,4 @@ class RatingForm(ModelForm):
     """
     class Meta:
         model = Rating
-        field = ['user', 'celebrity', 'rate', 'review']
+        fields = ('rate', 'review')
