@@ -94,7 +94,7 @@
             <div class="review_quote_top"></div>
             <div class="review_quote">
                 <div class="review_source media_block">
-                    <img class="critic_thumb media_block_image" src="{{ rating.user.get_profile.thumbnail }}">
+                    <img class="critic_thumb media_block_image" src="{{ rating.user.get_profile.get_mugshot_url }}">
                     <div class="media_block_content">
                         <div class="bold">
                             <p>{{ rating.user.get_full_name }}</p>
