@@ -1,31 +1,39 @@
-$(document).ready(function() {
-    $(".item-rate ul li").mouseenter(itemRateHover).mouseleave(function(){return false;});
-    $(".item-rate ul li").click(itemRateClick);
+$.widget("custom.catcomplete", $.ui.autocomplete, {
+    _renderMenu : function(ul, items) {
+        var that = this, currentCategory = "";
+        $.each(items, function(index, item) {
+            if (item.category != currentCategory) {
+                ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
+                currentCategory = item.category;
+            }
+            that._renderItemData(ul, item);
+        });
+    }
 });
 
-function itemRateLeave() {
-    var targets = $(this).parent().children("li").children("a");
-    $(targets).removeClass("active");
-}
-
-function itemRateHover() {
-    itemRateLeave();
-
-    var rate = parseInt( $(this).children("a").attr("data-rate") );
-
-    var targets = $(this).parent().children("li").children("a");
-    $(targets).removeClass("active");
-
-    for (var i = 1; i < rate; i++) {
-        var target = $(this).parent().children("li").children(".rate" + i);
-        target.addClass("active");
-    }
-}
-
-function itemRateClick() {
-    RATE = parseInt( $(this).children("a").attr("data-rate") );
-    for (var i = 1; i <= RATE; i++) {
-        $(".item-rate .rate" + i).addClass("active");
-    }
-    $("#form-celebrity-vote #celebrity_rating").val(RATE);
-}
+$(document).ready(function() {
+    $('#search-input').catcomplete({
+        source : function(request, response) {
+            $.ajax({
+                url : '/search/',
+                dataType : 'json',
+                data : {
+                    keyword : $('#search-input').val()
+                },
+                success : function(data) {
+                    response($.map(data, function(item) {
+                        return {
+                            label : item.label,
+                            category : item.category,
+                            url: item.url
+                        };
+                    }));
+                }
+            });
+        },
+        minLength: 2,
+        select: function(event, ui) {
+            location.href = ui.item.url;
+        },
+    });
+});

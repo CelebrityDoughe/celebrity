@@ -108,7 +108,7 @@ margin-bottom: 4px;
 .rater-starsOff, .rater-starsOn {
 display: inline-block;
 height: 18px;
-background: url(images/stars.png) repeat-x 0 0px;
+background: url(../images/stars.png) repeat-x 0 0px;
 }
 
 .celebrity-block-border.celebrity-block-right {
@@ -210,7 +210,7 @@ display: block;
 width: 288px;
 height: 20px;
 margin: 4px 0;
-background: transparent url('/images/redesign/dbags-align_bar_bg.png') no-repeat 0 0;
+background: transparent url('../images/dbags-align_bar_bg.png') no-repeat 0 0;
 }
 
 .dbags-align>span {
@@ -289,11 +289,11 @@ background-position: 0 0;
 }
 
 .large-rating-widget .stars, .large-rating-widget .wts, .large-rating-widget .ni {
-background: transparent url('/images/rating/starbar-lg.png?v=20130423') no-repeat -396px -220px;
+background: transparent url('../images/starbar-lg.png') no-repeat -396px -220px;
 }
 
 .rating-widget .stars, .rating-widget .wts, .rating-widget .ni {
-background: transparent url('/images/rating/starbar-v4.png?v=20110209') no-repeat -289px -160px;
+background: transparent url('../images/starbar-v4.png') no-repeat -289px -160px;
 }
 .clear {
 color: transparent;
@@ -385,7 +385,6 @@ height: 9px;
 background-position: right bottom;
 }
 .review_quote {
-/*background: transparent url('C:/Users/David/Desktop/Celeberty Ass Hole/image/bubble.png') no-repeat left bottom;*/
 border:1px solid #4382DC;
 padding: 10px;
 }
@@ -452,7 +451,7 @@ padding: 0;
 border: 0;
 text-indent: 5760px;
 overflow: hidden;
-background: transparent url('/images/rating/starbar-v4.png?v=20110209') no-repeat -183px -112px;
+background: transparent url('../images/star.png') no-repeat -183px -112px;
 }
 .rating-widget .status {
 display: inline-block;
@@ -461,7 +460,7 @@ display: inline-block;
 background-position: -99px -112px;
 }
 .rating-widget .share_button {
-background: transparent url('/images/rating/starbar-v4.png?v=20110209') no-repeat;
+background: transparent url('../images/star.png') no-repeat;
 display: inline-block;
 width: 28px;
 height: 14px;
@@ -471,7 +470,7 @@ text-decoration: none;
 }
 
 .like_status {
-background: transparent url('/images/rating/starbar-v4.png?v=20110209') no-repeat -274px -146px;
+background: transparent url('../images/star.png') no-repeat -274px -146px;
 background-color: #fff1c0;
 padding: 2px 4px 2px 18px;
 border-radius: 2px;
@@ -910,6 +909,14 @@ border-bottom: 2px solid #f70050;
 -moz-box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
 box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
 }
+
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+}
+
 /* End style for header */
 
 
@@ -1150,7 +1157,7 @@ height: 23px;
 }
  .magnify {
  margin-top:3px;
-background: url(file:///C:/Users/David/Desktop/Celeberty%20Ass%20Hole/image/magni_glass.png) transparent no-repeat top left;
+background: url('../image/magni_glass.png') transparent no-repeat top left;
 height: 18px;
 width: 18px;
 overflow:visible;

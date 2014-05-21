@@ -8,17 +8,19 @@ class Celebrity(models.Model):
     Celebrity Model
     """
     CELEBRITY_CHOICES = (
-        ('A', 'Actors'),
-        ('M', 'Musicians'),
-        ('T', 'TV'),
-        ('R', 'Radio'),
-        ('S', 'Sports'),
-        ('P', 'Politicians')
+        ('actor', 'Actors'),
+        ('musician', 'Musicians'),
+        ('tv', 'TV'),
+        ('radio', 'Radio'),
+        ('sport', 'Sports'),
+        ('politician', 'Politicians'),
+        ('athlete', 'Athletes'),
     )
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    specificity = models.CharField(max_length=1, choices=CELEBRITY_CHOICES)
+    specificity = models.CharField(max_length=16, db_index=True,
+                                   choices=CELEBRITY_CHOICES)
     description = models.TextField(blank=True)
     image1 = models.ImageField(upload_to="images/celebritypics")
 

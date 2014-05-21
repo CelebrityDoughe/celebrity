@@ -30,7 +30,7 @@
                         {%endif%}
                         <a class="rating-box" style="display:block;" href="#contentReviews">
                             <span class="rate number">
-                                {% if rating_avg %}{{ rating_avg }}{% else %}0.0{% endif %}
+                                {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %}
                             </span>
                         </a>
                         <div class="dbags-rating">
@@ -56,90 +56,63 @@
                 <h4 class="header-message"><span class="fl">Rate if this celebrity is a dbag</span></h4>
             </div>
             <div class="rating-widget large-rating-widget media_block">
-                <a href="" class="celebrity-image"> <img src="static/images//user_default_image.jpg" width="50" sub="img" class="fl" alt=""> </a>
-                <form action="." method="post" id="form-celebrity-vote">
-                    {% csrf_token %}
-                    <input type="hidden" name="user" value="{{ user.pk }}" />
-                    <input type="hidden" name="celebrity" value="{{ celebrity.pk }}" />
-                    <input type="hidden" name="rate" id="celebrity_rating" {% ifnotequal form.rate.value 0 %}value="{{ form.rate.value }}"{% endifnotequal %}/>
+                <a href="" class="celebrity-image"> <img src="{{ user.get_profile.get_mugshot_url }}" width="50" sub="img" class="fl" alt=""> </a>
+                {% if my_rating %}
+                    <p><b>You already rated this celebrity</b></p>
                     <div class="celebrity-block-right">
-                        <div class="rating_buttons">
-                            {% comment %}
-                            <input type="button" value="+" class="wts clear" style="position:relative; bottom:7px;">
-                            <input type="button" value="-" class="ni clear" style="position:relative; bottom:7px;">
-                            <input type="button" class="stars clear down7">
-                            {% endcomment %}
-                            <div style="width: 220px; cursor: pointer;">
-                                <div class="item-rate">
-                                    <ul>
-                                        {% with rate=form.rate.value|get_range %}
-                                            {% for i in 10|get_range %}
-                                            <li>
-                                                <a href="#" class="rates rate{{ i|add:"1" }}{% if i in rate %} active{% endif %}" data-rate="{{ i|add:"1" }}">&nbsp;</a>
-                                            </li>
-                                            {% endfor %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        {% if form.rate.errors %}
-                        <p>
-                            Please mark your rating here
-                        </p>
-                        {% endif %}
-                        <br/>
-                        <textarea id="review_text" class="review clearfix" placeholder="Add a Review" style="height: 38px;" name="review"></textarea>                                                
-                    {% if form.review.errors %}
-
-
-                        <p>
-                            You need to input review here
-                        </p>
-                        {% endif %}
-                        <br/>
-                        {% if rate_exist %}
-                        <p>
-                            <b>You already rated this celebrity</b>
-                        </p>
-                        {% else %}
-                        <div class="clearfix" style="height:24px;">
-                            <input class="button-short"type="submit" value="Rate" />
-                        </div>
-                        {% endif %}
-                        <br/>
+                        <div class="rating readonly" data-score="{{ my_rating.rate }}"></div>
+                        <p>{{ rating.review }}</p>
                     </div>
-                </form>
+                {% else %}
+                    <form action="." method="post" id="form-celebrity-vote">
+                        {% csrf_token %}
+                        <input type="hidden" name="rate" id="rate_score" />
+                        <div class="celebrity-block-right">
+                            <div id="rate" class="rating"></div>
+                            {% if form.rate.errors %}
+                                <p>Please mark your rating here</p>
+                            {% endif %}
+                            <br/>
+                            <textarea id="review_text" class="review clearfix" placeholder="Add a Review" style="height: 38px;" name="review"></textarea>
+                            {% if form.review.errors %}
+                                <p>Please add your review</p>
+                            {% endif %}
+                                <div class="clearfix">
+                                    <input class="button-short"type="submit" value="Rate" />
+                                </div>
+                            <br/>
+                        </div>
+                    </form>
+                {% endif %}
             </div>
 
         </div>
         <div class="quote_bubble top_critic fl cl">
             <span class="f1"> Comments</span>
 
+            {% for rating in celebrity.rates.all %}
             <div class="review_quote_top"></div>
             <div class="review_quote">
                 <div class="review_source media_block">
-                    <img class="critic_thumb media_block_image" src="{user.thumbnail}">
+                    <img class="critic_thumb media_block_image" src="{{ rating.user.get_profile.get_mugshot_url }}">
                     <div class="media_block_content">
                         <div class="bold">
-                            <p>
-                                user.name
-                            </p>
+                            <p>{{ rating.user.get_full_name }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="quote_contents media_block">
                     <div sub="hover" tip="Original Score: 2/4" class="media_block_image icon small rotten"></div>
                     <div class="media_block_content">
-                        <p>
-                            {Rating.review}
-                        </p>
+                        <div class="rating readonly" data-score="{{ rating.rate }}"></div>
+                        <p>{{ rating.review }}</p>
                         <div class="small">
-                            <span class="fr subtle">February 14, 2014</span>
+                            <span class="fr subtle">{{ rating.dt_updated }}</span>
                         </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
 
         </div>
     </div>
@@ -151,5 +124,6 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'raty/jquery.raty.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/rate.js' %}"></script>
 {% endblock %}
