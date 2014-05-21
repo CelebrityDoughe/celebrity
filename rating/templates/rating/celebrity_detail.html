@@ -30,7 +30,7 @@
                         {%endif%}
                         <a class="rating-box" style="display:block;" href="#contentReviews">
                             <span class="rate number">
-                                {% if rating_avg %}{{ rating_avg }}{% else %}0.0{% endif %}
+                                {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %}
                             </span>
                         </a>
                         <div class="dbags-rating">

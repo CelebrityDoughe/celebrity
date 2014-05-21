@@ -1,8 +1,8 @@
 $(document).ready(function() {
     $('.rating').raty({
         number : 10,
-        starOff : '/static/raty/img/star-off.png',
-        starOn  : '/static/raty/img/star-on.png',
+        starOff : '/static/images/rate-hover.png',
+        starOn  : '/static/images/rate.png',
         click: function(score, evt) {
             $('#rate_score').val(score);
         },
