@@ -66,7 +66,7 @@ ol, ul {
 .celebrity-content{
 position: relative;
 width:1000px;
-margin: 0px auto;
+margin: 50px auto;
 padding: 10px;
 border: solid 3px #4382DC;
 background-color: #F9F9F9;}
@@ -647,11 +647,11 @@ margin-top:20px;
 .button {
 border: 1px solid #C0C0C0;
 margin: 0px auto 0px auto;
-width:100%;
+width: 200px;
 cursor: pointer;
 text-align: center;
-background-color:#FFFCAB;
-/*background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530));*/
+background-color: #FFFCAB;
+/* background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530)); */
 background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
 padding: 5px 12px;
 color: #0000;
@@ -859,7 +859,7 @@ text-align: right;
     }
 
 .align-right {
-text-align: right;
+text-align: center;
 margin-top:20px;
 }
 
