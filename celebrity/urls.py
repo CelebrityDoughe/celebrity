@@ -13,7 +13,7 @@ urlpatterns = patterns(
         login_required(TemplateView.as_view(template_name='login_success.html'))),  # noqa
 
     url(r'^accounts/', include('userena.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^davemour/', include(admin.site.urls)),
 
     url(r'', include('rating.urls', 'rating', 'rating')),
     url(r'', include('portals.urls', 'portals', 'portals')),

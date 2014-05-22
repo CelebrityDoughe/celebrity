@@ -136,6 +136,7 @@ TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
 FACEBOOK_APP_ID = ''
 FACEBOOK_API_SECRET = ''
+FACEBOOK_EXTENDED_PERMISSIONS = ['email']
 
 # this setting is changed because of social login with facebook
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
