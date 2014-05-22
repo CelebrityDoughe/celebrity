@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+import random
+import string
+
+from django.contrib.auth.hashers import UNUSABLE_PASSWORD
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -24,5 +28,13 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
         UserProfile(user=instance).save()
         assign('change_profile', instance, instance.get_profile())
         assign('change_user', instance, instance)
+
+        # set random password for the social auth users
+        # Or it will be "!" by default.
+        # The user with password "!" can not reset password(limited by Django)
+        if instance.password == UNUSABLE_PASSWORD:
+            random_pwd = ''.join([random.choice(string.letters) for i in range(8)])  # noqa
+            instance.set_password(random_pwd)
+            instance.save()
 
 post_save.connect(create_user_profile, User)
