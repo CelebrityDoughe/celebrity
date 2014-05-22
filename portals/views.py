@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 
 from .forms import ContactForm
-from news.models import Article
+from news.models import Article, NewsWebsite
 
 
 class IndexView(TemplateView):
@@ -18,7 +18,13 @@ class IndexView(TemplateView):
         Add news to the context
         """
         data = super(IndexView, self).get_context_data(**kwargs)
-        data.update({'articles': Article.objects.all().order_by('-id')[:5]})
+        # get the latest article from all the websites
+        articles = []
+        for website in NewsWebsite.objects.all():
+            atcs = Article.objects.filter(news_website=website).order_by('-id')  # noqa
+            if atcs:
+                articles.append(atcs[0])
+        data.update({'articles': articles})
         return data
 
 
@@ -37,7 +43,7 @@ class ContactUsView(FormView):
 
     template_name = 'portals/contact-us.html'
     form_class = ContactForm
-    success_url = reverse_lazy('portals', kwargs={'slug': 'thanks'})
+    success_url = reverse_lazy('portals:flat_page', kwargs={'slug': 'thanks'})
 
     def form_valid(self, form):
         form.save()

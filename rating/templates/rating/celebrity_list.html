@@ -6,7 +6,7 @@
 
 <div id="header-bar">
     <div id="header-bar-container">
-        <h2>"{{ category }}"</h2>
+        <h2>{{ category }}</h2>
     </div>
 
 </div>
@@ -31,7 +31,7 @@
 
         </div>
         <div class="celebrity-list-box">
-            <h1>"{{ category }}"</h1>
+            <h1>{{ category }}</h1>
             {% for celebrity in celebrity_list %}
             <h3><a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a></h3>
             {% endfor %}
