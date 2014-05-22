@@ -33,7 +33,7 @@ class CategoryView(ListView):
         Add extra data to context
         """
         data = super(CategoryView, self).get_context_data(**kwargs)
-        data.update({'category': self.kwargs['slug']})
+        data.update({'category': self.kwargs['slug'].title()})
         return data
 
 
