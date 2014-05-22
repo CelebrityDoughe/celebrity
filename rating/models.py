@@ -40,3 +40,6 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return "%s - %d" % (self.user.username, self.rate)
+
+    class Meta:
+        ordering  = ('-id',)
