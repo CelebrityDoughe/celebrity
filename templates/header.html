@@ -41,14 +41,14 @@
         <div class="right">
             {% if user.is_authenticated %}
                 <div class="left signitem">
-                    <a href="{% url 'userena_profile_detail' user.username %}" class="font-12 color-primary">{{ user.get_full_name|default_if_empty:user.username }}&nbsp;|</a>
+                    <a href="{% url 'userena_profile_detail' user.username %}" class="font-12 color-primary split-right-signin">{{ user.get_full_name|default_if_empty:user.username }}&nbsp;</a>
                 </div>
                 <div class="left signitem">
                     <a href="{% url 'userena_signout' %}" class="font-12 color-primary">Sign Out</a>
                 </div>
             {% else %}
                 <div class="left signitem">
-                    <a href="{% url 'userena_signin' %}" class="font-12 color-primary">Sign In&nbsp;|</a>
+                    <a href="{% url 'userena_signin' %}" class="font-12 color-primary split-right-signin">Sign In&nbsp;</a>
                 </div>
                 <div class="left signitem">
                     <a href="{% url 'userena_signup' %}" class="font-12 color-primary">&nbsp;Sign Up</a>
