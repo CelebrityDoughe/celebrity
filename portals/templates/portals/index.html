@@ -5,14 +5,14 @@
 {% block content %}
 <div id="header-bar">
     <div id="header-bar-container">
-        <h3>Tell us if the celebrity you met is a nice person or a douchebag</h3>
+        <h3>Tell us if the celebrity you met is a nice person or a douchebag.</h3>
     </div>
 
 </div>
 <div class="articles-content">
     <div class="articles-left">
-        <div id="articles-top">
-            Todays Celebrity News
+        <div id="articles-top"><span>
+            Today's Celebrity News</span>
             <div id="search-right">
                 <div id="searchBar">
                     <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
@@ -35,18 +35,18 @@
                 <li>
                     <div class="newsPost">
                         <div class="newsThumb">
-                            <a href="{{ article.url }}"> <img src="{{ article.image }}"
+                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}"
                             width="140" height="100" border="0" alt="#"> </a>
                         </div>
                         <div class="newsDetails">
                             <div class="newsHeadline">
                                 <h3>
-                                    <a class="title" href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:50 }}</a>
+                                    <a class="title" href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a>
                                 </h3>
                             </div>
                             <div class="newsDate">({{ article.news_website }})</div>
                             <div class="newssummary">
-                                <p>{{ article.description|truncatechars:200 }}</p>
+                                <p>{{ article.description|truncatechars:300 }}</p>
                             </div>
                         </div>
                     </div>
