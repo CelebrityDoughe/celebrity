@@ -1,5 +1,5 @@
 {% extends "base_generic.html" %}
-{% load staticfiles range_tag %}
+{% load staticfiles range_tag account_tags %}
 
 {% block title %}Celebrity{% endblock %}
 
@@ -56,7 +56,7 @@
                 <h4 class="header-message"><span class="fl">Rate if this celebrity is a dbag</span></h4>
             </div>
             <div class="rating-widget large-rating-widget media_block">
-                <a href="" class="celebrity-image"> <img src="{{ user.get_profile.get_mugshot_url }}" width="50" sub="img" class="fl" alt=""> </a>
+                <a href="" class="celebrity-image"> <img src="{{ user.get_profile.get_mugshot_url }}" width="50" sub="img" class="fl" alt=""></a>
                 {% if my_rating %}
                     <p><b>You already rated this celebrity</b></p>
                     <div class="celebrity-block-right">
@@ -97,7 +97,7 @@
                     <img class="critic_thumb media_block_image" src="{{ rating.user.get_profile.get_mugshot_url }}">
                     <div class="media_block_content">
                         <div class="bold">
-                            <p>{{ rating.user.get_full_name }}</p>
+                            <p>{{ rating.user.get_full_name|default_if_empty:user.username }}</p>
                         </div>
                     </div>
                 </div>
