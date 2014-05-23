@@ -51,7 +51,9 @@
                             <tbody>
                                 <tr class="email">
                                     <th><label for="user-email">Email:</label></th>
-                                    <td class="col-field"> {{ form.email }} </td>
+                                    <td class="col-field">
+                                {{ form.email }}
+                            </td>
                                 </tr>
                                 <tr>
                                     <th></th>
@@ -62,7 +64,9 @@
                                 </tr>
                                 <tr>
                                     <th></th>
-                                    <td>                                    <textarea cols="30" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 60px; margin-left: 0px; margin-right: 0px; width: 360px; "></textarea> {% if form.detail.errors %}
+                                    <td>
+																		<textarea cols="30" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 60px; margin-left: 0px; margin-right: 0px; width: 360px; ">
+																		</textarea> {% if form.detail.errors %}
                                     <div class="error-help">
                                         Please input details here
                                     </div> {% endif %}
