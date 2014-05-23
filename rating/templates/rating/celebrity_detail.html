@@ -18,14 +18,14 @@
                             <span>This celebrity is a douche bag</span>
                         {% elif rating_avg < 4.5 and rating_avg > 0 %}
                             <span>This celebrity is a nice person</span>
-                        {% elif rating_avg == 0 %}
+                        {% elif not rating_avg %}
                             <span>This celebrity has not yet benn rated.</span>
                         {% endif %}
                     </p>
                     <div id="rating-numbers" class="rating-container" >
-                        {%if rating_avg >= 4.5%}
+                        {% if rating_avg >= 4.5 %}
                         <img src="{% static 'images/celebritybad.png' %}" />
-                        {% elif rating_avg < 4.5%}
+                        {% elif rating_avg < 4.5 and rating_avg > 0 %}
                         <img src="{% static 'images/celebritygood.png' %}" />
                         {%endif%}
                         <a class="rating-box" style="display:block;" href="#contentReviews">
