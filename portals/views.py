@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
@@ -46,5 +47,14 @@ class ContactUsView(FormView):
     success_url = reverse_lazy('portals:flat_page', kwargs={'slug': 'thanks'})
 
     def form_valid(self, form):
-        form.save()
+        contact = form.save()
+
+        # send email to celebdbag@gmail.com
+        send_mail(
+            u'Contact from %s' % contact.name,
+            u'Contact Email: %s\nContent: %s' % (contact.email, contact.detail),
+            'admin@celebritydbag.com',
+            ['celebdbag@gmail.com'],
+            fail_silently=True)
+
         return super(ContactUsView, self).form_valid(form)
