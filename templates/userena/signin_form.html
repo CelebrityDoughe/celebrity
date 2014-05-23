@@ -1,6 +1,6 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
-{% block title %}{% trans "Signin" %}{% endblock %}
+{% block title %}Celebrity Dbag - {% trans "Signin" %}{% endblock %}
 {% block content %}
 <div id="header-bar">
     <div id="header-bar-container">
@@ -14,39 +14,39 @@
             <form action="" method="post">
                 {% csrf_token %}
                 {% if form.errors %}
-                <p>Please correct the following fields:</p>
+                <div class="errors-header">Please correct the following fields:</div>
                 {% endif %}
                 {% for field in form %}
                     <div class="row">
                         {% if field.errors %}
-                            <p class="errors">
+                            <div class="errors">
                                 {{ field.errors}}
-                            </p>
+                            </div>
                         {% endif %}
-                        <label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>
-                        <p>
+                      
+                        <div>
                             <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
                             {{ field }}
-                        </p>
+                        </div>
                     </div>
                 {% endfor %}
                 <div class="row">
                     <label>&nbsp;</label>
-                    <p class="forgot-password">
+                    <div class="forgot-password">
                         <a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a>
-                    </p>
+                    </div>
                 </div>
                 <div class="align-right">
                     <input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="{% trans "Signin" %}">
                 </div>
             </form>
 
-            <p class="social-facebook-login">
+            <div class="social-facebook-login">
                 <a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}">{% trans "Login with Facebook" %}</a>
-            </p>
-            <p class="social-twitter-login">
-                <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a>
-            </p>
+            </div>
+            <div class="social-twitter-login">
+                            <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a>
+            </div>
             {% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
             {% endif %}
