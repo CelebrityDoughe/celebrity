@@ -16,37 +16,37 @@
             <form method="post">
                 {% csrf_token %}
                 {% if form.errors %}
-                <p>Please correct the following fields:</p>
+                <div class="errors-header">Please correct the following fields:</div>
                 {% endif %}
 
                 {% for field in form %}
                     <div class="row">
                         {% if field.errors %}
-                            <p class="errors">
+                            <div class="errors">
                                 {{ field.errors}}
-                            </p>
+                            </div>
                         {% endif %}
-                        <label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>
-                        <p>
+                        <!--<label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>-->
+                        <div>
                             <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
                             {{ field }}
-                        </p>
+                        </div>
                     </div>
                 {% endfor %}
 
-                <div class="align-right">
+                <div class="align-left">
                     <input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="Create My Account">
                 </div>
             </form>
         </div>
 
         <div class="right split-left">
-            <div class="form">
+            <div class="sign_up_right">
                 <div class="social_sign">
-                    <div class="header">
+                    <div class="social_sign_header">
                         Sign up with Twitter
                     </div>
-                    <div class="content">
+                    <div class="social_sign_body">
                         <p>
                             Connect your Twitter account to sign up for Celebrity Dbag.
                         </p>
@@ -58,10 +58,10 @@
                 <br>
                 <br>
                 <div class="social_sign">
-                    <div class="header">
+                    <div class="social_sign_header">
                         Sign up with Facebook
                     </div>
-                    <div class="content">
+                    <div class="social_sign_body">
                         <p>
                             Connect your Facebook account to sign up for Celebrity Dbag.
                         </p>
