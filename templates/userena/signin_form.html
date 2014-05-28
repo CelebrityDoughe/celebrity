@@ -42,10 +42,10 @@
             </form>
 
             <div class="social-facebook-login">
-                <a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}">{% trans "Login with Facebook" %}</a>
-            </div>
-            <div class="social-twitter-login">
-                            <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a>
+                <a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}"><img src="/static/images/loginfacebook.png" ></a>
+            
+           
+                            <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}"><img src="/static/images/logintwitter.png" ></a>
             </div>
             {% if next %}
             <input type="hidden" name="next" value="{{ next }}" />
