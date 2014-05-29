@@ -1,11 +1,11 @@
 {% extends "base_generic.html" %}
 {% load staticfiles %}
-{% block title %}Category | {{ category }}{% endblock %}
+{% block title %}Search Results {% endblock %}
 
 {% block content %}
 <div id="header-bar">
     <div id="header-bar-container">
-        <h2>"{{ category }}"</h2>
+        <h3>Search Result</h3>
     </div>
 </div>
 
@@ -39,10 +39,9 @@
             {% endfor %}
             <div class="clear"></div>
         </div>
-
-        <div class="advertising-right">
+    </div>
+	<div class="advertising-right">
             <img src="{% static 'images/CaptureGIF.GIF' %}" />
         </div>
-    </div>
 </div>
 {% endblock %}
