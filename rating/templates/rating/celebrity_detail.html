@@ -1,13 +1,17 @@
 {% extends "base_generic.html" %}
 {% load staticfiles range_tag account_tags %}
 
-{% block title %}Celebrity{% endblock %}
+{% block title %}Celebrity:  {{ celebrity.name }}{% endblock %}
 
 {% block content %}
+    <div id="header-bar">
+    <div id="header-bar-container"><h3>Tell us if {{ celebrity.name }} is a nice person or a douchebag.</h3></div>
+		</div>
+
 <div class="celebrity-content">
     <div class="celebrity-content-top">
         <div class="celebrity-image celebrity-area">
-            <img src="{{ celebrity.image1.url }}" width="214px" height="317px" alt="{{ celebrity.name }}" itemprop="image" class="pinterestImage" />
+            <img src="{{ celebrity.image1.url }}" width="200px" height="300px" alt="{{ celebrity.name }}" itemprop="image" class="pinterestImage" />
         </div>
         <div class="celebrity-block-right celebrity-block-border">
             <h1 class="celebrity-name"><span itemprop="name">{{ celebrity.name }}</span></h1>
@@ -19,41 +23,53 @@
                         {% elif rating_avg < 4.5 and rating_avg > 0 %}
                             <span>This celebrity is a nice person</span>
                         {% elif not rating_avg %}
-                            <span>This celebrity has not yet benn rated.</span>
+                            <span>We have no information about this person</span>
                         {% endif %}
                     </p>
                     <div id="rating-numbers" class="rating-container" >
-                        {% if rating_avg >= 4.5 %}
+                   
+                        <a class="rating-box" style="display:block;" href="#contentReviews">
+                      
+                             {% if rating_avg >= 4.5 %}
                         <img src="{% static 'images/celebritybad.png' %}" />
                         {% elif rating_avg < 4.5 and rating_avg > 0 %}
                         <img src="{% static 'images/celebritygood.png' %}" />
+                        {% elif not rating_avg %}
+                         <img src="{% static 'images/notyetrated.png' %}" />
                         {%endif%}
-                        <a class="rating-box" style="display:block;" href="#contentReviews">
+                        
                             <span class="rate number">
                                 {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %}
                             </span>
-                        </a>
+                        </a>     
+									
+												<div class="your-rating">
+														Your Rating:
+																	 <div class="rating-stats">
+
+                                Ratings Count: <span>{{ rating_count }}</span></p>
+                               </div>
+                               </div>
                         <div class="dbags-rating">
                             <div class="dbags-align">
                                 <span style="width:100%;">
-                                    <div class="rating">
-                                        <span class="rater-starsOff" style="width: 220px; cursor: pointer;"> <span class="rater-starsOn" style="width: 63px; cursor: pointer;"></span> </span>
-                                    </div> </span>
-                            </div>
-                            <p class="rating-stats">
-                                Ratings Counted: <span>{{ rating_count }}</span>
-                                <br>
-                            </p>
+                                   <div id="rate" class="rating"></div>
+                            {% if form.rate.errors %}
+                                <p>Please mark your rating here</p>
+                            {% endif %}
+                                                        </div>
+                        
                         </div>
+                       
                         <p class="celebrity-known-for">
-                            {{ celebrity.get_specificity_display }} | {{ celebrity.description }}
+                           {{ celebrity.description }} 
                         </p>
                     </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div>
-                <h4 class="header-message"><span class="fl">Rate if this celebrity is a dbag</span></h4>
+                <h4 class="header-message"><span class="fl">Must add a comment before submitting</span></h4>
             </div>
             <div class="rating-widget large-rating-widget media_block">
                 <a href="" class="celebrity-image"> <img src="{{ user.get_profile.get_mugshot_url }}" width="50" sub="img" class="fl" alt=""></a>
@@ -68,17 +84,13 @@
                         {% csrf_token %}
                         <input type="hidden" name="rate" id="rate_score" />
                         <div class="celebrity-block-right">
-                            <div id="rate" class="rating"></div>
-                            {% if form.rate.errors %}
-                                <p>Please mark your rating here</p>
-                            {% endif %}
-                            <br/>
-                            <textarea id="review_text" class="review clearfix" placeholder="Add a Review" style="height: 38px;" name="review"></textarea>
+                           
+                            <textarea id="review_text" class="review clearfix" placeholder="Add a Comment" style="height: 38px;" name="review"></textarea>
                             {% if form.review.errors %}
-                                <p>Please add your review</p>
+                                <div class="errors">Please add your review</div>
                             {% endif %}
                                 <div class="clearfix">
-                                    <input class="button-short"type="submit" value="Rate" />
+                                    <input class="button-rate"type="submit" value="Rate" />
                                 </div>
                             <br/>
                         </div>
@@ -88,7 +100,7 @@
 
         </div>
         <div class="quote_bubble top_critic fl cl">
-            <span class="f1"> Comments</span>
+            <span class="f1">All Comments</span>
 
             {% for rating in celebrity.rates.all %}
             <div class="review_quote_top"></div>
