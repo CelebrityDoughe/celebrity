@@ -429,6 +429,12 @@ color: #787878;
 .float_right, .fr {
 float: right;
 }
+
+.float_left {
+float: left;
+}
+.padding_top{padding-top:10px;}
+.padding_left{padding-left:10px;}
 .review_source {
 margin-left: 5px;
 float:left;
@@ -1350,13 +1356,14 @@ font-size: 20px;
 line-height: 1.2;
 margin: 0;
 margin: 0;
-padding: 0;
+padding: 3px;
 text-transform: capitalize;}
 
 .bor-list p{
 margin: 8px 0;
 font-size:14px;
 line-height:20px;
+padding: 3px;
 }
 .stats{
 position: relative;
@@ -1371,7 +1378,7 @@ border-bottom: 1px solid #DDD;
 float: left;
 padding-right: 10px;
 }
-.stats-words p{padding:0 0 5px 9px; font-size:11px; margin:0; margin-left:5px;}
+.stats-words p{padding:0 0 5px 9px; font-size:12px; margin:0; margin-left:5px;}
 .stats-words span{font-weight:bold;}
 .color-pink{width:8px;height:8px;background-color:#c3003f;float:left; margin-top:4px; margin-right:3px;}
 .color-blue{width:8px;height:8px;background-color:#3567ae;float:left; margin-top:4px; margin-right:3px;}
