@@ -48,8 +48,13 @@
                             <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}"><img src="/static/images/logintwitter.png" ></a>
             </div>
             {% if next %}
+            
             <input type="hidden" name="next" value="{{ next }}" />
             {% endif %}
+            <div class="line_break"><span class="mm_or">OR</span></div>
+             <div class="create-account">
+                    <div class="button-blue font-19 font-strong color-primary"  name="yt0" value="{% trans "Create New Account" %}"><a href="{% url 'userena_signup' %}">Create New Account</a></div>
+                </div>
         </div>
     </div>
 
