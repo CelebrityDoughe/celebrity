@@ -77,7 +77,8 @@ width:1000px;
 margin: 50px auto 10px;
 padding: 10px;
 border: solid 3px #4382DC;
-background-color: #F9F9F9;}
+background-color: #F9F9F9;
+box-shadow: 0 0 15px #BBB;}
 
 #content{
 /* width: 1050px; */
