@@ -1,0 +1,209 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    margin: 0px 0px 0px 0px;
+    background-color: #F9F9F9;  
+}
+
+div, img{   
+    margin: 0;
+    padding: 0;         
+    border: none;   
+    font: normal 14px ProximaNovaThin, 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+a, a:hover, a:visited {
+    margin: 0;
+    padding: 0;         
+    border: none;   
+    font-family: ProximaNovaThin, 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    text-decoration: none;  
+    color:blue;
+}
+
+label {
+    display: block;
+    float: left;
+    height: 31px;
+    line-height: 31px;
+    text-align: right;
+    padding: 0px 10px 0px 0px;  
+    font-family: 'ProximaNovaThin', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    text-decoration: none;      
+}
+
+fieldset {
+border:none;
+}
+
+input { 
+    font-family: 'ProximaNovaThin', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    text-decoration: none;  
+}
+
+input[type="text"], input[type="password"], select, textarea {
+    padding-left: 5px;
+    height: 27px;
+    line-height: 27px;
+    border: 1px solid #AAA;
+    transition: border linear .2s, box-shadow linear .2s;
+    -moz-transition: border linear .2s, -moz-box-shadow linear .2s;
+    -webkit-transition: border linear .2s, -webkit-box-shadow linear .2s;
+    -ms-transition: border linear .2s, -webkit-box-shadow linear .2s;
+}
+
+form {
+display: block;
+margin-top: 0em;
+}
+
+
+ol, ul {
+    list-style: none;
+    padding: 0px;
+}
+.app-header {
+background: #4382DC;
+background: -moz-linear-gradient(top,#4382DC,#3D69B5);
+background-image: -ms-linear-gradient(top , #4382DC 0%, #3D69B5 100%);
+background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#4382DC),color-stop(0.72,#3D69B5));
+border: 1px solid #294D75;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#545454',endColorstr='#222222',GradientType=0);
+height: 105px;
+width: 100%;
+border-bottom: 2px solid #f70050;
+-webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+-moz-box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+}
+.simple-header .header-container {
+padding: 6px 15px;
+}
+.error-page .app-header .header-title {
+text-align: center;
+}
+.header-title {
+color: #fff;
+text-shadow: 0 -1px 0 #9b0e00;
+-webkit-font-smoothing: antialiased;
+}
+.app-header .logo {
+background:url(file:///C|/Users/David/Desktop/Images/meandouchesmaller.png) no-repeat;
+float: left;
+
+height: 105px;
+width: 111px;
+margin: 9px 15px 9px 0;
+padding: 0;
+}
+.simple-header .logo {
+float: none;
+margin: 0 auto;
+}
+.error-page .app-header .logo {
+display: inline-block;
+}
+.simple-header .logo a {
+margin: 0;
+}
+.app-header .logo a {
+display: block;
+float: left;
+margin: 9px 0;
+width: 100%;
+height: 100%;
+text-indent: -1000em;
+}
+.error-page a {
+color: #fff;
+text-decoration: none;
+}
+.error-page .error-wrap {
+background-color:white;
+min-width: 990px;
+}
+.error-page .error-content {
+width: 960px;
+min-height: 365px;
+margin: 0 auto;
+padding: 65px 14px 30px;
+background: url(//s3-media1.ak.yelpcdn.com/assets/2/www/img/8540db29d6b3/error/detective-darwin.gif) no-repeat bottom right;
+}
+.error-page .media-body {
+width: 60%;
+float: right;
+}
+.error-page .headline {
+margin-bottom: 30px;
+font-size: 30px;
+line-height: 1.2em;
+font-weight: normal;
+}
+.error-page .headline .page-status {
+font-weight: bold;
+
+}
+.error-page .headline {
+margin-bottom: 30px;
+font-size: 30px;
+line-height: 1.2em;
+font-weight: normal;
+}
+.ytype h2, .ytype .h2 {
+font-size: 24px;
+line-height: 1.25em;
+}
+.error-page .message {
+margin-bottom: 30px;
+line-height: 1.5;
+}
+
+/* Search */
+#searchBar {
+float: left;
+display: inline-block;
+zoom: 1;
+margin-left: 8px;
+vertical-align: top;
+margin-top: 2px;
+overflow: visible;
+}
+#searchBar .searchBox {
+border: 1px solid black;
+background-color: #fff;
+padding-bottom: 2px;
+-moz-border-radius: 5px;
+padding-left: 2px;
+position: relative;
+transition: border linear .2s, box-shadow linear .2s;
+-moz-transition: border linear .2s, -moz-box-shadow linear .2s;
+-webkit-transition: border linear .2s, -webkit-box-shadow linear .2s;
+}
+#searchBar input {
+width: 150px;
+border-radius: 2px;
+color: #666;
+margin: 0;
+border-width: 0;
+font: 18;
+height: 23px;
+line-height: 18px;
+}
+#searchBar button {
+border-width: 0;
+margin: 0;
+padding: 0 5px 0 0px;
+background-color: transparent;
+cursor: pointer;
+height: 23px;
+}
+#articles-top span {
+width: 400xp;
+}
+
+
+
+/*End Search*/
