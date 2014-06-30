@@ -720,6 +720,61 @@ padding: 0px 0px 0px 10px;
 
 /* Begin Celebrity List*/
 
+.celeb-list{list-style: none;
+margin: 5px 0;}
+.celeb-list li {
+list-style: none;
+border-bottom: 1px solid #CCC;
+width:650px;
+height:90px;
+
+margin: 10px 0;
+padding: 5px 0;
+}
+.celeb-left{float:left; }
+.celeb-list-post {
+width: 646px;
+padding: 3px;
+}
+
+.celeb-list-post {
+width: 130px;
+padding: 0 10px;
+text-align: left;
+}
+.celeb-thumb a img {
+float: left;
+width: 120px;
+height: 80px;
+padding: 2px;
+border: 1px solid #CCC;
+background: white;
+border-radius: 3px;
+box-shadow: 0 0 3px #BBB;
+font-size: 0;
+line-height: 0;
+
+}
+.celeb-details {
+width: 460px;
+float:left;
+}
+.celeb-rate {color: #f70050;
+font-weight: bold;
+font-size:45px;
+in-height: 50px;
+padding-left:10px;
+line-height: 24px;}
+h3, {
+color: black !important;
+margin: 0px;
+padding: 0px;
+}
+.celeb-count{padding-left:10px;}
+.celeb-name{font-size: 28px;
+font-weight: bold;
+color: #333;}
+
 
 .celebrity-list-content{
     position:relative;
