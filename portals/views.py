@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 
-from .forms import ContactForm
+from .forms import ContactForm, AdvertiseForm
 from news.models import Article, NewsWebsite
 
 
@@ -58,3 +58,28 @@ class ContactUsView(FormView):
             fail_silently=True)
 
         return super(ContactUsView, self).form_valid(form)
+
+
+class AdvertiseView(FormView):
+    """
+    View for advertise
+    """
+    form_class = AdvertiseForm
+    template_name = 'portals/advertise.html'
+    success_url = reverse_lazy('portals:flat_page', kwargs={'slug': 'thanks'})
+
+    def form_valid(self, form):
+        """
+        Send email notification to admin
+        """
+        data = form.cleaned_data
+
+        # send email to celebdbag@gmail.com
+        send_mail(
+            u'Advertise from %s' % data['email'],
+            u'Advertise Email: %s\nContent: %s' % (data['email'], data['detail']),
+            'admin@celebritydbag.com',
+            ['celebdbag@gmail.com'],
+            fail_silently=True)
+
+        return super(AdvertiseView, self).form_valid(form)
