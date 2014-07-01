@@ -9,5 +9,5 @@ urlpatterns = patterns(
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^contact-us/$', ContactUsView.as_view(), name='contact'),
     url(r'^advertise/$', AdvertiseView.as_view(), name='advertise'),
-    url(r'^(?P<slug>\w+)/$', FlatPageView.as_view(), name='flat_page'),
+    url(r'^(?P<slug>(terms|thanks))/$', FlatPageView.as_view(), name='flat_page'),
 )

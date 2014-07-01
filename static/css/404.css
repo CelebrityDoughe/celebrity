@@ -91,7 +91,7 @@ text-shadow: 0 -1px 0 #9b0e00;
 -webkit-font-smoothing: antialiased;
 }
 .app-header .logo {
-background:url(file:///C|/Users/David/Desktop/Images/meandouchesmaller.png) no-repeat;
+background:url(../images/meandouchesmaller.png) no-repeat;
 float: left;
 
 height: 105px;
