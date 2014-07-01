@@ -5,6 +5,8 @@ $(document).ready(function() {
         starOn  : '/static/images/rate.png',
         click: function(score, evt) {
             $('#rate_score').val(score);
+            $('#top_message').show();
+            $('#review_text').slideDown().focus();
         },
         score: function() {
             return $(this).attr('data-score');
