@@ -69,7 +69,7 @@ ol, ul {
 #email-padding{padding:8px;}
 
 
-/* Begin Celebrity */
+
 
 .celebrity-content{
 position: relative;
@@ -77,12 +77,11 @@ width:1000px;
 margin: 50px auto 10px;
 padding: 10px;
 border: solid 3px #4382DC;
-background-color: #F9F9F9;
-box-shadow: 0 0 15px #BBB;}
+background-color: #F9F9F9;}
 
 #content{
-/* width: 1050px; */
-/* margin: 0 auto; */
+
+
 -moz-box-shadow: 0px 0px 10px #000,0px 0px 0px rgba(0,0,0,0);
 }
 .celebrity-content-top {
@@ -107,7 +106,11 @@ display:inline;
 margin-top: 10px;
 }
 
-
+#top_message {
+display:none;
+color:red;
+font-weight:bold;
+}
 .celebrity-area img {
 float:left;
 position: relative;
@@ -123,7 +126,7 @@ margin-bottom: 4px;
 .rater-starsOff, .rater-starsOn {
 display: inline-block;
 height: 18px;
-background: url(../images/stars.png) repeat-x 0 0px;
+background: url("http://celebritydbag.com/static/images/stars.png") repeat-x 0 0px;
 }
 
 .celebrity-block-border.celebrity-block-right {
@@ -292,11 +295,11 @@ background-position: 0 0;
 }
 
 .large-rating-widget .stars, .large-rating-widget .wts, .large-rating-widget .ni {
-background: transparent url('../images/starbar-lg.png') no-repeat -396px -220px;
+background: transparent url("http://celebritydbag.com/static/images/starbar-lg.png") no-repeat -396px -220px;
 }
 
 .rating-widget .stars, .rating-widget .wts, .rating-widget .ni {
-background: transparent url('../images/starbar-v4.png') no-repeat -289px -160px;
+background: transparent url("http://celebritydbag.com/static/images/starbar-v4.png") no-repeat -289px -160px;
 }
 .clear {
 color: transparent;
@@ -353,7 +356,7 @@ white-space: pre-wrap;
 word-wrap: break-word;
 }
 
-/*Begin Comment Section*/
+
 .quote_bubble {
 position:relative;
 padding-top:10px;
@@ -449,7 +452,7 @@ max-width: 48px;
 }
 
 
-/* End Comment Section*/
+
 
 
 
@@ -462,7 +465,7 @@ display: inline-block;
 background-position: -99px -112px;
 }
 .rating-widget .share_button {
-background: transparent url('../images/star.png') no-repeat;
+background: transparent url("http://celebritydbag.com/static/images/star.png") no-repeat;
 display: inline-block;
 width: 28px;
 height: 14px;
@@ -472,7 +475,7 @@ text-decoration: none;
 }
 
 .like_status {
-background: transparent url('../images/star.png') no-repeat -274px -146px;
+background: transparent url("http://celebritydbag.com/static/images/star.png") no-repeat -274px -146px;
 background-color: #fff1c0;
 padding: 2px 4px 2px 18px;
 border-radius: 2px;
@@ -522,10 +525,6 @@ width: 190px;
     text-align: center;
 }
 
-.align-right {
-    text-align: right;
-}
-
 .split-left {
     border-left: dotted 1px #C0C0C0;
 }
@@ -554,7 +553,7 @@ width: 190px;
 .button-rate:hover {
     background: #e3ad29;
 }
-/* End style for general */
+
 
 div.errorSummary {
     width: 95%;
@@ -577,8 +576,9 @@ div.errorSummary ul {
 
 .errors{color:red;}
 .errors-header{color:red; font-weight:bold; padding:5px;}
+.celebrity-block-right .errors{color:red; font-weight:bold;}
 
-/* Begin style Sign In */
+
 
 .sign_in_content {
 width: 360px;
@@ -610,20 +610,35 @@ width: 230px;
 margin: 0px 0px 10px 0px;
 text-align: right;
 }
-.align-right {
-text-align: right;
-margin-top:20px;
-}
+
+.line_break {border-top: 1px solid #dfdfdf;
+margin-top: 30px;
+padding-top: 20px;
+position: relative;
+overflow: visible;}
+
+.mm_or{top: 69px;
+color: #black;
+font-size: bold;
+background-color: #F9F9F9;
+position: absolute;
+text-align: center;
+
+top: -8px;
+width: 40px;
+overflow: visible;
+left: 150px;}
+
 .button {
 border: 1px solid #C0C0C0;
 margin: 5px auto ;
-width: 200px;
+width: 190px;
 cursor: pointer;
 text-align: center;
 background-color: #FFFCAB;
 background: -moz-linear-gradient(center top , #FFFCAB, #E3AD29) repeat scroll 0% 0% transparent;
 background-image: -ms-linear-gradient(top , #FFFCAB 0%, #E3AD29 100%);
-/* background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530)); */
+
 background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
 padding: 5px 12px;
 color: #0000;
@@ -638,7 +653,7 @@ margin: 3px auto;
 width:150px;
 cursor: pointer;
 text-align: center;
-/*background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530));*/
+
 background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
 background-image: -ms-linear-gradient(top , #FFFCAB 0%, #E3AD29 100%);
 background: -moz-linear-gradient(center top , #FFFCAB, #E3AD29) repeat scroll 0% 0% transparent;
@@ -655,7 +670,7 @@ margin: 3px auto;
 width:85px;
 cursor: pointer;
 text-align: center;
-/*background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530));*/
+
 background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
 background-image: -ms-linear-gradient(top , #FFFCAB 0%, #E3AD29 100%);
 background: -moz-linear-gradient(center top , #FFFCAB, #E3AD29) repeat scroll 0% 0% transparent;
@@ -666,7 +681,26 @@ text-indent: 0;
 font-size: 16px;
 padding: 6px 12px 6px 12px;
 }
+.button-blue  {
+border: 1px solid #C0C0C0;
+margin: 3px auto;
+width:190px;
+cursor: pointer;
+text-align: center;
+background: #FFFCAB;
+background: -moz-linear-gradient(center top , #FFFCAB, #E3AD29) repeat scroll 0% 0% transparent;
+background-image: -ms-linear-gradient(top , #FFFCAB 0%, #E3AD29 100%);
 
+background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
+color: white;
+letter-spacing: 1px;
+text-indent: 0;
+font-size: 16px;
+padding: 9px 4px 9px 4px;
+}
+.create-account{text-align:center; margin-top:0px;}
+.button-blue a{color:black;}
+.button-blue a:hover{color: blue;}
 .button-right {
 border: 1px solid #C0C0C0;
 margin-left:60px;
@@ -674,7 +708,7 @@ margin-bottom:10px;
 width: 230px;
 cursor: pointer;
 text-align: center;
-/* background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#ffd772),color-stop(0.72,#ffc530)); */
+
 background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#FFFCAB),color-stop(0.72,#E3AD29));
 padding: 5px 12px;
 color: #0000;
@@ -712,68 +746,13 @@ font-size: 16px;
 font-weight: normal;
 padding: 0px 0px 0px 10px;
 }
-.social-facebook-login {padding-top:15px; width:203px;margin:0 auto;}
+.social-facebook-login {padding-top:15px; width:195px;margin:0 auto;}
 
 
-/* End style Sign In */
 
 
-/* Begin Celebrity List*/
 
-.celeb-list{list-style: none;
-margin: 5px 0;}
-.celeb-list li {
-list-style: none;
-border-bottom: 1px solid #CCC;
-width:650px;
-height:90px;
 
-margin: 10px 0;
-padding: 5px 0;
-}
-.celeb-left{float:left; }
-.celeb-list-post {
-width: 646px;
-padding: 3px;
-}
-
-.celeb-list-post {
-width: 130px;
-padding: 0 10px;
-text-align: left;
-}
-.celeb-thumb a img {
-float: left;
-width: 120px;
-height: 80px;
-padding: 2px;
-border: 1px solid #CCC;
-background: white;
-border-radius: 3px;
-box-shadow: 0 0 3px #BBB;
-font-size: 0;
-line-height: 0;
-
-}
-.celeb-details {
-width: 460px;
-float:left;
-}
-.celeb-rate {color: #f70050;
-font-weight: bold;
-font-size:45px;
-in-height: 50px;
-padding-left:10px;
-line-height: 24px;}
-h3, {
-color: black !important;
-margin: 0px;
-padding: 0px;
-}
-.celeb-count{padding-left:10px;}
-.celeb-name{font-size: 28px;
-font-weight: bold;
-color: #333;}
 
 
 .celebrity-list-content{
@@ -803,10 +782,10 @@ color: #333;}
     }       
 
 
-/* end Celebrity List page*/
 
 
-/* Begin profile page*/
+
+
 
 .account-wrapper {
 position: relative;
@@ -885,11 +864,11 @@ font-size: 14px;
 }
 
 
-/* end profile page*/
 
 
 
-/* Begin style for Sign Up */
+
+
 
 
 .sign_up_content{
@@ -918,7 +897,7 @@ margin: 10px;
 float:left;
 width:305px;
 }
-.sign_up_right img{padding-top:8px;}
+.sign_up_right img{padding-bottom:10px}
 
 .sign_up_content .box .row {
 margin: 0px 0px 5px 0px;
@@ -932,7 +911,6 @@ font-size:11px;
 
 .align-right {
 text-align: center;
-margin-top:20px;
 }
 .align-left {
 text-align: center;
@@ -952,10 +930,10 @@ float: right;
 border-left: dotted 1px #C0C0C0;
 }
 .sign_up_content .social_sign .social_sign_header {
-font-size: 16px;
+font-size: 14px;
 font-weight: bold;
 line-height: 16px;
-margin: 0px 0px 5px 0px;
+margin: 0px 0px 3px 0px;
 }
 
 .social_sign_body p{
@@ -972,10 +950,10 @@ line-height: 18px;
 
 
 
-/* Begin style for Sign Up */
 
 
-/* Begin style for header */
+
+
 #header {
 background: #4382DC;
 background: -moz-linear-gradient(top,#4382DC,#3D69B5);
@@ -998,22 +976,22 @@ box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
     line-height: 1.5;
 }
 
-/* End style for header */
 
 
-/*Begin Advertising*/
+
+
 
 .advertising-right{
     width:310px;
     float:right;
     }
 
-/*End Advertising*/
-
-/*Articles */
 
 
-/*End Articles */
+
+
+
+
 
 .articles-content{
     position:relative;
@@ -1040,7 +1018,7 @@ box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
       }
 #articles-top span {
 width:400xp;
-}		       
+}              
 #search-right{
     float:right;
     }
@@ -1057,7 +1035,7 @@ padding: 0;
 .articles li {
 list-style: none;
 border: 1px solid #CCC;
-margin: 20px 0;
+margin: 10px 0;
 padding: 10px 0;
 }
 .newsPost {
@@ -1113,12 +1091,12 @@ margin-top:8px;
 margin: 0;
 }
 
-/* Begin Style Media */
 
 
 
-/* End Begin Media */
-/* Begin style for footer */
+
+
+
 #footer {
 color: #666;
 font-family: Arial,Verdana,Helvetica,sans-serif;
@@ -1172,10 +1150,7 @@ width: 1130px;
 #menubar .menuitem a:hover {    
     color:#fff;
     background: #3D3E43;
-    /*background:#3f6d1a;
-    background:rgba(63,109,26, 0.5);
-    -webkit-box-shadow:inset 0 0 4px #78985e;
-    box-shadow:inset 0 0 4px #78985e;*/
+    
 }
 
 #menubar .signitem a {
@@ -1200,7 +1175,7 @@ border-right-width: 1px;
 #menubar .signitem a:hover {
     color: #CCC;
 }
-/*searchbar*/
+
 #searchBar {
 float:left;
 display: inline-block;
@@ -1243,7 +1218,7 @@ height: 23px;
 }
  .magnify {
  margin-top:2px;
-background: url('../images/magni_glass.png') transparent no-repeat top left;
+background: url("http://celebritydbag.com/static/images/magni_glass.png") transparent no-repeat top left;
 height: 18px;
 width: 18px;
 overflow:visible;
@@ -1252,10 +1227,10 @@ overflow:visible;
 display: inline-block;
 vertical-align: text-bottom;
 }
-/* End style for menubar */
 
 
-/* Begin style for bg-elements */
+
+
 .bg-elements {
     padding: 0px;   
     border-bottom: 1px solid white;
@@ -1296,9 +1271,9 @@ box-shadow: inset 0 0 15px #CCC;
     font-size: 37px;}
 
 
-/* End style for bg-elements */
 
-/* Begin style for container */
+
+
 #container {
     width: 800px;
     margin: 0px auto;
@@ -1333,15 +1308,15 @@ box-shadow: inset 0 0 15px #CCC;
 
 
 
-/* End style for container */
 
 
 
 
-/* specific for contact in contactus */
 
 
-/*Contact Us*/
+
+
+
 #email-content {
 width: 580px;
 margin: 0px auto;
@@ -1374,9 +1349,9 @@ vertical-align: middle;
     
     
     
-/*end contact us*/
 
-/*Begin Advertise Page*/
+
+
 
 .advertise-content{
     position: relative;
@@ -1440,10 +1415,10 @@ padding-right: 10px;
 .color-blue{width:8px;height:8px;background-color:#3567ae;float:left; margin-top:4px; margin-right:3px;}
 .color-green{width:8px;height:8px;background-color:#459602;float:left; margin-top:4px; margin-right:3px;}
 .color-grey{width:8px;height:8px;background-color:#a9a9a9;float:left; margin-top:4px; margin-right:3px;}
-/*End Advertise Page*/
 
 
-/*Begin Terms Page*/
+
+
 
 .terms-content {
 width: 750px;
@@ -1453,27 +1428,27 @@ border: solid 3px #4382DC;
 background-color: #F9F9F9;
 }
 .terms-content h3, .terms-content h1 {
-padding-left:10px;}
+padding-left:10px;margin-bottom:0px;padding-bottom:0px;}
 
 
 .terms-content p {
 font-size: 12px;
 font-weight: normal;
-line-height: 18px;
-padding:10px 10px 0 10px;
+line-height: 20px;
+padding:0px 10px 0 10px;
 }
 
 .terms-box{
 border: 1px solid #D9D9D9;
-width:100%;
 
+padding:5px 10px 10px 10px;
 }
-
-/*End Terms Page*/
-
+.indent {text-indent:10px;}
 
 
-/*Begin forgot*/
+
+
+
 .forgot-content {
 position:relative;
 width: 350px;
@@ -1516,7 +1491,3 @@ vertical-align: middle;
 
 
 
-/*
-.rating{width:230!important;}
-#rate{width:230!important;}
-end forgot
