@@ -483,11 +483,14 @@ border-radius: 2px;
 -webkit-border-radius: 2px;
 }
 .dbags-rating {
-float:right;
-margin-top:20px;
-width: 190px;
+    float:right;
+    margin-top:20px;
+    width: 230px;
 }
-.rating{width:230;}
+.rating img {
+    margin: 0 2px;
+}
+
 .height-full {
     height: 100%;
 }
