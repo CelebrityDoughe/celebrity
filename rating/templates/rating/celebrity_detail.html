@@ -78,7 +78,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="rate" id="rate_score" />
                         <div class="celebrity-block-right">
-                            <textarea id="review_text" class="review clearfix" placeholder="Add a Comment" style="height: 38px;" name="review"></textarea>
+                            <textarea id="review_text" class="review clearfix" placeholder="Add a Comment" name="review"></textarea>
                             {% if form.review.errors %}
                                 <div class="errors">Please add your review</div>
                             {% endif %}
