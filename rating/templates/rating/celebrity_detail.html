@@ -102,7 +102,7 @@
                     <img class="critic_thumb media_block_image" src="{{ rating.user.get_profile.get_mugshot_url }}">
                     <div class="media_block_content">
                         <div class="bold">
-                            <p>{{ rating.user.get_full_name|default_if_empty:user.username }}</p>
+                            <p>{{ rating.user.get_full_name|default_if_empty:rating.user.username }}</p>
                         </div>
                     </div>
                 </div>
