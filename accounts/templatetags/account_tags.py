@@ -11,6 +11,6 @@ def default_if_empty(value, arg):
     String: None, ''
     Integer: None, 0
     """
-    if not value:
+    if not value.strip():
         return arg
     return value
