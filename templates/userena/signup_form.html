@@ -1,12 +1,13 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
+
 {% block title %}{% trans "Signin" %}{% endblock %}
+
 {% block content %}
 <div id="header-bar">
     <div id="header-bar-container">
         <h2>Sign Up</h2>
     </div>
-
 </div>
 
 <div class="sign_up_content">
@@ -16,22 +17,24 @@
             <form method="post">
                 {% csrf_token %}
                 {% if form.errors %}
-                <div class="errors-header">Please correct the following fields:</div>
+                <div class="errors-header">
+                    Please correct the following fields:
+                </div>
                 {% endif %}
 
                 {% for field in form %}
-                    <div class="row">
-                        {% if field.errors %}
-                            <div class="errors">
-                                {{ field.errors}}
-                            </div>
-                        {% endif %}
-                        <!--<label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>-->
-                        <div>
-                            <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
-                            {{ field }}
-                        </div>
+                <div class="row">
+                    {% if field.errors %}
+                    <div class="errors">
+                        {{ field.errors}}
                     </div>
+                    {% endif %}
+                    <!--<label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>-->
+                    <div>
+                        <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
+                        {{ field }}
+                    </div>
+                </div>
                 {% endfor %}
 
                 <div class="align-left">
@@ -47,29 +50,29 @@
                         Sign up with your Twitter account
                     </div>
                     <div class="social_sign_body">
-                    
+
                     </div>
                     <div class="footer">
                         <a href="{% url 'socialauth_begin' 'twitter' %}"><img src="/static/images/logintwitter.png" ></a>
                     </div>
                 </div>
-                   <div class="social_sign">
+                <div class="social_sign">
                     <div class="social_sign_header">
                         Sign up with your Facebook account
                     </div>
                     <div class="social_sign_body">
-                     
+
                     </div>
                     <div class="footer">
                         <a href="{% url 'socialauth_begin' 'facebook' %}"><img src="/static/images/loginfacebook.png" ></a>
                     </div>
                 </div>
-                    <div class="social_sign">
+                <div class="social_sign">
                     <div class="social_sign_header">
                         Sign up with your Google account
                     </div>
                     <div class="social_sign_body">
-                      
+
                     </div>
                     <div class="footer">
                         <a href="{% url 'socialauth_begin' 'facebook' %}"><img src="/static/images/logingoogle.png" ></a>

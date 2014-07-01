@@ -4,9 +4,9 @@
 {% block title %}Celebrity:  {{ celebrity.name }}{% endblock %}
 
 {% block content %}
-    <div id="header-bar">
+<div id="header-bar">
     <div id="header-bar-container"><h3>Tell us if {{ celebrity.name }} is a nice person or a douchebag.</h3></div>
-		</div>
+</div>
 
 <div class="celebrity-content">
     <div class="celebrity-content-top">
@@ -26,44 +26,35 @@
                             <span>We have no information about this person</span>
                         {% endif %}
                     </p>
-                    <div id="top_message">
-			Make a comment before submitting your rating. 
-			</div>
+                    <div id="top_message">Make a comment before submitting your rating.</div>
                     <div id="rating-numbers" class="rating-container" >
-                   
                         <a class="rating-box" style="display:block;" href="#contentReviews">
-                      
-                             {% if rating_avg >= 4.5 %}
-                        <img src="{% static 'images/celebritybad.png' %}" />
-                        {% elif rating_avg < 4.5 and rating_avg > 0 %}
-                        <img src="{% static 'images/celebritygood.png' %}" />
-                        {% elif not rating_avg %}
-                         <img src="{% static 'images/notyetrated.png' %}" />
-                        {%endif%}
-                        
+                            {% if rating_avg >= 4.5 %}
+                                <img src="{% static 'images/celebritybad.png' %}" />
+                            {% elif rating_avg < 4.5 and rating_avg > 0 %}
+                                <img src="{% static 'images/celebritygood.png' %}" />
+                            {% elif not rating_avg %}
+                                <img src="{% static 'images/notyetrated.png' %}" />
+                            {%endif%}
                             <span class="rate number">
                                 {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %}
                             </span>
-                        </a>     
-									
-												<div class="your-rating">
-														Your Rating:
-																	 <div class="rating-stats">
-
-                                Ratings Count: <span>{{ rating_count }}</span></p>
-                               </div>
-                               </div>
+                        </a>
+                        <div class="your-rating">
+                            Your Rating:
+                            <div class="rating-stats">
+                                Ratings Count: <span>{{ rating_count }}</span>
+                           </div>
+                        </div>
                         <div class="dbags-rating">
                             <div class="dbags-align">
-                                <span style="width:100%;">
-                                   <div id="rate" class="rating"></div>
-                            {% if form.rate.errors %}
-                                <p>Please mark your rating here</p>
-                            {% endif %}
-                                                        </div>
-                        
+                                <span style="width:100%;"></span>
+                                <div id="rate" class="rating"></div>
+                                {% if form.rate.errors %}
+                                    <p>Please mark your rating here</p>
+                                {% endif %}
+                            </div>
                         </div>
-                       
                         <p class="celebrity-known-for">
                            {{ celebrity.description }} 
                         </p>
@@ -87,7 +78,6 @@
                         {% csrf_token %}
                         <input type="hidden" name="rate" id="rate_score" />
                         <div class="celebrity-block-right">
-                           
                             <textarea id="review_text" class="review clearfix" placeholder="Add a Comment" style="height: 38px;" name="review"></textarea>
                             {% if form.review.errors %}
                                 <div class="errors">Please add your review</div>
@@ -99,14 +89,12 @@
                         </div>
                     </form>
                 {% endif %}
-
             </div>
-                <!-- Go to your Addthis.com Dashboard to update any options -->
-<div class="addthis_sharing_toolbox float_right"></div>
+            <!-- Go to your Addthis.com Dashboard to update any options -->
+            <div class="addthis_sharing_toolbox float_right"></div>
         </div>
         <div class="quote_bubble top_critic fl cl">
             <span class="f1">All Comments</span>
-
             {% for rating in celebrity.rates.all %}
             <div class="review_quote_top"></div>
             <div class="review_quote">
