@@ -117,6 +117,7 @@ AUTHENTICATION_BACKENDS = (
     # facebook/twitter signin/signup
     'social_auth.backends.facebook.FacebookBackend',
     'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.google.GoogleOAuth2Backend',
 
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -137,6 +138,8 @@ TWITTER_CONSUMER_SECRET = ''
 FACEBOOK_APP_ID = ''
 FACEBOOK_API_SECRET = ''
 FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+GOOGLE_OAUTH2_CLIENT_ID = ''
+GOOGLE_OAUTH2_CLIENT_SECRET = ''
 
 # this setting is changed because of social login with facebook
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
