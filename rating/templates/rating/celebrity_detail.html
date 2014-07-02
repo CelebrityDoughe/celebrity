@@ -18,33 +18,33 @@
             <div class="celebrity-box" >
                 <div class="celebrity-inside-box rating-side">
                     <p class="rating-result-words" sub="hover">
-                        {%if rating_avg >= 4.5 %}
+                        {%if celebrity.average_rate >= 4.5 %}
                             <span>This celebrity is a douche bag</span>
-                        {% elif rating_avg < 4.5 and rating_avg > 0 %}
+                        {% elif celebrity.average_rate < 4.5 and celebrity.average_rate > 0 %}
                             <span>This celebrity is a nice person</span>
-                        {% elif not rating_avg %}
+                        {% elif not celebrity.average_rate %}
                             <span>We have no information about this person</span>
                         {% endif %}
                     </p>
                     <div id="rating-numbers" class="rating-container" >
                         <a class="rating-box" style="display:block;" href="#contentReviews">
-                            {% if rating_avg >= 4.5 %}
+                            {% if celebrity.average_rate >= 4.5 %}
                                 <img src="{% static 'images/celebritybad.png' %}" />
-                            {% elif rating_avg < 4.5 and rating_avg > 0 %}
+                            {% elif celebrity.average_rate < 4.5 and celebrity.average_rate > 0 %}
                                 <img src="{% static 'images/celebritygood.png' %}" />
-                            {% elif not rating_avg %}
+                            {% elif not celebrity.average_rate %}
                                 <img src="{% static 'images/notyetrated.png' %}" />
                             {%endif%}
                             <span class="rate number">
-                                {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %}
+                                {% if celebrity.average_rate %}{{ celebrity.average_rate|floatformat:1 }}{% else %}0.0{% endif %}
                             </span>
                         </a>
                         <div class="your-rating">
-                            Your Rating:
                             <div class="rating-stats">
-                                Ratings Count: <span>{{ rating_count }}</span>
+                                Ratings Count: <span>{{ celebrity.rate_count }}</span>
                            </div>
                         </div>
+                        {% if not my_rating %}
                         <div class="dbags-rating">
                             <div class="dbags-align">
                                 <span style="width:100%;"></span>
@@ -54,6 +54,7 @@
                                 {% endif %}
                             </div>
                         </div>
+                        {% endif %}
                         <p class="celebrity-known-for">
                            {{ celebrity.description }} 
                         </p>
@@ -129,6 +130,6 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script type="text/javascript" src="{% static 'raty/jquery.raty.js' %}"></script>
+<script type="text/javascript" src="{% static 'raty/jquery.raty.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/rate.js' %}"></script>
 {% endblock %}

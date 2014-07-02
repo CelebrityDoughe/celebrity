@@ -327,7 +327,7 @@ background-position: -194px 0;
     width: 395px;
     resize: none;
     background-color: #F9FAFE;
-    height: 100px;
+    height: 40px;
     border: 1px solid #d6d6d6;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -485,7 +485,7 @@ border-radius: 2px;
 .dbags-rating {
     float:right;
     margin-top:20px;
-    width: 240px;
+    width: 200px;
 }
 .rating img {
     margin: 0 2px;

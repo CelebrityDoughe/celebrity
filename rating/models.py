@@ -12,7 +12,6 @@ class Celebrity(models.Model):
         ('musician', 'Musicians'),
         ('tv', 'TV'),
         ('radio', 'Radio'),
-        ('sport', 'Sports'),
         ('politician', 'Politicians'),
         ('athlete', 'Athletes'),
     )
@@ -23,6 +22,8 @@ class Celebrity(models.Model):
                                    choices=CELEBRITY_CHOICES)
     description = models.TextField(blank=True)
     image1 = models.ImageField(upload_to="images/celebritypics")
+    average_rate = models.FloatField(default=0, db_index=True, null=True)
+    rate_count = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.name

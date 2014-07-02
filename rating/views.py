@@ -26,7 +26,7 @@ class CategoryView(ListView):
         """
         Display celebrity by category
         """
-        return Celebrity.objects.filter(specificity=self.kwargs['slug'])
+        return Celebrity.objects.filter(specificity=self.kwargs['slug']).order_by('-average_rate')[:10]  # noqa
 
     def get_context_data(self, **kwargs):
         """
@@ -61,8 +61,6 @@ class CelebrityDetailView(FormView):
         """
         context = super(CelebrityDetailView, self).get_context_data(**kwargs)
         celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
-        rating_count = Rating.objects.filter(celebrity=celebrity).count()
-        rating_avg = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]  # noqa
 
         my_rating = None
         if self.request.user.is_authenticated():
@@ -71,21 +69,21 @@ class CelebrityDetailView(FormView):
             if my_ratings.exists():
                 my_rating = my_ratings[0]
 
-        context.update({'rating_count': rating_count,
-                        'rating_avg': rating_avg,
-                        'celebrity': celebrity,
-                        'my_rating': my_rating
-                        })
+        context.update({'celebrity': celebrity, 'my_rating': my_rating})
         return context
 
     def form_valid(self, form):
         """
         Save rating.
         """
+        celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
         rating = form.save(commit=False)
-        rating.celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
+        rating.celebrity = celebrity
         rating.user = self.request.user
         rating.save()
+        celebrity.rate_count = Rating.objects.filter(celebrity=celebrity).count()  # noqa
+        celebrity.average_rate = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]  # noqa
+        celebrity.save()
         return super(CelebrityDetailView, self).form_valid(form)
 
 
@@ -107,7 +105,7 @@ class SearchView(AjaxResponseMixin, JSONResponseMixin, View):
                 'category': cele.get_specificity_display()})
         return self.render_json_response(celebrities_json)
 
-    def post(self, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         keyword = self.request.POST.get('keyword', None)
         if keyword:
             objects = Celebrity.objects.filter(name__icontains=keyword)
@@ -117,3 +115,8 @@ class SearchView(AjaxResponseMixin, JSONResponseMixin, View):
                 context_instance=RequestContext(self.request))
 
         return redirect("/")
+
+    def get(self, request, *args, **kwargs):
+        return render_to_response(
+            'search-result.html',
+            context_instance=RequestContext(self.request))
