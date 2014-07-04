@@ -1105,5 +1105,86 @@
         "name": "Can delete profile", 
         "content_type": 9
     }
+},
+{
+    "pk": 124, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "add_contact", 
+        "name": "Can add contact", 
+        "content_type": 41
+    }
+},
+{
+    "pk": 125, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "change_contact", 
+        "name": "Can change contact", 
+        "content_type": 41
+    }
+},
+{
+    "pk": 126, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "delete_contact", 
+        "name": "Can delete contact", 
+        "content_type": 41
+    }
+},
+{
+    "pk": 127, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "add_newswebsite", 
+        "name": "Can add news website", 
+        "content_type": 42
+    }
+},
+{
+    "pk": 128, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "change_newswebsite", 
+        "name": "Can change news website", 
+        "content_type": 42
+    }
+},
+{
+    "pk": 129, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "delete_newswebsite", 
+        "name": "Can delete news website", 
+        "content_type": 42
+    }
+},
+{
+    "pk": 130, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "add_article", 
+        "name": "Can add article", 
+        "content_type": 43
+    }
+},
+{
+    "pk": 131, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "change_article", 
+        "name": "Can change article", 
+        "content_type": 43
+    }
+},
+{
+    "pk": 132, 
+    "model": "auth.permission", 
+    "fields": {
+        "codename": "delete_article", 
+        "name": "Can delete article", 
+        "content_type": 43
+    }
 }
 ]

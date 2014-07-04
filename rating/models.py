@@ -37,11 +37,15 @@ class Rating(models.Model):
     """
     Rating model
     """
-    user = models.ForeignKey(User)
+    user_id = models.IntegerField(db_index=True, blank=True, null=True)
     celebrity = models.ForeignKey(Celebrity, related_name="rates")
     rate = models.SmallIntegerField(default=0)
     review = models.TextField()
     dt_updated = models.DateTimeField(auto_now=True)
+
+    @property
+    def user(self):
+        return User.objects.get(id=self.user_id)
 
     def __unicode__(self):
         return "%s - %d" % (self.user.username, self.rate)

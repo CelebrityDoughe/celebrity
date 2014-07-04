@@ -7,14 +7,21 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.mysql',
-        'NAME': 'mydatabase',
-        'USER': 'mydatabaseuser',
-        'PASSWORD': 'mypassword',
+        'NAME': 'celebrity_db_2',
+        'USER': 'username',
+        'PASSWORD': 'password',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PORT': '3306'
+    },
+    'celebrity': {
+        'ENGINE':'django.db.backends.mysql',
+        'NAME': 'celebrity_db_2',
+        'USER': 'username',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
-
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.sendgrid.net'

@@ -7,7 +7,7 @@ class DBRouter(object):
 
     def db_for_read(self, model, **hints):
         """
-        Attempts to read auth models go to celebrity_db_2.
+        Attempts to read auth models go to celebrity.
         """
         if model._meta.app_label == 'rating':
             return 'celebrity'
@@ -15,7 +15,7 @@ class DBRouter(object):
 
     def db_for_write(self, model, **hints):
         """
-        Attempts to write auth models go to celebrity_db_2.
+        Attempts to write auth models go to celebrity.
         """
         if model._meta.app_label == 'rating':
             return 'celebrity'
@@ -32,10 +32,10 @@ class DBRouter(object):
 
     def allow_migrate(self, db, model):
         """
-        Make sure the auth app only appears in the 'celebrity_db_2'
+        Make sure the auth app only appears in the celebrity
         database.
         """
-        if db == 'celebrity_db_2':
+        if db == 'celebrity':
             return model._meta.app_label == 'rating'
         elif model._meta.app_label == 'rating':
             return False

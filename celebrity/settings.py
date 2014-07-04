@@ -74,6 +74,12 @@ DATABASES = {
         'NAME': 'celebrity_db',
         'USER': 'username',
         'PASSWORD': 'password'
+    },
+    'celebrity': {
+        'ENGINE':'django.db.backends.mysql',
+        'NAME': 'celebrity_db_2',
+        'USER': 'username',
+        'PASSWORD': 'password'
     }
 }
 

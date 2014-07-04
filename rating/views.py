@@ -66,7 +66,7 @@ class CelebrityDetailView(FormView):
         my_rating = None
         if self.request.user.is_authenticated():
             my_ratings = Rating.objects.filter(celebrity=celebrity,
-                                               user=self.request.user)
+                                               user_id=self.request.user.id)
             if my_ratings.exists():
                 my_rating = my_ratings[0]
 
@@ -80,7 +80,7 @@ class CelebrityDetailView(FormView):
         celebrity = Celebrity.objects.get(slug=self.kwargs['slug'])
         rating = form.save(commit=False)
         rating.celebrity = celebrity
-        rating.user = self.request.user
+        rating.user_id = self.request.user.id
         rating.save()
         celebrity.rate_count = Rating.objects.filter(celebrity=celebrity).count()  # noqa
         celebrity.average_rate = Rating.objects.filter(celebrity=celebrity).aggregate(Avg('rate')).values()[0]  # noqa
