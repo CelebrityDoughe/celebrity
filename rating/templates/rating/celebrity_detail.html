@@ -1,6 +1,10 @@
 {% extends "base_generic.html" %}
 {% load staticfiles range_tag account_tags %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+{% endblock %}
+
 {% block title %}Celebrity:  {{ celebrity.name }}{% endblock %}
 
 {% block content %}
@@ -131,5 +135,6 @@
 
 {% block extra_scripts %}
 <script type="text/javascript" src="{% static 'raty/jquery.raty.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/rate.js' %}"></script>
 {% endblock %}

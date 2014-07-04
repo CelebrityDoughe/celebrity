@@ -26,4 +26,13 @@ $(document).ready(function() {
             return $(this).is('.readonly');
         }
     });
+
+    // update default tooltip with Bootstrap tooltip
+    // $('#rate img').each(function(){
+        // var title = $(this).attr('title');
+        // $(this).removeAttr('title').data('content', title).data('placement', 'top').data('trigger', 'hover');
+    // }).popover();
+    $('#rate img').each(function(){
+        $(this).data('placement', 'top');
+    }).tooltip();
 });
