@@ -11,6 +11,7 @@ from django.views.generic.list import ListView
 
 from braces.views import AjaxResponseMixin, JSONResponseMixin
 
+from .constants import CATEGORY_TITLE
 from .forms import RatingForm
 from .models import Celebrity, Rating
 
@@ -33,7 +34,7 @@ class CategoryView(ListView):
         Add extra data to context
         """
         data = super(CategoryView, self).get_context_data(**kwargs)
-        data.update({'category': self.kwargs['slug'].title()})
+        data.update({'category': CATEGORY_TITLE[self.kwargs['slug']]})
         return data
 
 

@@ -2,18 +2,22 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from .constants import(
+    ACTOR, MUSICIAN, TV, RADIO, POLITICIAN, ATHLETE
+)
+
 
 class Celebrity(models.Model):
     """
     Celebrity Model
     """
     CELEBRITY_CHOICES = (
-        ('actor', 'Actors'),
-        ('musician', 'Musicians'),
-        ('tv', 'TV'),
-        ('radio', 'Radio'),
-        ('politician', 'Politicians'),
-        ('athlete', 'Athletes'),
+        (ACTOR, 'Actors'),
+        (MUSICIAN, 'Musicians'),
+        (TV, 'TV'),
+        (RADIO, 'Radio'),
+        (POLITICIAN, 'Politicians'),
+        (ATHLETE, 'Athletes'),
     )
 
     name = models.CharField(max_length=200, db_index=True)
