@@ -4,7 +4,7 @@
         <meta charset="utf-8">
 
         <title>CelebrityDbag - Page not found (Error 404)</title>
-
+ <link rel="shortcut icon" href="{% static 'images/douchebagicon.ico' %}">
         <meta http-equiv="Cache-Control" content="no-cache">
         <meta http-equiv="Expires" content="0">
         <link rel="stylesheet" href="{% static 'css/404.css' %}"/>
@@ -26,12 +26,7 @@
                         <h2 class="headline"><span class="page-status">404 error.</span>
                         <br>
                         Oops. We took a wrong turn somewhere and this douchebag got lost. </h2>
-
-                        <p class="message">
-                            Go back to our home page or search for a celebrity.
-                        </p>
-
-                        <div id="searchBar">
+ <div id="searchBar">
                             <form method="post" action="/search/" style="position:relative;">
                                 {% csrf_token %}
                                 <fieldset>
@@ -44,12 +39,25 @@
                                 </fieldset>
                             </form>
                         </div>
+                        <p class="message">
+                            Go back to our home page or search for a celebrity.
+                        </p>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="footer">
+      <div id="footer">
+    <a href="{% url 'portals:advertise' %}">Advertise</a><a href="{% url 'portals:flat_page' 'terms' %}">Terms and Contentions</a><a href="{% url 'portals:contact' %}">Contact Us</a>
+    <div class="copyright">
+        <div class="font-12 color-primary">
+            Â© Copyright 2014 CelebrityDbag.com,
         </div>
+        <div class="font-12 color-primary">
+            All rights reserved Various trademarks held by their respective owners.
+        </div>
+    </div>
+</div>
     </body>
 </html>
