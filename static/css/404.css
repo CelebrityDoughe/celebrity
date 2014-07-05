@@ -66,11 +66,10 @@ ol, ul {
     padding: 0px;
 }
 .app-header {
-background: #4382DC;
-background: -moz-linear-gradient(top,#4382DC,#3D69B5);
-background-image: -ms-linear-gradient(top , #4382DC 0%, #3D69B5 100%);
-background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#4382DC),color-stop(0.72,#3D69B5));
-border: 1px solid #294D75;
+background: #005291;
+background: -moz-linear-gradient(top,#005291,#004376);
+background-image: -ms-linear-gradient(top , #005291 0%, #004376 100%);
+background: -webkit-gradient(linear,left top,left bottom,color-stop(0.28,#005291),color-stop(0.72,#004376));
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#545454',endColorstr='#222222',GradientType=0);
 height: 105px;
 width: 100%;
@@ -85,15 +84,10 @@ padding: 6px 15px;
 .error-page .app-header .header-title {
 text-align: center;
 }
-.header-title {
-color: #fff;
-text-shadow: 0 -1px 0 #9b0e00;
--webkit-font-smoothing: antialiased;
-}
-.app-header .logo {
-background:url(../images/meandouchesmaller.png) no-repeat;
-float: left;
 
+.app-header .logo {
+background:url(../images/celebritybad.png) no-repeat;
+float: left;
 height: 105px;
 width: 111px;
 margin: 9px 15px 9px 0;
@@ -130,10 +124,9 @@ width: 960px;
 min-height: 365px;
 margin: 0 auto;
 padding: 65px 14px 30px;
-background: url(//s3-media1.ak.yelpcdn.com/assets/2/www/img/8540db29d6b3/error/detective-darwin.gif) no-repeat bottom right;
 }
 .error-page .media-body {
-width: 60%;
+width: 80%;
 float: right;
 }
 .error-page .headline {
@@ -159,6 +152,7 @@ line-height: 1.25em;
 .error-page .message {
 margin-bottom: 30px;
 line-height: 1.5;
+padding-top: 12px;
 }
 
 /* Search */
@@ -166,7 +160,6 @@ line-height: 1.5;
 float: left;
 display: inline-block;
 zoom: 1;
-margin-left: 8px;
 vertical-align: top;
 margin-top: 2px;
 overflow: visible;
@@ -204,6 +197,41 @@ height: 23px;
 width: 400xp;
 }
 
+ .magnify {
+ margin-top:2px;
+background: url("http://celebritydbag.com/static/images/magni_glass.png") transparent no-repeat top left;
+height: 18px;
+width: 18px;
+overflow:visible;
+}
+.icon {
+display: inline-block;
+vertical-align: text-bottom;
+}
 
+#footer {
+color: #666;
+font-family: Arial,Verdana,Helvetica,sans-serif;
+font-size: 10px;
+line-height: 16px;
+text-align: center;
+}
+
+.footer-words {
+text-align: center;
+
+}
+#footer a {
+color: #666;
+    font-size: 12px;
+    margin-right:10px;
+}
+
+#footer a:hover {
+    color: #58be03;
+}   
+
+#footer .info {
+    margin: 3px 0px 20px 0px;
 
 /*End Search*/
