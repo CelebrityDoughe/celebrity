@@ -1,6 +1,6 @@
 {% extends "base_generic.html" %}
 {% load staticfiles %}
-{% block title %}Category | {{ category }}{% endblock %}
+{% block title %}{{ category }}{% endblock %}
 
 {% block content %}
 
@@ -13,6 +13,7 @@
 <div class="celebrity-list-content">
     <div class="celebrity-list-left">
         <div id="celebrity-list-top">
+        Top 10 Douchebag {{ category }}
             <div id="search-right">
                 <div id="searchBar">
                     <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
@@ -36,15 +37,15 @@
                     {% for celebrity in celebrity_list %}
                     <li>
                         <div class="celeb-list-post celeb-left">
-                            <div class="celeb-thumb celeb-left">
+                            <div class="celeb-thumb ">
                             <a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}"><img src="{{ celebrity.image1.url }}" width="150" height="150" /></a></div>
                         </div>
                         <div class="celeb-details celeb-left">
-                            <div class="celeb-name celeb-left">
+                            <div class="celeb-name">
                                 <a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a>
                             </div>
-                            <div class="celeb-rate celeb-left">{{ celebrity.average_rate }}</div>
-                            <div class="celeb-count celeb-left">
+                            <div class="celeb-rate ">{{ celebrity.average_rate }} <span>Score</span></div>
+                            <div class="celeb-count ">
                                 Ratings counted:<span>{{ celebrity.rate_count }}</span>
                             </div>
                         </div>
