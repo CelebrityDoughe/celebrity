@@ -24,7 +24,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['celebritydbag.com']
+ALLOWED_HOSTS = ['celebritydbag.com', 'www.celebritydbag.com']
 
 
 # Application definition
