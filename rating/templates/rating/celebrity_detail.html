@@ -44,8 +44,10 @@
                             </span>
                         </a>
                         <div class="your-rating">
+                            {% if my_rating %}
                             <div>Your Rating:</div>
                             <div class="rating readonly" data-score="{{ my_rating.rate }}"></div><br />
+                            {% endif %}
                             <div class="rating-stats">
                                 Ratings Count: <span>{{ celebrity.rate_count }}</span>
                            </div>
