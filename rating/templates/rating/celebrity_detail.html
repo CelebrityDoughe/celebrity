@@ -44,7 +44,8 @@
                             </span>
                         </a>
                         <div class="your-rating">
-                        Your Rating:
+                            <div>Your Rating:</div>
+                            <div class="rating readonly" data-score="{{ my_rating.rate }}"></div><br />
                             <div class="rating-stats">
                                 Ratings Count: <span>{{ celebrity.rate_count }}</span>
                            </div>
@@ -75,7 +76,6 @@
                 {% if my_rating %}
                     <p><b>You already rated this celebrity</b></p>
                     <div class="celebrity-block-right">
-                        <div class="rating readonly" data-score="{{ my_rating.rate }}"></div>
                         <p>{{ my_rating.review }}</p>
                     </div>
                 {% else %}

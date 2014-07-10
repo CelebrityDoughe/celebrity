@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('.rating').raty({
-        number : 8,
+        number : 10,
         width: false,
         path: '/static/images/rating/',
         iconRange: [
@@ -12,8 +12,10 @@ $(document).ready(function() {
             {range: 6, on: 'image6-hover.png', off: 'image6.png' },
             {range: 7, on: 'image7-hover.png', off: 'image7.png' },
             {range: 8, on: 'image8-hover.png', off: 'image8.png' },
+            {range: 9, on: 'image9-hover.png', off: 'image9.png' },
+            {range: 10, on: 'image10-hover.png', off: 'image10.png' },
         ],
-        hints: ['Score 1', 'Score 2', 'Score 3', 'Score 4', 'Score 5', 'Score 6', 'Score 7', 'Score 8'],
+        hints: ['Very Nice person', 'Above average nice person', 'Nice person', 'Somewhat nice', 'Somewhat of a Douchebag', 'Douchebag', 'Bigger Douchebag', 'Huge Douchebag', 'Mean and a douchebag', 'Worst person ever'],
         click: function(score, evt) {
             $('#rate_score').val(score);
             $('#top_message').show();
