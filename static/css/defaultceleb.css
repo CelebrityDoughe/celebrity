@@ -1278,7 +1278,7 @@ height: 23px;
 }
  .magnify {
  margin-top:2px;
-background: url("http://celebritydbag.com/static/images/magni_glass.png") transparent no-repeat top left;
+background: url("../images/magni_glass.png") transparent no-repeat top left;
 height: 18px;
 width: 18px;
 overflow:visible;

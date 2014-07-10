@@ -26,8 +26,7 @@
             </div>
         </div>
         <div id="searchBar">
-            <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
-                {% csrf_token %}
+            <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
                 <fieldset>
                     <div class="searchBox">
                         <input id="search-input" sub="input" name="keyword" type="text" placeholder="Search Celebrity">

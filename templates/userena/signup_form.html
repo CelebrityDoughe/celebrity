@@ -1,7 +1,7 @@
 {% extends 'userena/base_userena.html' %}
-{% load i18n %}
+{% load i18n static %}
 
-{% block title %}{% trans "Signin" %}{% endblock %}
+{% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
 <div id="header-bar">
@@ -53,7 +53,7 @@
 
                     </div>
                     <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'twitter' %}"><img src="/static/images/logintwitter.png" ></a>
+                        <a href="{% url 'socialauth_begin' 'twitter' %}"><img src="{% static 'images/logintwitter.png' %}" ></a>
                     </div>
                 </div>
                 <div class="social_sign">
@@ -64,7 +64,7 @@
 
                     </div>
                     <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'facebook' %}"><img src="/static/images/loginfacebook.png" ></a>
+                        <a href="{% url 'socialauth_begin' 'facebook' %}"><img src="{% static 'images/loginfacebook.png' %}" ></a>
                     </div>
                 </div>
                 <div class="social_sign">
@@ -75,7 +75,7 @@
 
                     </div>
                     <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'google-oauth2' %}"><img src="/static/images/logingoogle.png" ></a>
+                        <a href="{% url 'socialauth_begin' 'google-oauth2' %}"><img src="{% static 'images/logingoogle.png' %}" ></a>
                     </div>
                 </div>
             </div>

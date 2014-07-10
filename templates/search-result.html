@@ -14,11 +14,10 @@
         <div id="celebrity-list-top">
             <div id="search-right">
                 <div id="searchBar">
-                    <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
-                        {% csrf_token %}
+                    <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
                         <fieldset>
                             <div class="searchBox">
-                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" />
+                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" value="{{ keyword }}" />
                                 <button sub="submitbutton" type="submit">
                                     <span class="icon magnify"> </span>
                                 </button>
