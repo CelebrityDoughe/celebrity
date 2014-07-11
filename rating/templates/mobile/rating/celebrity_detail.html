@@ -22,19 +22,19 @@
                 <div class="result">
                     <span >
                         <p class="rating-result-words" sub="hover">
-                            {%if rating_avg >= 4.5 %}
+                            {%if celebrity.average_rate >= 4.5 %}
                             <span>This celebrity is a douche bag</span>
-                            {% elif rating_avg < 4.5 and rating_avg > 0 %}
+                            {% elif celebrity.average_rate < 4.5 and celebrity.average_rate > 0 %}
                             <span>This celebrity is a nice person</span>
-                            {% elif not rating_avg %}
+                            {% elif not celebrity.average_rate %}
                             <span>This celebrity has not yet benn rated.</span>
                             {% endif %}
                         </p> </span>
-                </div><span class="rate number"> {% if rating_avg %}{{ rating_avg|floatformat:1 }}{% else %}0.0{% endif %} </span></td><td class="ta-r">
+                </div><span class="rate number"> {% if celebrity.average_rate %}{{ celebrity.average_rate|floatformat:1 }}{% else %}0.0{% endif %} </span></td><td class="ta-r">
                 <div id="rating-numbers" class="rating-container" >
-                    {% if rating_avg >= 4.5 %}
+                    {% if celebrity.average_rate >= 4.5 %}
                     <img src="{% static 'images/celebritybad.png' %}" />
-                    {% elif rating_avg < 4.5 and rating_avg > 0 %}
+                    {% elif celebrity.average_rate < 4.5 and celebrity.average_rate > 0 %}
                     <img src="{% static 'images/celebritygood.png' %}" />
                     {%endif%}
                 </div></td>
@@ -51,7 +51,7 @@
         {% endif %}
     </div>
     <div class="rating-stats-mobile">
-        Ratings Counted: <span>{{ rating_count }}</span>
+        Ratings Count: <span>{{ celebrity.rate_count }}</span>
     </div>
 
     {% if not my_rating %}
