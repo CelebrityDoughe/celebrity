@@ -10,7 +10,7 @@ ATHLETE = 'athlete'
 CATEGORY_TITLE = {
     ACTOR: 'Celebrity Actors',
     MUSICIAN: 'Celebrity Musicians',
-    TV: 'Celebrity on Television',
+    TV: 'Celebrity on TV',
     RADIO: 'Celebrity on Radio',
     POLITICIAN: 'Celebrity Politcians',
     ATHLETE: 'Celebrity Athletes',
