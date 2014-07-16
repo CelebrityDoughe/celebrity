@@ -7,7 +7,7 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.mysql',
-        'NAME': 'celebrity_db_2',
+        'NAME': 'celebrity_db',
         'USER': 'username',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
@@ -35,3 +35,5 @@ TWITTER_CONSUMER_KEY         = ''
 TWITTER_CONSUMER_SECRET      = ''
 FACEBOOK_APP_ID              = ''
 FACEBOOK_API_SECRET          = ''
+GOOGLE_OAUTH2_CLIENT_ID      = ''
+GOOGLE_OAUTH2_CLIENT_SECRET  = ''

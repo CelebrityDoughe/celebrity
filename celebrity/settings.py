@@ -109,7 +109,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/static/media/'
-STATIC_ROOT = os.path.join(STATIC_ROOT, 'media')
+MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 TEMPLATE_LOADERS = (
     'django_mobile.loader.Loader',
