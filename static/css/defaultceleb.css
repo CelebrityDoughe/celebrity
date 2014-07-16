@@ -158,7 +158,6 @@ padding: 0;
 overflow: hidden;
 }
 .celebrity-box{
-position:relative;
 border: 1px solid #0059D5;
 line-height: normal;
 margin: 0;
@@ -200,10 +199,11 @@ float: left;
 margin-right: 8px;
 width: 140px;
 display: block;
+position:relative;
 }
 .celebrity-block-border .rate {
 position: absolute;
-top: 45px;
+top: 15px;
 left: 92px;
 color: #f70050;
 font-weight: bold;
@@ -486,7 +486,7 @@ border-radius: 2px;
 .dbags-rating {
     float:right;
     margin-top:20px;
-    width: 280px;
+    width: 193px;
 }
 .height-full {
     height: 100%;
@@ -1123,9 +1123,8 @@ width: 470px;}
 .newsDetails .newsHeadline {
 width: 470px;
 }
-
-.newsHeadline h3 {
-width: 480px;
+.newsDetails .newsHeadline h3 {
+padding-right:3px;
 }
 .newsHeadline h3, .npcHeadline h3 a {
 color: black !important;
@@ -1138,7 +1137,7 @@ font-size:10px;
 margin-bottom: 2px;
 }
 .newssummary p{
-padding:0;
+padding-right:3px;
 font-size: 12px;
 margin-top:8px;
 }
