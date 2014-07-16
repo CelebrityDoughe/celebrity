@@ -26,7 +26,7 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
     """
     if created:
         UserProfile(user=instance).save()
-        assign_perm('change_userprofile', instance, instance.get_profile())
+        assign_perm('change_profile', instance, instance.get_profile())
         assign_perm('change_user', instance, instance)
 
         # set random password for the social auth users
