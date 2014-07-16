@@ -8,7 +8,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
 
-from guardian.shortcuts import assign
+from guardian.shortcuts import assign_perm
 from userena.models import UserenaBaseProfile
 
 
@@ -26,8 +26,8 @@ def create_user_profile(sender, instance, created, *args, **kwargs):
     """
     if created:
         UserProfile(user=instance).save()
-        assign('change_profile', instance, instance.get_profile())
-        assign('change_user', instance, instance)
+        assign_perm('change_userprofile', instance, instance.get_profile())
+        assign_perm('change_user', instance, instance)
 
         # set random password for the social auth users
         # Or it will be "!" by default.
