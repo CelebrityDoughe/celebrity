@@ -132,11 +132,6 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-
 AUTHENTICATION_BACKENDS = (
     # normal email signin/signup
     'userena.backends.UserenaAuthenticationBackend',
