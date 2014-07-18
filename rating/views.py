@@ -106,7 +106,7 @@ class SearchView(AjaxResponseMixin, JSONResponseMixin, View):
                 'category': cele.get_specificity_display()})
         return self.render_json_response(celebrities_json)
 
-    def dispatch(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         keyword = self.request.REQUEST.get('keyword', None)
         if keyword:
             objects = Celebrity.objects.filter(name__icontains=keyword)

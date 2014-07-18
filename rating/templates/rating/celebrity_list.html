@@ -16,8 +16,7 @@
         Top 10 Douchebag {{ category }}
             <div id="search-right">
                 <div id="searchBar">
-                    <form method="post" action="{% url 'rating:search' %}" style="position:relative;">
-                        {% csrf_token %}
+                    <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
                         <fieldset>
                             <div class="searchBox">
                                 <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" />
