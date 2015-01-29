@@ -1,0 +1,25 @@
+{% extends "sliders/base.html" %}
+
+{% load thumbnail %}
+
+{% block content %}
+<br />
+<div class="container">
+    <div>
+        <a href="{% url 'sliders:list' %}">Sliders</a> /
+        <a href="{% url 'sliders:items' slider_pk=slider.id %}">Slider Items</a> /
+        <a href="{% url 'sliders:create_item' slider_pk=slider.id %}">Create Slider Item</a>
+        <hr />
+    </div>
+    <table class="table table-bordered">
+        {% for object in object_list %}
+        <tr>
+            <td><img src="{{ object.image|thumbnail_url:'small' }}" /></td>
+            <td>{{ object.description }}</td>
+            <td><a href="{% url 'sliders:update_item' slider_pk=slider.id pk=object.id %}">Edit</a></td>
+            <td><a class="confirm" href="javascript:void(0);" data-confirm="Sure?" data-url="{% url 'sliders:delete_item' slider_pk=slider.id pk=object.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

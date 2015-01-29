@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import patterns, url
 
-from .views import ContactUsView, FlatPageView, IndexView, AdvertiseView
+from .views import(
+    ContactUsView, FlatPageView, IndexView, AdvertiseView
+)
 
 
 urlpatterns = patterns(

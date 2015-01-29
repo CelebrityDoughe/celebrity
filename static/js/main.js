@@ -36,4 +36,10 @@ $(document).ready(function() {
             location.href = ui.item.url;
         },
     });
+
+    $('a.confirm').click(function(){
+        if(confirm($(this).data('confirm'))) {
+            location.href = $(this).data('url');
+        }
+    });
 });

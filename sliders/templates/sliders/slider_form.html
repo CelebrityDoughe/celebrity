@@ -1,0 +1,18 @@
+{% extends "sliders/base.html" %}
+
+{% block content %}
+<br />
+<div class="container">
+    <div>
+        <a href="{% url 'sliders:list' %}">Sliders</a>
+        <hr />
+    </div>
+    <form class="form" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <fieldset>
+            {{ form.as_p }}
+            <input class="button" type="submit" value="Create">
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
