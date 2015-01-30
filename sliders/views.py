@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.db.models import Max
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
@@ -21,6 +22,38 @@ class SliderDeleteView(SuperuserRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+
+class SliderDetailView(DetailView):
+    model = Slider
+
+    def get_context_data(self, **kwargs):
+        data = super(SliderDetailView, self).get_context_data(**kwargs)
+        slider_items = self.object.slideritem_set.all().order_by('index')
+        index = self.request.GET.get('index')
+        if not index:
+            index = slider_items[0].index
+        current_item = None
+        count = 0
+        pre_index = None
+        next_index = None
+        for i in range(len(slider_items)):
+            count += 1
+            if slider_items[i].index == int(index):
+                current_item = slider_items[i]
+                if i > 0:
+                    pre_index = slider_items[i-1].index
+                if i < len(slider_items)-1:
+                    next_index = slider_items[i+1].index
+                break
+        data.update({
+            'item': current_item,
+            'total_count': len(slider_items),
+            'count': count,
+            'pre_index': pre_index,
+            'next_index': next_index
+        })
+        return data
 
 
 class SliderListView(SuperuserRequiredMixin, ListView):
