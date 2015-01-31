@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
-{% load staticfiles thumbnail %}
+{% load staticfiles thumbnail account_tags %}
 {% block title %}Celebrity Douchebag: Actors, Musicians and Athletes nice people or doucebags{% endblock %}
 
 {% block content %}
 <div id="sliderFrame">
-    <img src="{{ item.image|thumbnail_url:'medium' }}" />
+    <img src="{{ item.image|thumbnail_url:'large' }}" style="max-width: 920px;" />
     <p>{{ item.description }}</p>
     <div class="slider-nav-buttons">
         {% if pre_index %}
@@ -19,5 +19,38 @@
         <span class="slider-nav">Next</span>
         {% endif %}
     </div>
+    <!-- comments -->
+    <div id="slider-comments" class="quote_bubble top_critic fl cl">
+        <span class="f1">All Comments</span>
+        {% for cmt in item.slideritemcomment_set.all %}
+        <div class="review_quote">
+            <div class="review_source media_block">
+                <img class="critic_thumb media_block_image" src="{{ cmt.user.get_profile.get_mugshot_url }}">
+                <div class="media_block_content">
+                    <div class="bold">
+                        <p>{{ cmt.user.get_full_name|default_if_empty:cmt.user.username }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="quote_contents media_block">
+                <div class="media_block_content">
+                    <p>{{ cmt.content }}</p>
+                    <div class="small">
+                        <span class="fr subtle">{{ cmt.created_at }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div><br />
+    <form action="{% url 'sliders:create_comment' slider_pk=object.id item_pk=item.id %}" method="post" id="form-slider-comment">
+        {% csrf_token %}
+        <div class="celebrity-block-right">
+            <textarea class="content clearfix" placeholder="Add a Comment" name="content"></textarea>
+            <div class="clearfix">
+                <input class="button-rate" type="submit" value="Submit" />
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

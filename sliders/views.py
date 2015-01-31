@@ -5,10 +5,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
-from braces.views import SuperuserRequiredMixin
+from braces.views import SuperuserRequiredMixin, LoginRequiredMixin
 
-from .forms import SliderItemForm
-from .models import Slider, SliderItem
+from .forms import SliderItemForm, SliderItemCommentCreateFrom
+from .models import Slider, SliderItem, SliderItemComment
 
 
 class SliderCreateView(SuperuserRequiredMixin, CreateView):
@@ -120,3 +120,20 @@ class SliderItemDeleteView(SuperuserRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+
+class SliderItemCommentCreateView(LoginRequiredMixin, CreateView):
+    model = SliderItemComment
+    form_class = SliderItemCommentCreateFrom
+
+    def form_valid(self, form):
+        comment = form.save(commit=False)
+        comment.item = SliderItem.objects.get(pk=self.kwargs['item_pk'])
+        comment.user = self.request.user
+        self.object = comment
+        return super(SliderItemCommentCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return '{}?index={}'.format(
+            reverse('sliders:detail', kwargs={'pk': self.kwargs['slider_pk']}),
+            self.object.item.index)

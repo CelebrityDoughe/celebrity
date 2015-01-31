@@ -10,7 +10,7 @@
 </div>
 {% include "mobile/search_form.html" %}
 <div class="celebrity-container-mobile">
-    <div class="celeb-image-wrap"><img src="{{ celebrity.image1.url }}" width="200px" height="300px" alt="{{ celebrity.name }}" itemprop="image" class="pinterestImage">
+    <div class="celeb-image-wrap"><img src="{{ celebrity.image1.url }}" style="max-width: 200px; max-height: 300px;" alt="{{ celebrity.name }}" itemprop="image" class="pinterestImage">
     </div>
     <div class="celeb-name">
         <h1>{{ celebrity.name }}</h1>

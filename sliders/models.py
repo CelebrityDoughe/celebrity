@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
 
 from easy_thumbnails.fields import ThumbnailerImageField
@@ -21,3 +22,16 @@ class SliderItem(models.Model):
     description = models.TextField(blank=True, null=True)
     index = models.IntegerField(db_index=True, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class SliderItemComment(models.Model):
+    """
+    Comment for slider item
+    """
+    user = models.ForeignKey(User)
+    item = models.ForeignKey(SliderItem)
+    content = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-id',)

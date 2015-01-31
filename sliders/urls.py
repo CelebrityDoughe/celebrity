@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 from .views import(
     SliderCreateView, SliderListView, SliderItemListView, SliderItemCreateView,
     SliderItemUpdateView, SliderItemDeleteView, SliderDeleteView,
-    SliderDetailView
+    SliderDetailView, SliderItemCommentCreateView
 )
 
 
@@ -18,4 +18,5 @@ urlpatterns = patterns(
     url(r'^(?P<slider_pk>\d+)/items/create/$', SliderItemCreateView.as_view(), name='create_item'),
     url(r'^(?P<slider_pk>\d+)/items/(?P<pk>\d+)/update/$', SliderItemUpdateView.as_view(), name='update_item'),
     url(r'^(?P<slider_pk>\d+)/items/(?P<pk>\d+)/delete/$', SliderItemDeleteView.as_view(), name='delete_item'),
+    url(r'^(?P<slider_pk>\d+)/items/(?P<item_pk>\d+)/comments/create/$', SliderItemCommentCreateView.as_view(), name='create_comment'),
 )
