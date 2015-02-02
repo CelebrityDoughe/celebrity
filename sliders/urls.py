@@ -12,7 +12,6 @@ urlpatterns = patterns(
     '',
     url(r'^$', SliderListView.as_view(), name='list'),
     url(r'^create/$', SliderCreateView.as_view(), name='create'),
-    url(r'^(?P<pk>\d+)/$', SliderDetailView.as_view(), name='detail'),
     url(r'^(?P<pk>\d+)/delete/$', SliderDeleteView.as_view(), name='delete'),
     url(r'^(?P<slider_pk>\d+)/items/$', SliderItemListView.as_view(), name='items'),
     url(r'^(?P<slider_pk>\d+)/items/create/$', SliderItemCreateView.as_view(), name='create_item'),

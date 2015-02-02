@@ -8,13 +8,13 @@
     <p>{{ item.description }}</p>
     <div class="slider-nav-buttons">
         {% if pre_index %}
-        <a class="slider-nav" href="{% url 'sliders:detail' pk=object.id %}?index={{ pre_index }}">Prev</a>
+        <a class="slider-nav" href="{% url 'public_slider' pk=object.id %}?index={{ pre_index }}">Prev</a>
         {% else %}
         <span class="slider-nav">Prev</span>
         {% endif %}
         <span>{{ count }} of {{ total_count }}</span>
         {% if next_index %}
-        <a class="slider-nav" href="{% url 'sliders:detail' pk=object.id %}?index={{ next_index }}">Next</a>
+        <a class="slider-nav" href="{% url 'public_slider' pk=object.id %}?index={{ next_index }}">Next</a>
         {% else %}
         <span class="slider-nav">Next</span>
         {% endif %}

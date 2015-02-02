@@ -12,7 +12,7 @@
         <tr>
             <td>{{ object.name }}</td>
             <td><a href="{% url 'sliders:items' slider_pk=object.id %}">Slider items</a></td>
-            <td><a target="_blank" href="{% url 'sliders:detail' pk=object.id %}">View in browser</a></td>
+            <td><a target="_blank" href="{% url 'public_slider' pk=object.id %}">View in browser</a></td>
             <td><a class="confirm" href="javascript:void(0);" data-confirm="Sure?" data-url="{% url 'sliders:delete' pk=object.id %}">Delete</a></td>
         </tr>
         {% endfor %}

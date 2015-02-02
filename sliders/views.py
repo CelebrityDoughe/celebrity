@@ -135,5 +135,5 @@ class SliderItemCommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return '{}?index={}'.format(
-            reverse('sliders:detail', kwargs={'pk': self.kwargs['slider_pk']}),
+            reverse('public_slider', kwargs={'pk': self.kwargs['slider_pk']}),
             self.object.item.index)
