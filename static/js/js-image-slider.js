@@ -1,20 +1,20 @@
 var sliderOptions=
 {
-	sliderId: "slider",
-	startSlide: 0,
-	effect: "1,4,5,6,7,8,9,12,13,14,15,17",
-	effectRandom: true,
-	pauseTime: 2600,
-	transitionTime: 500,
-	slices: 11,
-	boxes: 7,
-	hoverPause: 2,
-	autoAdvance: true,
-	captionOpacity: 0.6,
-	captionEffect: "rotate",
-	thumbnailsWrapperId: "thumbs",
-	m: false,
-	license: "b6t80"
+    sliderId: "slider",
+    startSlide: 0,
+    effect: "1,4,5,6,7,8,9,12,13,14,15,17",
+    effectRandom: true,
+    pauseTime: 2600,
+    transitionTime: 500,
+    slices: 11,
+    boxes: 7,
+    hoverPause: 2,
+    autoAdvance: true,
+    captionOpacity: 0.6,
+    captionEffect: "rotate",
+    thumbnailsWrapperId: "thumbs",
+    m: false,
+    license: "b2e93"
 };
 
 var imageSlider=new mcImgSlider(sliderOptions);

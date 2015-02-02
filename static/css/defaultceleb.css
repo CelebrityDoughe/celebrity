@@ -1,12 +1,12 @@
 body {
     margin: 0px 0px 0px 0px;
-    background-color: #F9F9F9;  
+    background-color: #F9F9F9;
 }
 
-div, img{   
+div, img{
     margin: 0;
-    padding: 0;         
-    border: none;   
+    padding: 0;
+    border: none;
     font: normal 14px ProximaNovaThin, 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     text-decoration: none;
     overflow: hidden;
@@ -14,10 +14,10 @@ div, img{
 
 a, a:hover, a:visited {
     margin: 0;
-    padding: 0;         
-    border: none;   
+    padding: 0;
+    border: none;
     font-family: ProximaNovaThin, 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-    text-decoration: none;  
+    text-decoration: none;
     color:blue;
 }
 
@@ -27,9 +27,9 @@ label {
     height: 31px;
     line-height: 31px;
     text-align: right;
-    padding: 0px 10px 0px 0px;  
+    padding: 0px 10px 0px 0px;
     font-family: 'ProximaNovaThin', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-    text-decoration: none;      
+    text-decoration: none;
 }
 
 fieldset {
@@ -38,7 +38,7 @@ border:none;
 
 input { 
     font-family: 'ProximaNovaThin', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-    text-decoration: none;  
+    text-decoration: none;
 }
 
 input[type="text"], input[type="password"], select, textarea {
@@ -768,15 +768,20 @@ padding: 0px 0px 0px 10px;
     border-right-style: dotted;
     border-right-width: 1px;
     }
-#celebrity-list-top {
+ #celebrity-list-top {
     color:black;
     width:100%;
     font-weight: lighter;
     font-size: 25px;
     border-bottom:2px solid #f70050;
+    }
 
-    }       
-
+#celebrity-list-top span {
+        padding-top:10px;
+        float:left;
+    }
+.ad-left{float:left;}
+.ad-right{float:right;}
 
 /*Celebrity List Ranking*/
 
@@ -1067,12 +1072,14 @@ box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
     }
 #articles-top {
     color:black;
+
     font-weight: lighter;
     font-size: 30px;
     border-bottom:2px solid #f70050;
       }
 #articles-top span {
-width:400xp;
+float:left;
+padding-top:8px;
 }              
 #search-right{
     float:right;
