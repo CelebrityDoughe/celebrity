@@ -214,7 +214,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "", 
-        "x_path": "//div[@id=\"block-thr_touts-thr_featured_promo_touts\"]/div/div/ol/li[not(contains(@class, \"advert\"))]", 
+        "x_path": "//div[@id=\"page-content\"]/section[@class=\"container\"]/div[@class=\"primary\"]/section[@class=\"promo-main-feature\"]/article", 
         "processors": "", 
         "scraped_obj_attr": 1, 
         "scraper": 2, 
@@ -228,7 +228,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "", 
-        "x_path": "div/div[@class=\"thumbnail\"]/a/img/@src", 
+        "x_path": "a//img/@src", 
         "processors": "", 
         "scraped_obj_attr": 5, 
         "scraper": 2, 
@@ -242,7 +242,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "", 
-        "x_path": "h2/a/text()", 
+        "x_path": "a/h2/text()", 
         "processors": "", 
         "scraped_obj_attr": 3, 
         "scraper": 2, 
@@ -256,7 +256,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "", 
-        "x_path": "p/text()", 
+        "x_path": "a/p/text()", 
         "processors": "", 
         "scraped_obj_attr": 2, 
         "scraper": 2, 
@@ -270,7 +270,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "'pre_url':'http://www.hollywoodreporter.com'", 
-        "x_path": "h2/a/@href", 
+        "x_path": "a/@href", 
         "processors": "pre_url", 
         "scraped_obj_attr": 4, 
         "scraper": 2, 
@@ -480,7 +480,7 @@
     "model": "dynamic_scraper.scraperelem", 
     "fields": {
         "proc_ctxt": "", 
-        "x_path": "div[@class=\"lead-img\"]/img/@src", 
+        "x_path": "div[@class=\"lead-img\"]//img/@src", 
         "processors": "", 
         "scraped_obj_attr": 5, 
         "scraper": 5, 
