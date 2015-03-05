@@ -1,10 +1,6 @@
 {% extends "base_generic.html" %}
 {% load staticfiles range_tag account_tags %}
 
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
-{% endblock %}
-
 {% block title %}Celebrity:  {{ celebrity.name }}{% endblock %}
 
 {% block content %}
@@ -58,7 +54,7 @@
                                                     {% if celebrity.average_rate %}{{ celebrity.average_rate|floatformat:1 }}{% else %}0.0{% endif %}
                                                 </span>
                                             </div>
-                                            <span class="rate-number">0.0</span>
+                                            <span class="rate-number">{{ celebrity.average_rate }}</span>
                                             <div class="your-rating">
                                                 {% if my_rating %}
                                                 <div>Your Rating:</div>
@@ -153,6 +149,5 @@
 
 {% block extra_scripts %}
 <script type="text/javascript" src="{% static 'raty/jquery.raty.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/rate.js' %}"></script>
 {% endblock %}
