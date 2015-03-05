@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import template
-from django.forms.widgets import CheckboxInput, RadioInput, TextInput
+from django.forms.widgets import CheckboxInput, RadioInput, TextInput, FileInput
 
 
 register = template.Library()
@@ -23,7 +23,7 @@ def add_attrs(field, attrs_str):
     Exclude checkbox and radiobox
     """
     # exclude widgets
-    exclude_widgets = (CheckboxInput, RadioInput,)
+    exclude_widgets = (CheckboxInput, RadioInput, FileInput,)
     for widget in exclude_widgets:
         if isinstance(field.field.widget, widget):
             return field.as_widget()

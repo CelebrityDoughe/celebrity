@@ -1,59 +1,57 @@
 {% load staticfiles account_tags %}
 
-<div id="header">
-    <div id="menubar">
-        <div class="left">
-            <div class="left logo">
-                <a href="/"><img src="{% static 'images/logo1.png' %}" atl="Celeberty Dbag logo"></a>
+<header class="site-header">
+    <div class="container main-container header-container">
+        <a href="#top-menu" class="mobile-menu-toggle-btn"><i class="fa fa-bars"></i></a>
+        <a href="/" class="logo">Celeberty Douchebag</a>
+        <nav id="top-menu" class="menu-wrapper">
+            <ul class="menu">
+                <li>
+                    <form action="{% url 'rating:search' %}" class="visible-xs visible-sm mobile-search">
+                        <div class="search">
+                            <input type="text" name="keyword" id="" class="form-control" placeholder="Search Celebrity">
+                            <button class="search-btn" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </li>
+                <li class="">
+                    <a href="{% url 'rating:category_list' slug='actor' %}">Actors</a>
+                </li><!-- add active class to li-->
+                <li>
+                    <a href="{% url 'rating:category_list' slug='musician' %}">Musicians</a>
+                </li>
+                <li>
+                    <a href="{% url 'rating:category_list' slug='tv' %}">TV</a>
+                </li>
+                <li>
+                    <a href="{% url 'rating:category_list' slug='radio' %}">Radio</a>
+                </li>
+                <li>
+                    <a href="{% url 'rating:category_list' slug='athlete' %}">Athletes</a>
+                </li>
+                <li>
+                    <a href="{% url 'rating:category_list' slug='politician' %}">Politicians</a>
+                </li>
+            </ul>
+        </nav>
+        <form action="{% url 'rating:search' %}" class="header-search hidden-xs hidden-sm">
+            <div class="search">
+                <input type="text" name="keyword" id="" class="form-control" placeholder="Search Celebrity">
+                <button class="search-btn" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='actor' %}" class="color-primary height-full">Actors</a>
-            </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='musician' %}" class="color-primary height-full">Musicians</a>
-            </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='tv' %}" class="color-primary height-full">TV</a>
-            </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='radio' %}" class="color-primary height-full">Radio</a>
-            </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='athlete' %}" class="color-primary height-full">Athletes</a>
-            </div>
-            <div class="left menuitem split-right">
-                <a href="{% url 'rating:category_list' slug='politician' %}" class="color-primary height-full">Politicians</a>
-            </div>
+        </form>
+        {% if user.is_authenticated %}
+        <a href="{% url 'userena_profile_detail' user.username %}" class="user-action-btn"> <i class="fa fa-user"></i>&nbsp;{{ user.get_full_name|default_if_empty:user.username }}</a>
+        <a href="{% url 'userena_signout' %}" class="user-action-btn logout">Sign Out</a>
+        {% else %}
+        <div class="user-action">
+            <a href="{% url 'userena_signin' %}" class="user-action-btn login">Sign In</a>
+            <a href="{% url 'userena_signup' %}" class="user-action-btn logout">Sign Up</a>
         </div>
-        <div id="searchBar">
-            <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
-                <fieldset style="border: none;">
-                    <div class="searchBox">
-                        <input id="search-input" sub="input" name="keyword" type="text" placeholder="Search Celebrity">
-                        <button sub="submitbutton" type="submit">
-                            <span class="icon magnify"> </span>
-                        </button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="right">
-            {% if user.is_authenticated %}
-                <div class="left signitem">
-                    <a href="{% url 'userena_profile_detail' user.username %}" class="font-12 color-primary split-right-signin">{{ user.get_full_name|default_if_empty:user.username }}&nbsp;</a>
-                </div>
-                <div class="left signitem">
-                    <a href="{% url 'userena_signout' %}" class="font-12 color-primary">Sign Out</a>
-                </div>
-            {% else %}
-                <div class="left signitem">
-                    <a href="{% url 'userena_signin' %}" class="font-12 color-primary split-right-signin">Sign In&nbsp;</a>
-                </div>
-                <div class="left signitem">
-                    <a href="{% url 'userena_signup' %}" class="font-12 color-primary">&nbsp;Sign Up</a>
-                </div>
-            {% endif %}
-        </div>
-        <div class="clear"></div>
+        {% endif %}
     </div>
-</div>
+</header>

@@ -1,69 +1,43 @@
 {% extends "base_generic.html" %}
+{% load celebrity_template_tags %}
 {% block title %}Contact Us{% endblock %}
 
 {% block content %}
 
-<div id="header-bar">
-    <div id="header-bar-container"><h2>Contact Us</h2></div>
-</div>
-
-<div id="email-content">
-    <div class="email-form">
-    <p id="email-padding">Email us if you have any questions, concerns, improvements to our website or if you'd like us to add a celebrity. We will respond to your email as quickly as possible. </p>
-        <form action="." method="POST">
-            {% csrf_token %}
-            <fieldset>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th><label for="name">Name:</label></th>
-                            <td class="col-field">
-                                {{ form.name }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td class="col-help">
-                                {% if form.name.errors %}
-                                <div class="error-help">
-                                    Please put your name
-                                </div>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr class="email">
-                            <th><label for="user-email">Email:</label></th>
-                            <td class="col-field">
-                                {{ form.email }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td class="col-help">
-                                {% if form.email.errors %}
-                                <div class="error-help">
-                                    Enter your email address
-                                </div>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td>
-                                <textarea cols="60" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 160px; margin-left: 0px; margin-right: 0px; width: 360px; "></textarea>
-                                {% if form.detail.errors %}
-                                <div class="error-help">
-                                    Please input details here
-                                </div>
-                                {% endif %}
-                                <button class="button-short"  type="submit">Send</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-        </form>
-          <p id="email-padding">We appreciate your involvement in making this website the best it can me. </p>
+<!-- begin contact-container  -->
+<div class="main-container contact-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Contact Us</h1>
+        </div>
+    </div>
+    <!-- end page title main-title-wrapper -->
+    <div class="container">
+        <div class="main-content">
+            <div class="contact-inner">
+                <p>Email us if you have any questions, concerns, improvements to our website or if you'd like us to add a celebrity. We will respond to your email as quickly as possible.</p>
+                <!-- begin contact-form -->
+                <form action="" method="post" class="contact-form">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group {% if field.errors %}has-error{% endif %}">
+                        {% if field.name != "detail" %}
+                        <label for="">{{ field.label }}:</label>
+                        {% endif %}
+                        {{ field|add_attrs:"class:form-control" }}
+                        <span class="control-label">{{ field.errors.0 }}</span>
+                    </div>
+                    {% endfor %}
+                    <div class="submit-btn-wrapper">
+                        <button class="btn btn-main">Send</button>
+                    </div>
+                </form>
+                <!-- end contact-form -->
+                <p>We appreciate your involvement in making this website the best it can me.</p>
+            </div>
+        </div>
     </div>
 </div>
+<!-- end contact-container -->
 {% endblock %}

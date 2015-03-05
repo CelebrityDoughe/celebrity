@@ -1,134 +1,84 @@
 {% extends "base_generic.html" %}
-{% load i18n %}
+{% load i18n static celebrity_template_tags %}
 {% block title %}Advertise{% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h2>Advertise</h2>
+<!-- begin advertise-container  -->
+<div class="main-container advertise-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Advertise</h1>
+        </div>
+    </div>
+    <!-- end page title main-title-wrapper -->
+    <div class="container">
+        <div class="main-content">
+            <div class="advertise-inner">
+                <div class="stat-wrapper">
+                    <ul class="stat-list">
+                        <li>
+                            <h2 class="charts-title">Audience Gender Groups</h2>
+                            <div class="charts-wrapper">
+                                <div class="chart">
+                                    <img src="{% static 'images/charts/gender.png' %}" alt="">
+                                </div>
+                                <ul class="">
+                                    <li class="legend-red"><strong>52%</strong> Female</li>
+                                    <li class="legend-blue"><strong>48%</strong> Male</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <h2 class="charts-title">Audience Age Groups</h2>
+                            <div class="charts-wrapper">
+                                <div class="chart">
+                                    <img src="{% static 'images/charts/age.png' %}" alt="">
+                                </div>
+                                <ul class="two-col">
+                                    <li class="legend-green"><strong>13%</strong> 18 - 24</li>
+                                    <li class="legend-red"><strong>57%</strong> 25 - 34</li>
+                                    <li class="legend-blue"><strong>20%</strong> 35 - 44</li>
+                                    <li class="legend-grey"><strong>10%</strong> 45 +</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <h2 class="charts-title">Audience Education Groups</h2>
+                            <div class="charts-wrapper">
+                                <div class="chart">
+                                    <img src="{% static 'images/charts/college.png' %}" alt="">
+                                </div>
+                                <ul class="">
+                                    <li class="legend-red"><strong>82%</strong> Attended college</li>
+                                    <li class="legend-blue"><strong>18%</strong> Havent attended college</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <form action="" method="post" class="advertise-form">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-group {% if field.errors %}has-error{% endif %}">
+                            {% if field.name != 'detail' %}
+                            <label for="">{{ field.label }}:</label>
+                            {% endif %}
+                            {{ field|add_attrs:"class:form-control" }}
+                            <span class="control-label">{{ field.errors.0 }}</span>
+                        </div>
+                        {% endfor %}
+                        <div class="submit-wrapper">
+                            <button class="btn btn-main">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="slogan-wrapper">
+                    <h2>About Celebrity DBag</h2>
+                    <p>Celebrity DBag is unlike anyonther site. Celebrity DBag doesn't just write about the stars. It provides what people really think about the stars.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<div class="advertise-content">
-    <div class="advertise-box">
-        <div class="how-content">
-            <div class="advertise-box-left">
-                <div class="stats">
-                    <div class="stats-image"></div>
-                    <div class="stats-words">
-                        <h2>Audience Gender Groups</h2><img src="/static/images/gender.png" >
-                        <div class="padding_top">
-                            <div class="color-pink"></div>
-                            <p>
-                                <span>52%</span> Female
-                            </p>
-                        </div>
-                        <div>
-                            <div class="color-blue"></div>
-                            <p>
-                                <span>48%</span> Male
-                            </p>
-                        </div>
-                    </div>
-                </div><!--end number-->
-
-                <div class="stats">
-                    <div class="stats-image"></div>
-                    <div class="stats-words">
-                        <h2>Audience Age Groups</h2><img src="/static/images/age.png" >
-                        <div class="float_left padding_top">
-                            <div>
-                                <div class="color-green"></div>
-                                <p>
-                                    <span>13%</span> 18 - 24
-                                </p>
-                            </div>
-                            <div>
-                                <div class="color-pink"></div>
-                                <p>
-                                    <span>57%</span> 25 - 34
-                                </p>
-                            </div>
-                        </div>
-                        <div class="float_left padding_top padding_left">
-                            <div >
-                                <div class="color-blue"></div>
-                                <p>
-                                    <span>20%</span> 35 - 44
-                                </p>
-                            </div>
-                            <div>
-                                <div class="color-grey"></div>
-                                <p>
-                                    <span>10%</span> 45 +
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!--end number-->
-                <div class="stats">
-                    <div class="stats-image"></div>
-                    <div class="stats-words">
-                        <h2>Audience Education Groups</h2><img src="/static/images/college.png" >
-
-                        <div class="padding_top">
-                            <div class="color-pink"></div>
-                            <p>
-                                <span>82%</span> Attended college
-                            </p>
-                        </div>
-                        <div>
-                            <div class="color-blue"></div>
-                            <p>
-                                <span>18%</span> Havent attended college
-                            </p>
-                        </div>
-                    </div>
-                </div><!--end number-->
-
-                <form action="." method="POST">
-                    {% csrf_token %}
-                    <fieldset>
-                        <table>
-                            <tbody>
-                                <tr class="email">
-                                    <th><label for="user-email">Email:</label></th>
-                                    <td class="col-field"> {{ form.email }} </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td class="col-help"> {% if form.email.errors %}
-                                    <div class="error-help">
-                                        Enter your email address
-                                    </div> {% endif %} </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>
-                                        <textarea cols="30" class="message-field" name="detail" rows="10" style="margin-top: 0px; margin-bottom: 0px; height: 60px; margin-left: 0px; margin-right: 0px; width: 300px; "></textarea>
-                                        {% if form.detail.errors %}
-                                        <div class="error-help">Please input details here</div>
-                                        {% endif %}
-                                        <button class="button-short" type="submit">Send</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </fieldset>
-                </form>
-
-            </div><!--Advertise-left-->
-            <div class="advertise-box-right">
-                <h2>About Celebrity DBag</h2>
-                <div class="bor-list">
-                    <p>
-                        Celebrity DBag is unlike anyonther site. Celebrity DBag doesn't just write about the stars. It provides what people really think about the stars.
-                    </p>
-                </div>
-            </div><!--end Advertise right-->
-            <div class="how-we-paragraph"></div>
-        </div><!-- End how Content -->
-    </div><!-- End box body -->
-</div>
+<!-- end advertise-container -->
 {% endblock %}

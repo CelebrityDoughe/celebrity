@@ -12,6 +12,19 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
 });
 
 $(document).ready(function() {
+    $('.mobile-menu-toggle-btn').click(function(e){
+        e.preventDefault();
+        $('body').toggleClass('locked');
+    });
+    $('.mobile-user-action-btn').click(function(e){
+        e.preventDefault();
+        $(this).toggleClass('open');
+        $('.user-action').toggleClass('shown');
+    });
+    $('#wrapAll').click(function(){
+        $('body').removeClass('locked');
+    });
+
     $('#search-input').catcomplete({
         source : function(request, response) {
             $.ajax({

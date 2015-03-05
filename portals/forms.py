@@ -18,4 +18,4 @@ class AdvertiseForm(forms.Form):
     Form for advertise
     """
     email = forms.EmailField()
-    detail = forms.CharField()
+    detail = forms.CharField(widget=forms.Textarea)

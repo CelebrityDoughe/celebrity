@@ -27,7 +27,7 @@ class CategoryView(ListView):
         """
         Display celebrity by category
         """
-        return Celebrity.objects.filter(specificity=self.kwargs['slug']).order_by('-average_rate')[:10]  # noqa
+        return Celebrity.objects.filter(specificity=self.kwargs['slug']).order_by('-rate_count')[:10]  # noqa
 
     def get_context_data(self, **kwargs):
         """
@@ -35,6 +35,7 @@ class CategoryView(ListView):
         """
         data = super(CategoryView, self).get_context_data(**kwargs)
         data.update({'category': CATEGORY_TITLE[self.kwargs['slug']]})
+        data.update(self.kwargs)
         return data
 
 

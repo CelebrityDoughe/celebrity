@@ -3,62 +3,66 @@
 {% block title %}Search Results {% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h3>Search Result</h3>
+<!-- begin actors-container celebrity-container -->
+<div class="main-container celebrity-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Search Result</h1>
+        </div>
     </div>
-</div>
-
-<div class="celebrity-list-content">
-    <div class="celebrity-list-left">
-        <div id="celebrity-list-top">
-            <div id="search-right">
-                <div id="searchBar">
-                    <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
-                        <fieldset>
-                            <div class="searchBox">
-                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" value="{{ keyword }}" />
-                                <button sub="submitbutton" type="submit">
-                                    <span class="icon magnify"> </span>
-                                </button>
+    <!-- end page title main-title-wrapper -->
+    <!-- begin main-content   -->
+    <div class="container">
+        <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                <!-- begin main-content -->
+                <div class="main-content">
+                    <div class="row">
+                        <!-- begin main-content left-bar -->
+                        <div class="col-md-8 main-content-inner">
+                            <div class="main-content-title">
+                                <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
+                                    <fieldset>
+                                        <div class="searchBox">
+                                            <input sub="input" name="keyword" type="text" placeholder="Search Celebrity" value="{{ keyword }}" />
+                                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </fieldset>
+                                </form>
                             </div>
-                        </fieldset>
-                    </form>
+                            <div class="celebrity-list-wrapper">
+                                <h1>Search Result ({{ keyword }})</h1>
+                                <ul class="celebrity-list">
+                                    {% for celebrity in celebrities %}
+                                    <li>
+                                        <div class="post-pic">
+                                            <a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">
+                                                <img src="{{ celebrity.image1.url }}" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="celebrity-post-info">
+                                            <h3 class="celeb-name"><a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a></h3>
+                                            <div class="rate">
+                                                <span>{{ celebrity.average_rate }}</span> Score
+                                            </div>
+                                            <div class="count">
+                                                Ratings counted:<span>{{ celebrity.rate_count }}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                         <!-- end main-content left-bar -->
+                    </div>
                 </div>
+                <!-- end main-content -->
             </div>
-
-        </div>
-        <div class="celebrity-list-box">
-            <h1>Search Result ({{ keyword }})</h1>
-
-            <div class="celeb-list">
-                <ul>
-                    {% for celebrity in celebrities %}
-                    <li>
-                        <div class="celeb-list-post celeb-left">
-                            <div class="celeb-thumb celeb-left">
-                            <a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}"><img src="{{ celebrity.image1.url }}" width="150" height="150" /></a></div>
-                        </div>
-                        <div class="celeb-details celeb-left">
-                            <div class="celeb-name celeb-left">
-                                <a href="{% url 'rating:celebrity_detail' slug=celebrity.slug %}">{{ celebrity.name }}</a>
-                            </div>
-                            <div class="celeb-rate celeb-left">{{ celebrity.average_rate }}</div>
-                            <div class="celeb-count celeb-left">
-                                Ratings counted:<span>{{ celebrity.rate_count }}</span>
-                            </div>
-                        </div>
-                    </li>
-                    {% empty %}
-                    <li>No match</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="clear"></div>
         </div>
     </div>
-    <div class="advertising-right">
-<!--begin The Banner Exchange code --><iframe src="http://www.thebannerexchange.com/display/13298/3//" frameborder="0" vspace="0" hspace="0" width="300" height="250" marginwidth="0" marginheight="0" scrolling="no"></iframe><!-- end The Banner Exchange code --></br><!--begin The Banner Exchange code --><iframe src="http://www.thebannerexchange.com/display/13298/3//" frameborder="0" vspace="0" hspace="0" width="300" height="250" marginwidth="0" marginheight="0" scrolling="no"></iframe><!-- end The Banner Exchange code --></br><div class="ad-left"><!--begin The Banner Exchange code --><iframe src="http://www.thebannerexchange.com/display/13298/5//" frameborder="0" vspace="0" hspace="0" width="120" height="600" marginwidth="0" marginheight="0" scrolling="no"></iframe></div><div class="ad-right"><iframe src="http://www.thebannerexchange.com/display/13298/5//" frameborder="0" vspace="0" hspace="0" width="120" height="600" marginwidth="0" marginheight="0" scrolling="no"></iframe></div><!-- end The Banner Exchange code -->
-    </div>
+    <!-- end main-content -->
 </div>
+<!-- end actors-container celebrity-container -->
 {% endblock %}

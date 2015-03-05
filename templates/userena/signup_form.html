@@ -1,87 +1,64 @@
 {% extends 'userena/base_userena.html' %}
-{% load i18n static %}
+{% load i18n static celebrity_template_tags %}
 
 {% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h2>Sign Up</h2>
-    </div>
-</div>
 
-<div class="sign_up_content">
-    <div class="box">
-
-        <div class="form">
-            <form method="post">
-                {% csrf_token %}
-                {% if form.errors %}
-                <div class="errors-header">
-                    Please correct the following fields:
-                </div>
-                {% endif %}
-
-                {% for field in form %}
-                <div class="row">
-                    {% if field.errors %}
-                    <div class="errors">
-                        {{ field.errors}}
-                    </div>
-                    {% endif %}
-                    <!--<label class="hidden-label" for="user_{{ field.name }}">{{ field.field.label }}</label>-->
-                    <div>
-                        <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
-                        {{ field }}
-                    </div>
-                </div>
-                {% endfor %}
-
-                <div class="align-left">
-                    <input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="Create My Account">
-                </div>
-            </form>
+<!-- begin auth-container signup-container  -->
+<div class="main-container auth-container signup-container">
+     <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Sign Up</h1>
         </div>
-
-        <div class="right split-left">
-            <div class="sign_up_right">
-                <div class="social_sign">
-                    <div class="social_sign_header">
-                        Sign up with your Twitter account
+    </div>
+     <!-- end page title main-title-wrapper -->
+     <div class="container">
+         <div class="main-content">
+            <div class="auth-form-wrapper">
+                <div class="sign-up-form-wrapper">
+                    <!-- begin sign-up-form -->
+                    <form action="" method="post" class="sign-up-form">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-group {% if field.errors %}has-error{% endif %}">
+                            <label class="control-label" for="">{{ field.label }}:</label>
+                            {{ field|add_attrs:"class:form-control" }}
+                        </div>
+                        {% endfor %}
+                        <div class="submit-btn-wrapper">
+                            <button  class="btn btn-main">Create My Account</button>
+                        </div>
+                    </form>
+                    <!--end sign-up-form -->
+                </div>
+                <!-- begin social-sign-wrapper -->
+                <div class="social-sign-wrapper">
+                    <div class="social-sign">
+                        <p>Sign up with your Twitter account</p>
+                        <a href="{% url 'socialauth_begin' 'twitter' %}" class="social-btn btn-twitter" title="Sign in with Facebook">
+                            <i class="fa fa-twitter"></i>Sign in with Twitter
+                        </a>
                     </div>
-                    <div class="social_sign_body">
-
+                    <div class="social-sign">
+                        <p>Sign up with your Twitter account</p>
+                        <a href="{% url 'socialauth_begin' 'facebook' %}" class="social-btn btn-facebook" title="Sign in with Twitter">
+                            <i class="fa fa-facebook"></i>Sign in with Facebook
+                        </a>
                     </div>
-                    <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'twitter' %}"><img src="{% static 'images/logintwitter.png' %}" ></a>
+                    <div class="social-sign">
+                        <p>Sign up with your Twitter account</p>
+                        <a href="{% url 'socialauth_begin' 'google-oauth2' %}" class="social-btn btn-google" title="Sign in with Google">
+                            <i class="fa fa-google-plus"></i>Sign in with Google
+                        </a>
                     </div>
                 </div>
-                <div class="social_sign">
-                    <div class="social_sign_header">
-                        Sign up with your Facebook account
-                    </div>
-                    <div class="social_sign_body">
-
-                    </div>
-                    <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'facebook' %}"><img src="{% static 'images/loginfacebook.png' %}" ></a>
-                    </div>
-                </div>
-                <div class="social_sign">
-                    <div class="social_sign_header">
-                        Sign up with your Google account
-                    </div>
-                    <div class="social_sign_body">
-
-                    </div>
-                    <div class="footer">
-                        <a href="{% url 'socialauth_begin' 'google-oauth2' %}"><img src="{% static 'images/logingoogle.png' %}" ></a>
-                    </div>
-                </div>
+                <!--end social-sign-wrapper -->
             </div>
-        </div>
-        <div class="clear"></div>
-    </div>
+         </div>
+     </div>
 </div>
+<!-- end auth-container signup-container -->
 
 {% endblock %}

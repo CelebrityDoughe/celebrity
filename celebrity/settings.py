@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'django_mobile',
+    # 'django_mobile',
     'dynamic_scraper',
     'easy_thumbnails',
     'guardian',
@@ -80,8 +80,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_mobile.middleware.MobileDetectionMiddleware',
-    'django_mobile.middleware.SetFlavourMiddleware',
+    # 'django_mobile.middleware.MobileDetectionMiddleware',
+    # 'django_mobile.middleware.SetFlavourMiddleware',
 )
 
 ROOT_URLCONF = 'celebrity.urls'
@@ -131,7 +131,7 @@ MEDIA_URL = '/static/media/'
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
 TEMPLATE_LOADERS = (
-    'django_mobile.loader.Loader',
+    # 'django_mobile.loader.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader'
 )
@@ -144,7 +144,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
-    'django_mobile.context_processors.flavour'
+    # 'django_mobile.context_processors.flavour'
 )
 
 TEMPLATE_DIRS = (

@@ -27,7 +27,7 @@ class Celebrity(models.Model):
     description = models.TextField(blank=True)
     image1 = models.ImageField(upload_to="images/celebritypics")
     average_rate = models.FloatField(default=0, db_index=True, null=True)
-    rate_count = models.IntegerField(default=0)
+    rate_count = models.IntegerField(default=0, db_index=True)
 
     def __unicode__(self):
         return self.name
@@ -41,14 +41,14 @@ class Rating(models.Model):
     celebrity = models.ForeignKey(Celebrity, related_name="rates")
     rate = models.SmallIntegerField(default=0)
     review = models.TextField()
-    dt_updated = models.DateTimeField(auto_now=True)
+    dt_updated = models.DateTimeField(auto_now=True, db_index=True)
 
     @property
     def user(self):
         return User.objects.get(id=self.user_id)
 
     def __unicode__(self):
-        return "%s - %d" % (self.user.username, self.rate)
+        return u'%s - %d' % (self.user.username, self.rate)
 
     class Meta:
         ordering  = ('-id',)

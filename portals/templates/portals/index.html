@@ -3,102 +3,62 @@
 {% block title %}Celebrity Douchebag: Actors, Musicians and Athletes nice people or doucebags{% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h3>Tell us if the celebrity you met is a nice person or a douchebag.</h3>
+<div class="main-container home-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Tell us if the celebrity you met is a nice person or a douchebag.</h1>
+        </div>
     </div>
-</div><!---
-<div id="sliderFrame">
-        <div id="slider">
-                <a class="lazyImage" href="/static/images/image-slider-1.jpg" width="680" height="308" title="Cast of Dawn of the Planet of the Apes, nice people or douchebags"></a>
-
-      <a href="#">
-                <img src="/static/images/image-slider-2.jpg" alt="Gary Oldman is rated as a nice person" />
-            </a>
-
-<a href="#">
-                <img src="/static/images/image-slider-3.jpg" alt="Keri Russell is rated as a nice person" />
-            </a>
-
-<a href="#">
-                <img src="/static/images/image-slider-4.jpg" alt="Jason Clarke has no rating" />
-            </a>
-
-        </div>-->
-        <!--thumbnails-->
-   <!--     <div id="thumbs">
-            <div class="thumb">
-                <div class="frame"><img src="/static/images/thumb1.jpg" /></div>
-                <div class="thumb-content"><p>Cast of Dawn of the Planet of the Apes</p></div>
-                <div style="clear:both;"></div>
-            </div>
-            <div class="thumb">
-                <div class="frame"><img src="/static/images/thumb2.jpg" /></div>
-                <div class="thumb-content"><p>Gary Oldman</p>Nice person or douchebag?</div>
-                <div style="clear:both;"></div>
-            </div>
-            <div class="thumb">
-                <div class="frame"><img src="/static/images/thumb3.jpg" /></div>
-                <div class="thumb-content"><p>Kerry Russell</p>Nice person or douchebag?</div>
-                <div style="clear:both;"></div>
-            </div>
-            <div class="thumb">
-                <div class="frame"><img src="/static/images/thumb4.jpg" /></div>
-                <div class="thumb-content"><p>Jason Clarke</p>Nice person or douchebag?</div>
-                <div style="clear:both;"></div>
-            </div>
-        </div>
-        <!--clear above float:left elements. It is required if above #slider is styled as float:left. -->
-        <!--<div style="clear:both;height:0;"></div>
-    </div>--->
-<div class="articles-content">
-    <div class="articles-left">
-        <div id="articles-top"><span>
-            Today's Celebrity News</span>
-            <div id="search-right">
-                <div id="searchBar">
-                    <form method="get" action="{% url 'rating:search' %}" style="position:relative;">
-                        <fieldset>
-                            <div class="searchBox">
-                                <input sub="input" name="keyword" type="text" placeholder="Search Celebrity">
-                                <button sub="submitbutton" type="submit">
-                                    <span class="icon magnify"> </span>
-                                </button>
+    <!-- end main-title-wrapper -->
+    <!-- begin main-content article-content  -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <!-- begin main-content -->
+                <div class="main-content article-container">
+                    <div class="row">
+                        <!-- begin main-content left bar article-inner -->
+                        <div class="col-md-8 main-content-inner article-inner">
+                            <div class="main-content-title article-list-title">
+                                <h2 class="today-title">Today's Celebrity News</h2>
+                                <form action="{% url 'rating:search' %}" class="article-search">
+                                    <div class="search">
+                                        <input type="text" name="keyword" id="" class="form-control" placeholder="Search Celebrity">
+                                        <button class="search-btn" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="articles">
-            <ul>
-                {% for article in articles %}
-                <li>
-                    <div class="newsPost">
-                        <div class="newsThumb">
-                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}"
-                            width="140" height="100" border="0" alt="#"> </a>
-                        </div>
-                        <div class="newsDetails">
-                            <div class="newsHeadline">
-                                <h3>
-                                    <a class="title" href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a>
-                                </h3>
-                            </div>
-                            <div class="newsDate">({{ article.news_website }})</div>
-                            <div class="newssummary">
-                                <p>{{ article.description|truncatechars:300 }}</p>
+                            <div class="article-list-wrapper">
+                                <ul class="article-list">
+                                    {% for article in articles %}
+                                    <li>
+                                        <div class="news-pic">
+                                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}" alt="news" class="img-responsive"> </a>
+                                        </div>
+                                        <div class="news-info">
+                                            <h3><a href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a></h3>
+                                            <div class="meta-data">({{ article.news_website }})</div>
+                                            <div class="news-text">
+                                                <p>{{ article.description|truncatechars:300 }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
+                        <!-- end main-content left bar article-inner -->
+
+                        {% include "right-sidebar.html" %}
                     </div>
-                </li>
-                {% endfor %}
-            </ul>
+                </div>
+                <!-- end main-content -->
+            </div>
         </div>
-        <div class="clear"></div>
     </div>
-    <div class="advertising-right">
-        <!--begin The Banner Exchange code --><iframe src="http://www.thebannerexchange.com/display/13298/3//" frameborder="0" vspace="0" hspace="0" width="300" height="250" marginwidth="0" marginheight="0" scrolling="no"></iframe><!-- end The Banner Exchange code --></br><div class="ad-left"><!--begin The Banner Exchange code --><iframe src="http://www.thebannerexchange.com/display/13298/5//" frameborder="0" vspace="0" hspace="0" width="120" height="600" marginwidth="0" marginheight="0" scrolling="no"></iframe></div><div class="ad-right"><iframe src="http://www.thebannerexchange.com/display/13298/5//" frameborder="0" vspace="0" hspace="0" width="120" height="600" marginwidth="0" marginheight="0" scrolling="no"></iframe></div><!-- end The Banner Exchange code -->
-    </div>
+    <!-- end main-content article-content -->
 </div>
 {% endblock %}

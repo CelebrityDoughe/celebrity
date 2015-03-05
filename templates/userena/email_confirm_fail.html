@@ -4,10 +4,14 @@
 {% block title %}{% trans "Email verification failed." %}{% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h3>{% trans "Your email could not be verified..." %}</h3>
-        <h3>{% trans "You could try changing it again in your account settings." %}</h3>
+<!-- begin contact-container  -->
+<div class="main-container contact-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">{% trans "Your email could not be verified..." %}</h1>
+            <h1 class="main-title">{% trans "You could try changing it again in your account settings." %}</h1>
+        </div>
     </div>
 </div>
 {% endblock %}

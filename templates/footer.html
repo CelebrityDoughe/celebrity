@@ -1,11 +1,25 @@
-<div id="footer">
-    <a href="{% url 'portals:advertise' %}">Advertise</a>&nbsp;&nbsp;&nbsp; <a href="{% url 'portals:flat_page' 'terms' %}">Terms and Contentions</a>&nbsp;&nbsp;&nbsp; <a href="{% url 'portals:contact' %}">Contact Us</a>
-    <div class="copyright">
-        <div class="font-12 color-primary">
-            © Copyright 2014 CelebrityDbag.com,
-        </div>
-        <div class="font-12 color-primary">
-            All rights reserved Various trademarks held by their respective owners.
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="container">
+            <ul class="footer-menu">
+                <li>
+                    <a href="{% url 'portals:advertise' %}">Advertise</a>
+                </li>
+                <li>
+                    <a href="{% url 'portals:flat_page' 'terms' %}">Terms and Contentions</a>
+                </li>
+                <li>
+                    <a href="{% url 'portals:contact' %}">Contact Us</a>
+                </li>
+            </ul>
+            <div class="copyright">
+                <p>
+                    &#169; Copyright 2014 <a href="http://celebritydbag.com/">CelebrityDbag.com</a>,
+                </p>
+                <p>
+                    All rights reserved Various trademarks held by their respective owners.
+                </p>
+            </div>
         </div>
     </div>
-</div>
+</footer>

@@ -3,11 +3,15 @@
 {% block title %}Sign out{% endblock %}
 {% block content %}
 
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h3>{% trans "You have been signed out. Till we meet again." %}</h3>
+<!-- begin account-container -->
+<div class="main-container account-container">
+    <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">{% trans "You have been signed out. Till we meet again." %}</h1>
+        </div>
     </div>
-
+    <!-- end page title main-title-wrapper -->
 </div>
-
+<!-- end account-container-->
 {% endblock %}

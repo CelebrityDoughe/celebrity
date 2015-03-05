@@ -1,69 +1,65 @@
 {% extends 'userena/base_userena.html' %}
-{% load i18n %}
+{% load i18n celebrity_template_tags %}
 
 {% block title %}Celebrity Dbag - {% trans "Signin" %}{% endblock %}
 
 {% block content %}
-<div id="header-bar">
-    <div id="header-bar-container">
-        <h2>Sign In</h2>
-    </div>
-</div>
 
-<div class="sign_in_content">
-    <div class="box">
-        <div class="form">
-            <form action="" method="post">
-                {% csrf_token %}
-                {% if form.errors %}
-                <div class="errors-header">
-                    Please correct the following fields:
-                </div>
-                {% endif %}
-                {% for field in form %}
-                <div class="row">
-                    {% if field.errors %}
-                    <div class="errors">
-                        {{ field.errors}}
-                    </div>
-                    {% endif %}
-
-                    <div>
-                        <label for="id_{{ field.name }}"{% if field.errors %} class="error"{% endif %}>{{ field.field.label }}:</label>
-                        {{ field }}
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="row">
-                    <label>&nbsp;</label>
-                    <div class="forgot-password">
-                        <a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a>
-                    </div>
-                </div>
-                <div class="align-right">
-                    <input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="{% trans "Signin" %}">
-                </div>
-            </form>
-
-            <div class="social-facebook-login">
-                <a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}"><img src="/static/images/loginfacebook.png" ></a>
-
-                <a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}"><img src="/static/images/logintwitter.png" ></a>
-                <a href="{% url 'socialauth_begin' 'google-oauth2' %}" title="{% trans 'Login with Google' %}"><img src="/static/images/logingoogle.png" ></a>
-            </div>
-            {% if next %}
-
-            <input type="hidden" name="next" value="{{ next }}" />
-            {% endif %}
-            <div class="line_break">
-                <span class="mm_or">OR</span>
-            </div>
-            <div class="create-account">
-                <div class="button-blue font-19 font-strong color-primary"  name="yt0" value="{% trans "Create New Account" %}">
-                    <a href="{% url 'userena_signup' %}">Create New Account</a>
-                </div>
-            </div>
+<!-- begin auth-container signup-container  -->
+<div class="main-container auth-container signin-container">
+     <!-- begin page title main-title-wrapper -->
+    <div class="main-title-wrapper">
+        <div class="container">
+            <h1 class="main-title">Sign In</h1>
         </div>
     </div>
+     <!-- end page title main-title-wrapper -->
+     <div class="container">
+         <div class="main-content">
+            <div class="auth-form-wrapper">
+                <!-- begin sign-in form   -->
+                <form action="" class="sign-in-form" method="post">{% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group {% if field.errors %}has-error{% endif %}">
+                        <label class="control-label" for="">{{ field.label }}:</label>
+                        {{ field|add_attrs:"class:form-control" }}
+                    </div>
+                    {% endfor %}
+                    <div class="forgot-password">
+                        <a href="{% url 'userena_password_reset' %}">Forgot your password?</a>
+                    </div>
+                    <div class="submit-btn-wrapper">
+                        <button  class="btn btn-main">Signin</button>
+                    </div>
+                </form>
+                <!-- end sign-in-form -->
+
+                <!-- begin social-sign-wrapper -->
+                <div class="social-sign-wrapper">
+                    <div class="social-sign">
+                        <a href="{% url 'socialauth_begin' 'facebook' %}" class="social-btn btn-facebook" title="Sign in with Facebook">
+                            <i class="fa fa-facebook"></i>Sign in with Facebook
+                        </a>
+                    </div>
+                    <div class="social-sign">
+                        <a href="{% url 'socialauth_begin' 'twitter' %}" class="social-btn btn-twitter" title="Sign in with Twitter">
+                            <i class="fa fa-twitter"></i>Sign in with Twitter
+                        </a>
+                    </div>
+                    <div class="social-sign">
+                        <a href="{% url 'socialauth_begin' 'google-oauth2' %}" class="social-btn btn-google" title="Sign in with Google">
+                            <i class="fa fa-google-plus"></i>Sign in with Google
+                        </a>
+                    </div>
+                </div>
+                <!--end social-sign-wrapper -->
+                <div class="divider">OR</div>
+                <div class="btn-wrapper">
+                    <a href="{% url 'userena_signup' %}" class="btn btn-main">Create New Account</a>
+                </div>
+            </div>
+         </div>
+     </div>
 </div>
+<!-- end auth-container signup-container -->
 {% endblock %}
