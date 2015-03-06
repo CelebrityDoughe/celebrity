@@ -25,13 +25,13 @@ $(document).ready(function() {
         $('body').removeClass('locked');
     });
 
-    $('#search-input').catcomplete({
+    $('.search-input').catcomplete({
         source : function(request, response) {
             $.ajax({
                 url : '/search/',
                 dataType : 'json',
                 data : {
-                    keyword : $('#search-input').val()
+                    keyword : this.term
                 },
                 success : function(data) {
                     response($.map(data, function(item) {

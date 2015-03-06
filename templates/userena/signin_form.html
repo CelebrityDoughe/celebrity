@@ -20,14 +20,16 @@
                 <!-- begin sign-in form   -->
                 <form action="" class="sign-in-form" method="post">{% csrf_token %}
                     {% for field in form %}
-                    <div class="form-group {% if field.errors %}has-error{% endif %}">
+                    <div class="form-group">
                         <label class="control-label" for="">{{ field.label }}:</label>
                         {{ field|add_attrs:"class:form-control" }}
+                        <div class="form-error">{{ field.errors.0 }}</div>
                     </div>
                     {% endfor %}
                     <div class="forgot-password">
                         <a href="{% url 'userena_password_reset' %}">Forgot your password?</a>
                     </div>
+                    <div class="form-error">{{ form.non_field_errors.0 }}</div>
                     <div class="submit-btn-wrapper">
                         <button  class="btn btn-main">Signin</button>
                     </div>

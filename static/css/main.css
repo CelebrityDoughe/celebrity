@@ -1904,3 +1904,7 @@ a {
     padding-top: 20px;
     border-top: 2px solid #f70050;
 }
+
+.form-error {
+    color: red;
+}
