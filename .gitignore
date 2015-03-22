@@ -3,4 +3,5 @@ local_settings.py
 .settings
 .project
 .pydevproject
+.idea
 /static/media/
