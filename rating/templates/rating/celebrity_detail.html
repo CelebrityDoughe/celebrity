@@ -10,7 +10,7 @@
     <!-- begin page title main-title-wrapper -->
     <div class="main-title-wrapper">
         <div class="container">
-            <h1 class="main-title">Celebrity Politcians</h1>
+            <h1 class="main-title">Tell us if {{ celebrity.name }} is a nice person or a douchebag</h1>
         </div>
     </div>
     <!-- end page title main-title-wrapper -->
@@ -50,11 +50,8 @@
                                                 {% elif not celebrity.average_rate %}
                                                     <img src="{% static 'images/notyetrated.png' %}" />
                                                 {%endif%}
-                                                <span class="rate number">
-                                                    {% if celebrity.average_rate %}{{ celebrity.average_rate|floatformat:1 }}{% else %}0.0{% endif %}
-                                                </span>
                                             </div>
-                                            <span class="rate-number">{{ celebrity.average_rate }}</span>
+                                            <span class="rate-number"> {% if celebrity.average_rate %}{{ celebrity.average_rate|floatformat:1 }}{% else %}0.0{% endif %}</span>
                                             <div class="your-rating">
                                                 {% if my_rating %}
                                                 <div>Your Rating:</div>
