@@ -9,7 +9,7 @@
     <!-- begin page title main-title-wrapper -->
     <div class="main-title-wrapper">
         <div class="container">
-            <h1 class="main-title">Celebrity {{ category }}</h1>
+            <h1 class="main-title">{{ category }}</h1>
         </div>
     </div>
     <!-- end page title main-title-wrapper -->
@@ -23,7 +23,7 @@
                         <!-- begin main-content left-bar -->
                         <div class="col-md-8 main-content-inner">
                             <div class="main-content-title">
-                                <h2 class="">Top 10 Douchebag Celebrity {{ category }}</h2>
+                                <h2 class="">Most Popular {{ category }}</h2>
                                 <form action="{% url 'rating:search' %}" class="article-search">
                                     <div class="search">
                                         <input type="text" name="keyword" id="" class="form-control search-input" placeholder="Search Celebrity">
@@ -55,6 +55,7 @@
                             </div>
                         </div>
                          <!-- end main-content left-bar -->
+                          {% include "right-sidebar.html" %}
                     </div>
                 </div>
                 <!-- end main-content -->
