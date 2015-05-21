@@ -36,7 +36,7 @@
                                     {% for article in articles %}
                                     <li>
                                         <div class="news-pic">
-                                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}" alt="news" class="img-responsive"> </a>
+                                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}" alt="news" class="img-responsive col-lg-12"> </a>
                                         </div>
                                         <div class="news-info">
                                             <h3><a href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a></h3>
