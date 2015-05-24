@@ -1910,3 +1910,50 @@ a {
 .form-error {
     color: red;
 }
+/*articles*/
+
+.article-content{margin-top:20px;}
+
+.article-content h1{
+font-weight:700px;
+font-size:28px;
+padding-bottom:15px;
+}
+.article-content p {text-indent: 30px;padding-bottom:15px;}
+.main-content {
+  background-color: #fff;
+  padding: 10px;
+  border: solid 2px #0059D5;
+  -webkit-box-shadow: 0 0 15px #bbb;
+  -moz-box-shadow: 0 0 15px #bbb;
+  box-shadow: 0 0 15px #bbb;
+}
+.main-content-inner{  border-right: 1px dotted #000}
+.article-image{padding:0; margin:0; height:335px;}
+
+
+.article-cards{padding-bottom:8px;}
+.article-card {
+  display: block;
+  background: #fdfdfd;
+  border: 1px solid #d5d5d5;
+  height: 120px;
+  line-height: 15px;
+  overflow: hidden;
+  margin:auto;
+}
+
+.article-title{  padding-top:20px;font-weight: 700;
+  color: #0000ff;
+  text-decoration: none;line-height:20px;}
+.article-card-image {
+  border: none;
+  display: inline;
+  float: left;
+  height: 100px;
+  margin: 6px;
+  width: 150px;}
+
+.right-sidebar h1{font-size:20px;font-weight:bold;padding: 5px 0 5px 0;color:black;}
+
+/*end articles*/
