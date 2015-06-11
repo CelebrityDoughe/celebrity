@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, url
 
 from .views import(
-    ContactUsView, FlatPageView, IndexView, AdvertiseView
+    ContactUsView, FlatPageView, IndexView, AdvertiseView, NewsDetail
 )
 
 
@@ -11,5 +11,6 @@ urlpatterns = patterns(
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^contact-us/$', ContactUsView.as_view(), name='contact'),
     url(r'^advertise/$', AdvertiseView.as_view(), name='advertise'),
+    url(r'^news/(?P<pk>[-\d]+)/$', NewsDetail.as_view(), name='news_detail'),
     url(r'^(?P<slug>(terms|thanks))/$', FlatPageView.as_view(), name='flat_page'),
 )

@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
+from django.views.generic import DetailView
 
 from .forms import ContactForm, AdvertiseForm
 from news.models import Article, NewsWebsite
@@ -13,18 +14,41 @@ class IndexView(TemplateView):
     Home page
     """
     template_name = 'portals/index.html'
+    news_on_page = 10
+
+    def _get_website_news(self, num=10):
+        '''
+        Get the latest article from all the websites
+
+        :param num: int - how much articles you need
+        :return: list - list of articles
+        '''
+        articles = []
+
+        for website in NewsWebsite.objects.all():
+            atcs = Article.objects.filter(news_website=website).order_by('-id')  # noqa
+
+            if atcs:
+                articles.append(atcs[0])
+
+            if len(articles) == num:
+                return articles
+
+        return articles
 
     def get_context_data(self, **kwargs):
         """
         Add news to the context
         """
         data = super(IndexView, self).get_context_data(**kwargs)
-        # get the latest article from all the websites
-        articles = []
-        for website in NewsWebsite.objects.all():
-            atcs = Article.objects.filter(news_website=website).order_by('-id')  # noqa
-            if atcs:
-                articles.append(atcs[0])
+
+        articles = Article.objects.filter(news_website__isnull=True).order_by('-id')[:self.news_on_page]
+
+        if len(articles) < self.news_on_page:
+            difference = self.news_on_page - len(articles)
+
+            articles = list(articles) + self._get_website_news(difference)
+
         data.update({'articles': articles})
         return data
 
@@ -83,3 +107,17 @@ class AdvertiseView(FormView):
             fail_silently=True)
 
         return super(AdvertiseView, self).form_valid(form)
+
+
+class NewsDetail(DetailView):
+    model = Article
+    template_name = 'portals/news_detail.html'
+    context_object_name = "news_item"
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsDetail, self).get_context_data(**kwargs)
+        articles = Article.objects.filter(news_website__isnull=True).exclude(
+            id=self.object.id).order_by('-id')[:10]
+
+        context.update({'articles': articles})
+        return context

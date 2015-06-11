@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %}
 {% load staticfiles %}
+{% load thumbnail %}
 {% block title %}Celebrity Douchebag: Actors, Musicians and Athletes nice people or doucebags{% endblock %}
 
 {% block content %}
@@ -36,13 +37,31 @@
                                     {% for article in articles %}
                                     <li>
                                         <div class="news-pic">
-                                            <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}" alt="news" class="img-responsive col-lg-12"> </a>
+                                            {%  if article.news_website %}
+                                                <a href="{{ article.url }}" target="_blank"> <img src="{{ article.image }}" alt="news" class="img-responsive col-lg-12"> </a>
+                                            {% else %}
+                                                <a href="{% url 'portals:news_detail' pk=article.id %}">
+                                                    <img src="{{ article.article_image|thumbnail_url:'small' }}" alt="news" class="img-responsive col-lg-12">
+                                                </a>
+                                            {% endif %}
                                         </div>
                                         <div class="news-info">
-                                            <h3><a href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a></h3>
-                                            <div class="meta-data">({{ article.news_website }})</div>
+                                            <h3>
+                                                {%  if article.news_website %}
+                                                    <a href="{{ article.url }}" target="_blank">{{ article.title|truncatechars:100 }}</a>
+                                                {% else %}
+                                                    <a href="{% url 'portals:news_detail' pk=article.id %}">{{ article.title|truncatechars:100 }}</a>
+                                                {% endif %}
+                                            </h3>
+
+                                            {%  if article.news_website %}<div class="meta-data">({{ article.news_website }})</div>{% endif %}
+
                                             <div class="news-text">
-                                                <p>{{ article.description|truncatechars:300 }}</p>
+                                                {% if article.description %}
+                                                    <p>{{ article.description|truncatechars:300 }}</p>
+                                                {% elif  article.text %}
+                                                    <p>{{ article.text|truncatechars:300 }}</p>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </li>

@@ -2,6 +2,7 @@
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
+from easy_thumbnails.fields import ThumbnailerImageField
 
 from dynamic_scraper.models import Scraper, SchedulerRuntime
 from scrapy.contrib.djangoitem import DjangoItem
@@ -21,9 +22,11 @@ class NewsWebsite(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
-    news_website = models.ForeignKey(NewsWebsite)
+    text = models.TextField(blank=True, default='')
+    article_image = ThumbnailerImageField(upload_to='article_images', default='', blank=True)
+    news_website = models.ForeignKey(NewsWebsite, blank=True, null=True)
     description = models.TextField(blank=True)
-    image = models.URLField(blank=True)
+    image = models.URLField('Image url', blank=True)
     url = models.URLField(blank=True, db_index=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True,
                                         null=True, on_delete=models.SET_NULL)

@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% block title %}{{ news_item.title }} Celebrity Douchebag: Actors, Musicians and Athletes nice people or doucebags{% endblock %}
+
+{% block content %}
+
+<br/>
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 borders">
+                <div class="article-image">
+                    <img src="{{ news_item.article_image|thumbnail_url:'small' }}"
+                     alt="news" class="img-responsive article-img col-lg-12 ">
+                </div>
+                <div class="article-content">
+                    <h1>{{ news_item.title }}</h1>
+                    <p>{{ news_item.text }}</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 article-sidebar">
+                <h1>Read more articles</h1>
+                {% for item in articles %}
+                    <!----article---->
+                    <div class="article-cards">
+                        <div class="article-card">
+                            <span>
+                                <span class="col-lg-12 card-description">
+                                    <a href="{% url 'portals:news_detail' pk=item.pk %}">
+                                        <img src="{{ item.article_image|thumbnail_url:'small' }}"
+                                            alt="news" class="img-responsive article-img col-lg-12 ">
+                                        <div class="article-title">{{ item.title }}</div>
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div><!----end article----->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div><!--/.container-->
+{% endblock %}
