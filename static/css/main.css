@@ -1954,6 +1954,14 @@ padding-bottom:15px;
   margin: 6px;
   width: 150px;}
 
+.container.news-block .article-content pre{
+    padding-right: 3px;
+    font-size: 14px;
+    margin-top: 8px;
+    color: #000;
+    font-family: ProximaNovaThin, Helvetica Neue, Helvetica, sans-serif, monospace, Verdana;
+}
+
 .right-sidebar h1{font-size:20px;font-weight:bold;padding: 5px 0 5px 0;color:black;}
 
 /*end articles*/

@@ -7,17 +7,17 @@
 
 <br/>
 
-<div class="container">
+<div class="container news-block">
     <div class="container">
         <div class="row">
             <div class="col-md-9 borders">
                 <div class="article-image">
-                    <img src="{{ news_item.article_image|thumbnail_url:'small' }}"
+                    <img src="{{ news_item.article_image|thumbnail_url:'medium' }}"
                      alt="news" class="img-responsive article-img col-lg-12 ">
                 </div>
                 <div class="article-content">
                     <h1>{{ news_item.title }}</h1>
-                    <p>{{ news_item.text }}</p>
+                    <p><pre>{% autoescape off %}{{ news_item.text }}{% endautoescape %}</pre></p>
                 </div>
             </div>
 
