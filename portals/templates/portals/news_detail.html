@@ -4,8 +4,15 @@
 {% block title %}{{ news_item.title }} Celebrity Douchebag: Actors, Musicians and Athletes nice people or doucebags{% endblock %}
 
 {% block content %}
-
-<br/>
+<!-- begin news-container  -->
+<div class="main-container terms-container">
+        <!-- begin page title main-title-wrapper -->
+        <div class="main-title-wrapper">
+            <div class="container">
+                <h1 class="main-title">{{ news_item.title }}</h1>
+            </div>
+        </div>
+<!-- end page title main-title-wrapper -->
 
 <div class="container news-block">
     <div class="container">
@@ -15,7 +22,7 @@
                     <img src="{{ news_item.article_image|thumbnail_url:'medium' }}"
                      alt="news" class="img-responsive article-img col-lg-12 ">
                 </div>
-                <div class="article-content">
+                <div class="news-content">
                     <h1>{{ news_item.title }}</h1>
                     <p><pre>{% autoescape off %}{{ news_item.text }}{% endautoescape %}</pre></p>
                 </div>
@@ -31,8 +38,8 @@
                                 <span class="col-lg-12 card-description">
                                     <a href="{% url 'portals:news_detail' pk=item.pk %}">
                                         <img src="{{ item.article_image|thumbnail_url:'small' }}"
-                                            alt="news" class="img-responsive article-img col-lg-12 ">
-                                        <div class="article-title">{{ item.title }}</div>
+                                            alt="news" class="img-responsive col-lg-12 ">
+                                        <div class="article-title"><h3>{{ item.title }}</h3></div>
                                     </a>
                                 </span>
                             </span>
