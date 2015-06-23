@@ -412,10 +412,10 @@ a {
     float: left;
 }
 .home-container .article-list li .news-pic a {
-    /*border: 3px solid #e8e8ea;*/
     width: 155px;
     height: 106px;
     display: block;
+    margin-right:3px;
 }
 .home-container .article-list li .news-pic a img {
     height: 100%;
@@ -486,7 +486,7 @@ a {
 .celebrity-container .celebrity-list li .post-pic a {
     display: block;
     width: 130px;
-    height: 195px;
+    height:195px;
     text-decoration: none;
 }
 .celebrity-container .celebrity-list .celebrity-post-info {
@@ -546,7 +546,7 @@ a {
 .celebrity-container .celebrity-wrapper .celebrity-image {
     float: left;
     width: 200px;
-    height: 275px;
+    height:275px;
 }
 .celebrity-container .celebrity-wrapper .celebrity-image img {
     -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
@@ -1910,17 +1910,7 @@ a {
 .form-error {
     color: red;
 }
-/*articles*/
-
-.article-content{margin-top:20px;}
-
-.article-content h1{
-font-weight:700px;
-font-size:28px;
-padding-bottom:15px;
-}
-.article-content p {text-indent: 30px;padding-bottom:15px;}
-.main-content {
+.news-content{
   background-color: #fff;
   padding: 10px;
   border: solid 2px #0059D5;
@@ -1928,32 +1918,19 @@ padding-bottom:15px;
   -moz-box-shadow: 0 0 15px #bbb;
   box-shadow: 0 0 15px #bbb;
 }
-.main-content-inner{  border-right: 1px dotted #000}
-.article-image{padding:0; margin:0; height:335px;}
-
-
-.article-cards{padding-bottom:8px;}
-.article-card {
-  display: block;
-  background: #fdfdfd;
-  border: 1px solid #d5d5d5;
-  height: 120px;
-  line-height: 15px;
-  overflow: hidden;
-  margin:auto;
+.article-img {
+  padding: 10px;
+  height: 485px;
+  margin-bottom: 10px;
 }
-
-.article-title{  padding-top:20px;font-weight: 700;
-  color: #0000ff;
-  text-decoration: none;line-height:20px;}
-.article-card-image {
-  border: none;
-  display: inline;
-  float: left;
-  height: 100px;
-  margin: 6px;
-  width: 150px;}
-
-.right-sidebar h1{font-size:20px;font-weight:bold;padding: 5px 0 5px 0;color:black;}
-
-/*end articles*/
+.article-title h3{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  line-height: 20px;
+  border-bottom: 1px dotted #0059D5;
+  color:#0059D5;
+}
+.card-description img{
+padding-bottom:5px;
+}
